@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d608b2c33602bb42b8241702fa45767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
-  loadingCanvas: {fileID: 0}
+  loadingCanvas: {fileID: 631059988}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
