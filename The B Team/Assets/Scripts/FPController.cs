@@ -15,6 +15,9 @@ public class FPController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform cameraHolder;
 
+    [Header("Level Loading")]
+    [SerializeField] private LevelLoader levelLoader;
+
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0f;
@@ -34,6 +37,13 @@ public class FPController : MonoBehaviour
             HandleMovement();
             HandleMouseLook();
         }
+
+        
+        if (Input.GetKeyDown(KeyCode.L)) // press L change Scene
+        {
+            levelLoader.LoadLevel(0); // Index Scene 
+        }
+
         // Unlock cursor on Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {
