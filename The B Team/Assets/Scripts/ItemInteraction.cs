@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI; // Image UI
 using System.Collections.Generic;
 
 public class ItemInteraction : MonoBehaviour
@@ -11,46 +10,49 @@ public class ItemInteraction : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform propsHolder;
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private GameObject inventoryPanel; //  InventoryPanel
-    [SerializeField] private Image[] inventorySlots; //  Image Slot 5 
 
-    [SerializeField] private List<GameObject> inventory = new List<GameObject>();
+    private List<GameObject> inventory = new List<GameObject>();
     private GameObject currentHoldingItem;
 
     void Start()
     {
-        // hide UI when start game
-        inventoryPanel.SetActive(false);
-
+        // item in hand
         if (propsHolder.childCount > 0)
         {
             currentHoldingItem = propsHolder.GetChild(0).gameObject;
             SetupItemInHand(currentHoldingItem);
+            currentHoldingItem.SetActive(false); // hide if click right ->show last item
         }
     }
 
     void Update()
     {
-        // 1. Left Click = 0
+        // 1. click left -> get item
         if (Input.GetMouseButtonDown(0))
         {
             TryPickUpItem();
         }
 
-        // 2. Hold Right Click = 1
+        // 2. hold right -> show item
         if (currentHoldingItem != null)
         {
             bool isHolding = Input.GetMouseButton(1);
-            currentHoldingItem.SetActive(isHolding);
-            inventoryPanel.SetActive(isHolding); // UI
+
+            
+            if (currentHoldingItem.activeSelf != isHolding)
+            {
+                currentHoldingItem.SetActive(isHolding);
+            }
         }
     }
 
     void TryPickUpItem()
     {
         RaycastHit hit;
+        // Raycast 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactDistance))
         {
+            //  Tag obj
             if (hit.collider.CompareTag("Interactable"))
             {
                 HandleInventoryLogic(hit.collider.gameObject);
@@ -60,6 +62,7 @@ public class ItemInteraction : MonoBehaviour
 
     void HandleInventoryLogic(GameObject newItem)
     {
+        // 5 items full
         if (inventory.Count >= maxInventorySize)
         {
             DropCurrentItem();
@@ -70,28 +73,9 @@ public class ItemInteraction : MonoBehaviour
     void AddToInventory(GameObject item)
     {
         inventory.Add(item);
-        UpdateInventoryUI(); // update image in UI
         SetupItemInHand(item);
-        item.SetActive(false);
+        item.SetActive(false); // hide bag
         currentHoldingItem = item;
-    }
-
-    void UpdateInventoryUI()
-    {
-        // clear image
-        foreach (Image slot in inventorySlots) { slot.sprite = null; slot.enabled = false; }
-
-        // input image in List
-        for (int i = 0; i < inventory.Count; i++)
-        {
-            
-            Sprite itemSprite = inventory[i].GetComponent<Image>()?.sprite;
-            if (itemSprite != null)
-            {
-                inventorySlots[i].sprite = itemSprite;
-                inventorySlots[i].enabled = true;
-            }
-        }
     }
 
     void DropCurrentItem()
@@ -101,6 +85,7 @@ public class ItemInteraction : MonoBehaviour
             inventory.Remove(currentHoldingItem);
             currentHoldingItem.transform.SetParent(null);
 
+            
             Rigidbody rb = currentHoldingItem.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -108,22 +93,26 @@ public class ItemInteraction : MonoBehaviour
                 rb.useGravity = true;
             }
 
+           
             currentHoldingItem.transform.position = transform.position + transform.forward * 1.5f;
             currentHoldingItem.SetActive(true);
             currentHoldingItem = null;
-            UpdateInventoryUI();
         }
     }
 
     void SetupItemInHand(GameObject item)
     {
         item.transform.SetParent(propsHolder);
+
+        
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
             rb.useGravity = false;
         }
+
+        
         item.transform.localPosition = new Vector3(0, 0, 0.5f);
         item.transform.localRotation = Quaternion.identity;
     }
