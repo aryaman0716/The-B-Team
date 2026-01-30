@@ -22,6 +22,7 @@ public class FPController : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0f;
     private bool canMove = true;
+    private bool paused;
 
     void Start()
     {
@@ -32,7 +33,10 @@ public class FPController : MonoBehaviour
     }
     void Update()
     {
-        if (canMove)
+        paused = UIController.Paused;
+        //checks the global pause state to see if you can look around and move
+
+        if (canMove && !paused)
         {
             HandleMovement();
             HandleMouseLook();
@@ -43,7 +47,7 @@ public class FPController : MonoBehaviour
         {
             levelLoader.LoadLevel(0); // Index Scene 
         }
-
+        /*   removed due to interfering with UI, replaced with alternative method in UI script
         // Unlock cursor on Escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -55,7 +59,7 @@ public class FPController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }
+        } */
     }
     void HandleMovement()
     {
