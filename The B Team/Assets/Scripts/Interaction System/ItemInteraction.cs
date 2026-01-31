@@ -38,17 +38,19 @@ public class ItemInteraction : MonoBehaviour
     void HandleLeftClick()
     {
         if (!Input.GetMouseButtonDown(0)) return;
-        if (heldWorldItem != null) return;
+
+        
+        if (heldWorldItem == null) return;
 
         if (!inventory.HasFreeSlot())
         {
-            Debug.Log("Inventory Full! Discard an item to make space.");
+            Debug.Log("Inventory Full!");
             return;
         }
 
         inventory.AddItem(heldWorldItem.itemData);
         Destroy(heldWorldItem.gameObject);
-        heldWorldItem = null;
+        heldWorldItem = null; 
 
         Debug.Log("Item added to inventory");
     }
