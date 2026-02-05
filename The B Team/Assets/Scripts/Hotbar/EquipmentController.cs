@@ -63,7 +63,7 @@ public class EquipmentController : MonoBehaviour
 
         // Instantiate the new tool and parent it to the props holder
         currentToolObject = Instantiate(tools[index].toolPrefab, propsHolder);
-        currentToolObject.transform.localPosition = Vector3.zero;  // Reset position
+        currentToolObject.transform.localPosition = new Vector3(0.5f, -0.5f, 1f);  // Reset position
         currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
     }
     public Sprite GetToolIcon(int index)
