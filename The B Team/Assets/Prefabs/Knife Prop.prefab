@@ -237,7 +237,6 @@ GameObject:
   - component: {fileID: 8072475490640804942}
   - component: {fileID: 2128222467548615044}
   - component: {fileID: 4395148346234879167}
-  - component: {fileID: 7850945896332320287}
   m_Layer: 0
   m_Name: Knife Prop
   m_TagString: Interactable
@@ -301,16 +300,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6805996006956408835}
   m_CullTransparentMesh: 1
---- !u!114 &7850945896332320287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6805996006956408835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1eb17d2d9d408e4f9b47eec540374f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WorldItem
-  itemData: {fileID: 11400000, guid: b2a4a934edc3db14f83c28ff8fa51060, type: 2}

@@ -66,6 +66,10 @@ public class EquipmentController : MonoBehaviour
         currentToolObject.transform.localPosition = Vector3.zero;  // Reset position
         currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
     }
+    public Sprite GetToolIcon(int index)
+    {
+        return tools[index].toolIcon;
+    }
     public int GetCurrentIndex()
     {
         return currentIndex;
