@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Flour_Tool
   m_EditorClassIdentifier: Assembly-CSharp::ToolData
   toolName: 
-  toolIcon: {fileID: 0}
+  toolIcon: {fileID: 21300000, guid: 23a7a95c87eaa4f4e9c3b9645661f14d, type: 3}
   toolPrefab: {fileID: 0}

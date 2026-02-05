@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tomato_Tool
   m_EditorClassIdentifier: Assembly-CSharp::ToolData
   toolName: 
-  toolIcon: {fileID: 0}
+  toolIcon: {fileID: 21300000, guid: e33ee85314ea564478b46fe026a98f94, type: 3}
   toolPrefab: {fileID: 4916427495851915981, guid: 777dfd2dac046654f8b38db84173e93f, type: 3}
