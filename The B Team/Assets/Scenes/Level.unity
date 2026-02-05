@@ -4019,6 +4019,26 @@ PrefabInstance:
       propertyPath: levelLoader
       value: 
       objectReference: {fileID: 2108108458}
+    - target: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: crouchHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: standingHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: standingCameraHeight
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: crouchTransitionSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: crouchingCameraHeight
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 556214443917675116, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 55
@@ -4084,7 +4104,6 @@ PrefabInstance:
       value: 3.67
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7445365620877615830, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
     - {fileID: 6190914748737517710, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 652347662508976448, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}

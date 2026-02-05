@@ -8,6 +8,14 @@ public class FPController : MonoBehaviour
     [SerializeField] private float gravity = -20f;
     [SerializeField] private float jumpHeight = 1.5f;
 
+    [Header("Crouch Settings")]
+    [SerializeField] private float crouchHeight = 1f;
+    [SerializeField] private float standingHeight = 2f;
+    [SerializeField] private float crouchSpeed = 2.5f;
+    [SerializeField] private float smoothCrouchSpeed = 5f;
+    [SerializeField] private float standingCameraHeight = 1.6f;
+    [SerializeField] private float crouchingCameraHeight = 0.8f;
+
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 2f;
     [SerializeField] private float lookXLimit = 80f;
@@ -23,6 +31,7 @@ public class FPController : MonoBehaviour
     private float rotationX = 0f;
     private bool canMove = true;
     private bool paused;
+    private bool isCrouching = false;
 
     void Start()
     {
@@ -38,28 +47,14 @@ public class FPController : MonoBehaviour
         if (canMove && !paused)
         {
             HandleMovement();
+            HandleCrouch();
             HandleMouseLook();
         }
 
-        
         if (Input.GetKeyDown(KeyCode.L)) // press L change Scene
         {
             levelLoader.LoadLevel(0); // Index Scene 
         }
-
-        /*   removed due to interfering with UI, replaced with alternative method in UI script
-        // Unlock cursor on Escape key
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        // Lock cursor on left mouse button click
-        if (Input.GetMouseButtonDown(0) && Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        } */
     }
     void HandleMovement()
     {
@@ -71,7 +66,16 @@ public class FPController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float currentSpeed = isRunning ? runSpeed : walkSpeed;
+        float currentSpeed;
+
+        if (isCrouching)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else
+        {
+            currentSpeed = isRunning ? runSpeed : walkSpeed;
+        }
 
         // Calculate movement direction while preserving vertical velocity
         float movementDirectionY = moveDirection.y;
@@ -92,6 +96,22 @@ public class FPController : MonoBehaviour
             moveDirection.y += gravity * Time.deltaTime;
         }
         characterController.Move(moveDirection * Time.deltaTime);
+    }
+    void HandleCrouch()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            isCrouching = !isCrouching;
+        }
+
+        float targetHeight = isCrouching ? crouchHeight : standingHeight;
+        characterController.height = Mathf.Lerp(characterController.height, targetHeight, Time.deltaTime * smoothCrouchSpeed);
+        characterController.center = new Vector3(0, characterController.height / 2f, 0);
+
+        float targetCameraHeight = isCrouching ? crouchingCameraHeight : standingCameraHeight;
+        Vector3 camPos = cameraHolder.localPosition;
+        camPos.y = Mathf.Lerp(camPos.y, targetCameraHeight, Time.deltaTime * smoothCrouchSpeed);
+        cameraHolder.localPosition = camPos;
     }
     void HandleMouseLook()
     {
