@@ -23,10 +23,10 @@ public class EquipmentController : MonoBehaviour
     void HandleScrollInput()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll > 0f)
-            CycleTool(1);  // Scroll up to cycle forward
         if (scroll < 0f)
-            CycleTool(-1);  // Scroll down to cycle backward
+            CycleTool(1);  // Scroll down to select next tool
+        if (scroll > 0f)
+            CycleTool(-1);  // Scroll up to select previous tool
     }
     void HandleKeyInput()
     {
@@ -63,8 +63,8 @@ public class EquipmentController : MonoBehaviour
 
         // Instantiate the new tool and parent it to the props holder
         currentToolObject = Instantiate(tools[index].toolPrefab, propsHolder);
-        currentToolObject.transform.localPosition = new Vector3(0.5f, -0.5f, 1f);  // Reset position
-        currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
+        currentToolObject.transform.localPosition = new Vector3(0.5f, -0.35f, 1.0f);  // Reset position
+        //currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
     }
     public Sprite GetToolIcon(int index)
     {
