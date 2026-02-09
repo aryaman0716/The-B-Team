@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 357114033470058931}
   - component: {fileID: 5885901593315218908}
   - component: {fileID: 6190914748737517710}
-  - component: {fileID: 7445365620877615830}
   m_Layer: 0
   m_Name: ChefPlayer
   m_TagString: Player
@@ -403,6 +402,12 @@ MonoBehaviour:
   runSpeed: 15
   gravity: -20
   jumpHeight: 1.5
+  crouchHeight: 1
+  standingHeight: 2
+  crouchSpeed: 2.5
+  smoothCrouchSpeed: 5
+  standingCameraHeight: 1.6
+  crouchingCameraHeight: 0.8
   mouseSensitivity: 2
   lookXLimit: 80
   cameraHolder: {fileID: 4951683929555679109}
@@ -449,22 +454,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7445365620877615830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3725655295169908655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd94bbdffba425149a4daa6b21704db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemInteraction
-  interactDistance: 4
-  maxInventorySize: 5
-  propsHolder: {fileID: 6026362905920931624}
-  playerCamera: {fileID: 556214443917675116}
 --- !u!1 &4119168114349497331
 GameObject:
   m_ObjectHideFlags: 0

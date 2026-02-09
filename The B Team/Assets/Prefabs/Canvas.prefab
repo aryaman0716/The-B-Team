@@ -236,10 +236,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5518809031687537661}
   - {fileID: 2044794839515783269}
   - {fileID: 6127209895055344005}
   - {fileID: 5197688256802054914}
+  - {fileID: 5518809031687537661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -323,9 +323,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   PauseHide:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 670588299471185155}
+  - {fileID: 2653706613347777854}
+  - {fileID: 8311222640171853088}
   PauseShow:
   - {fileID: 4508829667116975291}
 --- !u!1 &8311222640171853088
