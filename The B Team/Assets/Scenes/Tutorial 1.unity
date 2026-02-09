@@ -974,7 +974,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 20.78461
+  m_FocalLength: 23.051785
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -989,7 +989,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 52
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1441,11 +1441,11 @@ PrefabInstance:
     - target: {fileID: 384122685900568902, guid: 8ad02ff8650d9494c93f7d0402671b6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: c54ca89d660b27549bc5b77ece90b66a, type: 2}
+      objectReference: {fileID: 2100000, guid: f9a2653df26d6fa4b8740e1ed4747be7, type: 2}
     - target: {fileID: 468457295126238360, guid: 8ad02ff8650d9494c93f7d0402671b6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4b871ece98feb5a41bd1e88190244252, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d2baea8e923135468a76987c598be9c, type: 2}
     - target: {fileID: 882129737928793925, guid: 8ad02ff8650d9494c93f7d0402671b6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1469,7 +1469,7 @@ PrefabInstance:
     - target: {fileID: 3837273730202383273, guid: 8ad02ff8650d9494c93f7d0402671b6f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ce39e14fa78bd6e4984716fb5eca8dc5, type: 2}
+      objectReference: {fileID: 2100000, guid: 48412ce062e3b37489cc8335174d2555, type: 2}
     - target: {fileID: 4083501151425157549, guid: 8ad02ff8650d9494c93f7d0402671b6f, type: 3}
       propertyPath: m_LocalScale.y
       value: 1081.0935
