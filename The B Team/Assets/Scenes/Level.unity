@@ -4873,16 +4873,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spatula
       objectReference: {fileID: 0}
+    - target: {fileID: 8427785894118442723, guid: 936545c7b15038147a6783abeebc621f, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8427785894118442723, guid: 936545c7b15038147a6783abeebc621f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8930471671226270127}
+      addedObject: {fileID: 8930471671226270126}
     - targetCorrespondingSourceObject: {fileID: 8427785894118442723, guid: 936545c7b15038147a6783abeebc621f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8930471671226270126}
+      addedObject: {fileID: 8930471671226270129}
+    - targetCorrespondingSourceObject: {fileID: 8427785894118442723, guid: 936545c7b15038147a6783abeebc621f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8930471671226270130}
   m_SourcePrefab: {fileID: 100100000, guid: 936545c7b15038147a6783abeebc621f, type: 3}
 --- !u!1 &8930471671226270125 stripped
 GameObject:
@@ -4916,7 +4923,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8930471671226270127
+--- !u!114 &8930471671226270129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4928,8 +4935,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b044cb0933bd3141a8fc09b1845f7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
-  type: 0
+  type: 1
   canBePickedUp: 1
+--- !u!65 &8930471671226270130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930471671226270125}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

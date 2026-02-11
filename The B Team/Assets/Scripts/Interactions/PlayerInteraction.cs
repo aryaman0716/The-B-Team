@@ -43,20 +43,32 @@ public class PlayerInteraction : MonoBehaviour
     // Hold Right Mouse
     void HandleRightClick()
     {
+        
         if (Input.GetMouseButton(1))
-        { 
-            if (heldObject != null && heldObject.type == InteractableObject.ObjectType.Knife)
+        {
+
+            
+            if (heldObject != null)
             {
 
                 
                 Ray ray = new Ray(transform.position, transform.forward);
                 if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
                 {
+
                     InteractableObject target = hit.collider.GetComponent<InteractableObject>();
 
-                    if (target != null && target.type == InteractableObject.ObjectType.Vent)
+                    if (target != null)
                     {
-                        Debug.Log("Doing...");
+                        
+                        if (heldObject.type == InteractableObject.ObjectType.Knife &&
+                            target.type == InteractableObject.ObjectType.General)
+                        {
+
+                            Debug.Log("using a knife to pry open the air vent...");
+                            Destroy(target.gameObject);
+                        }
+
                         
                     }
                 }

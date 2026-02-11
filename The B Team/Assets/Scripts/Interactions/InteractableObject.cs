@@ -26,4 +26,15 @@ public class InteractableObject : MonoBehaviour
         if (rb) rb.isKinematic = false; 
         transform.SetParent(null); 
     }
+
+    
+    public void InteractWith(InteractableObject itemInHand)
+    {
+        if (type == ObjectType.Vent && itemInHand.type == ObjectType.Knife)
+        {
+            
+            Debug.Log("Vent Opened!");
+            gameObject.SetActive(false);
+        }
+    }
 }
