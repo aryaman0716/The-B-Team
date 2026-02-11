@@ -15,7 +15,12 @@ public class InteractableObject : MonoBehaviour
 
     public void OnPickUp(Transform holdPoint)
     {
-        if (rb) rb.isKinematic = true; 
+        if (rb != null)
+        {
+            rb.useGravity = false;      
+            rb.isKinematic = true;      
+            rb.linearVelocity = Vector3.zero; 
+        }
         transform.SetParent(holdPoint); 
         transform.localPosition = new Vector3(0.5f, -0.5f, 1f); 
         transform.localRotation = Quaternion.identity;
@@ -23,8 +28,12 @@ public class InteractableObject : MonoBehaviour
 
     public void OnDrop()
     {
-        if (rb) rb.isKinematic = false; 
-        transform.SetParent(null); 
+        transform.SetParent(null);
+        if (rb != null)
+        {
+            rb.useGravity = true;       
+            rb.isKinematic = false;     
+        }
     }
 
     
