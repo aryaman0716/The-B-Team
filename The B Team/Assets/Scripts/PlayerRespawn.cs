@@ -23,7 +23,6 @@ public class PlayerRespawn : MonoBehaviour
 
         characterController.enabled = false; 
         transform.position = spawnPoint.position;  // Move the player to the respawn point.
-        transform.rotation = spawnPoint.rotation; 
         characterController.enabled = true;
 
         yield return new WaitForSeconds(0.2f);  // small delay before fading back in 
