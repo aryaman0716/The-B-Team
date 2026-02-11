@@ -4788,6 +4788,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 644516044297284172, guid: 74a3cedefac796a468500d032067d8a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7169421268780069297}
+    - targetCorrespondingSourceObject: {fileID: 644516044297284172, guid: 74a3cedefac796a468500d032067d8a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7169421268780069298}
   m_SourcePrefab: {fileID: 100100000, guid: 74a3cedefac796a468500d032067d8a7, type: 3}
 --- !u!1 &7169421268780069291 stripped
 GameObject:
@@ -4816,11 +4819,25 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7169421268780069298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169421268780069291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b044cb0933bd3141a8fc09b1845f7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  type: 0
+  canBePickedUp: 1
 --- !u!1001 &8930471671226270124
 PrefabInstance:
   m_ObjectHideFlags: 0
