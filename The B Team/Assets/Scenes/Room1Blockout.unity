@@ -8748,7 +8748,7 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 3182451441436361409}
     - targetCorrespondingSourceObject: {fileID: 5744196350134003481, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 492885879}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}

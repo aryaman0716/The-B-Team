@@ -63,6 +63,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.05f);
+            talkSounds.pitch = (Random.Range(0.95f, 1.05f));
             talkSounds.PlayOneShot(wa);
         }
 
