@@ -2759,10 +2759,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6190914748737517710, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+    - {fileID: 5885901593315218908, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 652347662508976448, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3725655295169908655, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1418466194}
     - targetCorrespondingSourceObject: {fileID: 3725655295169908655, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1418466188}
@@ -8686,7 +8690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044794839515783269, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 80
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 2044794839515783269, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8810,7 +8814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127209895055344005, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -80
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6127209895055344005, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -70678,6 +70682,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
   spawnPoint: {fileID: 651963921}
   screenFade: {fileID: 492885876}
+--- !u!136 &1418466194
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418466186}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1420054901
 GameObject:
   m_ObjectHideFlags: 0
