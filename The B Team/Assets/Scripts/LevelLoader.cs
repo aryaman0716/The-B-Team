@@ -32,7 +32,7 @@ public class LevelLoader : MonoBehaviour
             {
                 CharacterController cc = player.GetComponent<CharacterController>();
                 cc.enabled = false;
-                player.transform.position = spawn.transform.position;
+                player.transform.position = new Vector3(player.transform.position.x, 2.0f, player.transform.position.z);
                 player.transform.rotation = spawn.transform.rotation;
                 cc.enabled = true;
             }
