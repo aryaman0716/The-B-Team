@@ -11,23 +11,34 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
     }
-
     IEnumerator LoadAsynchronously(int sceneIndex)
     {
-        // 1. black screen
         if (loadingCanvas != null)
             loadingCanvas.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
-        // 2. start loading
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        yield return operation;
 
-        // 3. loop
-        while (!operation.isDone)
+        // After scene loads, reposition player
+        GameObject spawn = GameObject.Find("PlayerSpawn");
+
+        if (spawn != null)
         {
-            
-            yield return null;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            if (player != null)
+            {
+                CharacterController cc = player.GetComponent<CharacterController>();
+                cc.enabled = false;
+                player.transform.position = spawn.transform.position;
+                player.transform.rotation = spawn.transform.rotation;
+                cc.enabled = true;
+            }
         }
+
+        if (loadingCanvas != null)
+            loadingCanvas.SetActive(false);
     }
 }
