@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 public class EquipmentController : MonoBehaviour
 {
@@ -38,18 +39,28 @@ public class EquipmentController : MonoBehaviour
             EquipTool(2);
         if (Input.GetKeyDown(KeyCode.Alpha4))
             EquipTool(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            UnequipTool();
     }
     void CycleTool(int direction)
     {
         currentIndex += direction;  // Move index based on scroll direction
+        int maxIndex = tools.Length;
 
         // Wrap around the index if it goes out of bounds
         if (currentIndex < 0)
-            currentIndex = tools.Length - 1;  
-        if(currentIndex >= tools.Length)
+            currentIndex = maxIndex;  
+        if (currentIndex > maxIndex)
             currentIndex = 0;  
 
-        EquipTool(currentIndex); 
+        if (currentIndex == tools.Length)
+        {
+            UnequipTool();
+        }
+        else
+        {
+            EquipTool(currentIndex);
+        }
     }
     void EquipTool(int index)
     {
@@ -66,9 +77,22 @@ public class EquipmentController : MonoBehaviour
         currentToolObject.transform.localPosition = new Vector3(0.5f, -0.35f, 1.0f);  // Reset position
         //currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
     }
+    void UnequipTool()
+    {
+        currentIndex = tools.Length;  //set to empty slot index
+
+        if (currentToolObject != null)
+        {
+            Destroy(currentToolObject);
+            currentToolObject = null;
+        }
+    }
     public Sprite GetToolIcon(int index)
     {
-        return tools[index].toolIcon;
+        if (index >= 0 && index < tools.Length)
+            return tools[index].toolIcon;
+
+        return null;
     }
     public int GetCurrentIndex()
     {
