@@ -56,7 +56,10 @@ public class Pickup : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        if (!isHolding && CursorManager.Instance != null)
+        Debug.Log("Mouse Hovering on: " + gameObject.name);
+        float currentDist = Vector3.Distance(transform.position, PropHolder.Instance.transform.position);
+
+        if (!isHolding && currentDist <= maxDistance && CursorManager.Instance != null)
         {
             CursorManager.Instance.SetOpenHand();
         }
