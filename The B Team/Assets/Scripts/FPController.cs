@@ -33,6 +33,8 @@ public class FPController : MonoBehaviour
     private bool paused;
     private bool isCrouching = false;
 
+    public float ButtonPressDistance = 4f;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -49,6 +51,7 @@ public class FPController : MonoBehaviour
             HandleMovement();
             HandleCrouch();
             HandleMouseLook();
+            HandleButtonRaycast();
         }
 
         if (Input.GetKeyDown(KeyCode.L)) // press L change Scene
@@ -126,5 +129,29 @@ public class FPController : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+    }
+
+    public void HandleButtonRaycast()
+    {
+        //basically what this does is do a raycast forward from the camera when you press left mouse and if it hits a button it runs the press function on that button, might be better with the interact system but i didnt make that so
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, ButtonPressDistance))
+            {
+                KeypadButtonScript button = hit.collider.GetComponent<KeypadButtonScript>();
+
+                if (button != null)
+                {
+                    button.PressButton();
+
+                }
+
+            }
+        }
     }
 }
