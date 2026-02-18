@@ -6,6 +6,15 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
     public bool done = false;
+    public bool triggerStart = false;
+
+    private void Start()
+    {
+        if (triggerStart)
+        {
+            TriggerDialogue();
+        }
+    }
     public void TriggerDialogue()
     {
         if (!done)

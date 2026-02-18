@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,10 +15,21 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
     public AudioClip wa;
     public AudioSource talkSounds;
+    public bool cutScene = false;
+    public bool sentenceDone = false;
+    public string nextScene;
 
     void Start()
     {
         sentences = new Queue<DialogueEntry>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (cutScene)
+                AttemptNext();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -63,14 +75,22 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.05f);
-            talkSounds.pitch = (Random.Range(0.95f, 1.05f));
-            talkSounds.volume = (1 * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
+            //talkSounds.pitch = (Random.Range(0.95f, 1.05f));
+            talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
             talkSounds.PlayOneShot(wa);
         }
 
-        yield return new WaitForSeconds(2f);
+        if (!cutScene)
+        {
+            yield return new WaitForSeconds(2f);
+            DisplayNextSentence();
+        }
+        else
+        {
+            sentenceDone = true;
 
-        DisplayNextSentence();
+        }
+       
     }
 
 
@@ -78,5 +98,15 @@ public class DialogueManager : MonoBehaviour
     {
         animator.SetBool("Open", false);
         Time.timeScale = 1f;
+        if (cutScene)
+        {
+            SceneManager.LoadScene(nextScene);
+        }
+    }
+
+    public void AttemptNext()
+    {
+        DisplayNextSentence();
+        sentenceDone = false;
     }
 }
