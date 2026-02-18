@@ -7,6 +7,7 @@ public class EquipmentController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform propsHolder;
+    [SerializeField] private Transform playerCamera;
 
     private int currentIndex = 0;
     private GameObject currentToolObject;
@@ -19,6 +20,10 @@ public class EquipmentController : MonoBehaviour
     {
         HandleScrollInput();
         HandleKeyInput();
+        if (Input.GetMouseButtonDown(0))
+        {
+            UseCurrentTool();
+        }
     }
 
     void HandleScrollInput()
@@ -41,6 +46,16 @@ public class EquipmentController : MonoBehaviour
             EquipTool(3);
         if (Input.GetKeyDown(KeyCode.Alpha5))
             UnequipTool();
+    }
+    private void UseCurrentTool()
+    {
+        if (currentIndex >=0 && currentIndex < tools.Length)
+        {
+            if (tools[currentIndex] != null)
+            {
+                tools[currentIndex].UseTool(propsHolder);
+            }
+        }
     }
     void CycleTool(int direction)
     {

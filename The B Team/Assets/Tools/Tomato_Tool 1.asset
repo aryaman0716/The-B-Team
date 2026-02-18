@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2896b915346239c4aaf9b7d064d9dd73, type: 3}
-  m_Name: Tomato_Tool
-  m_EditorClassIdentifier: Assembly-CSharp::ToolData
-  toolName: 
+  m_Script: {fileID: 11500000, guid: fa493911a55ab81468b511cd2ea89571, type: 3}
+  m_Name: Tomato_Tool 1
+  m_EditorClassIdentifier: Assembly-CSharp::TomatoTool
+  toolName: Tomato
   toolIcon: {fileID: 21300000, guid: e33ee85314ea564478b46fe026a98f94, type: 3}
   toolPrefab: {fileID: 4916427495851915981, guid: 777dfd2dac046654f8b38db84173e93f, type: 3}
+  projectilePrefab: {fileID: 8055923679339722166, guid: 26c17fe801d8136419851ec678440286, type: 3}
+  throwForce: 20
