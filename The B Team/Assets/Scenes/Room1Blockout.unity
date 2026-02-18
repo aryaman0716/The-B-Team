@@ -23707,7 +23707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5dd560676ddea46a8e0fb9532dc831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorManager
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: f4abf62e36c764542986a6baad5fcc30, type: 3}
   openHandCursor: {fileID: 2800000, guid: 52f2b8eec0ea58642a3582251bba2817, type: 3}
   closeHandCursor: {fileID: 2800000, guid: 7478eba303d58754e8d08b2fdcfa64c5, type: 3}
 --- !u!4 &688855924
