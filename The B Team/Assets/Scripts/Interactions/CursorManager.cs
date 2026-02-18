@@ -15,11 +15,16 @@ public class CursorManager : MonoBehaviour
     }
 
     private CursorState currentState;
+    
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
         }
         else
         {
@@ -30,19 +35,30 @@ public class CursorManager : MonoBehaviour
     public void SetDefault()
     {
         if (currentState == CursorState.Default) return;
-        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-        currentState = CursorState.Default;
+        ApplyCursorSettings(defaultCursor, CursorState.Default);
     }
+
     public void SetOpenHand()
     {
         if (currentState == CursorState.OpenHand) return;
-        Cursor.SetCursor(openHandCursor, Vector2.zero, CursorMode.Auto);
-        currentState = CursorState.OpenHand;
+        ApplyCursorSettings(openHandCursor, CursorState.OpenHand);
     }
+
     public void SetCloseHand()
     {
         if (currentState == CursorState.CloseHand) return;
-        Cursor.SetCursor(closeHandCursor, Vector2.zero, CursorMode.Auto);
-        currentState = CursorState.CloseHand;
+        ApplyCursorSettings(closeHandCursor, CursorState.CloseHand);
+    }
+
+
+    private void ApplyCursorSettings(Texture2D texture, CursorState state)
+    {
+       
+        Vector2 hotspot = new Vector2(texture.width / 2, texture.height / 2);
+        Cursor.SetCursor(texture, hotspot, CursorMode.Auto);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined; 
+        currentState = state;
     }
 }

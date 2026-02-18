@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2896b915346239c4aaf9b7d064d9dd73, type: 3}
+  m_Script: {fileID: 11500000, guid: 297f016adfe98c344b8aad87d79625cd, type: 3}
   m_Name: Knife_Tool
-  m_EditorClassIdentifier: Assembly-CSharp::ToolData
-  toolName: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnifeTool
+  toolName: Knife
   toolIcon: {fileID: 21300000, guid: ec73f0e2be2b00742bfa16f54ef3113b, type: 3}
   toolPrefab: {fileID: 6805996006956408835, guid: bdee3ffa368d69842a01d8df820665c4, type: 3}
