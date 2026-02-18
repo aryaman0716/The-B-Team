@@ -1,4 +1,4 @@
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 public class EquipmentController : MonoBehaviour
 {
@@ -12,10 +12,7 @@ public class EquipmentController : MonoBehaviour
     private int currentIndex = 0;
     private GameObject currentToolObject;
 
-    void Start()
-    {
-        EquipTool(0);
-    }
+    void Start() => EquipTool(0);
     void Update()
     {
         HandleScrollInput();
@@ -25,6 +22,8 @@ public class EquipmentController : MonoBehaviour
             UseCurrentTool();
         }
     }
+
+
 
     void HandleScrollInput()
     {
@@ -51,10 +50,9 @@ public class EquipmentController : MonoBehaviour
     {
         if (currentIndex >=0 && currentIndex < tools.Length)
         {
-            if (tools[currentIndex] != null)
-            {
+            
                 tools[currentIndex].UseTool(propsHolder);
-            }
+            
         }
     }
     void CycleTool(int direction)
