@@ -1899,6 +1899,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1031609884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &80820227 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2260111842617068238, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+  m_PrefabInstance: {fileID: 111142936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &81330151
 GameObject:
   m_ObjectHideFlags: 0
@@ -23711,7 +23716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5dd560676ddea46a8e0fb9532dc831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorManager
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: f4abf62e36c764542986a6baad5fcc30, type: 3}
   openHandCursor: {fileID: 2800000, guid: 52f2b8eec0ea58642a3582251bba2817, type: 3}
   closeHandCursor: {fileID: 2800000, guid: 7478eba303d58754e8d08b2fdcfa64c5, type: 3}
 --- !u!4 &688855924
@@ -76547,9 +76552,10 @@ MonoBehaviour:
   tools:
   - {fileID: 11400000, guid: 6b41839832d744b458c2461259b26051, type: 2}
   - {fileID: 11400000, guid: d979cc88614ba224eb4bc80a26e4c171, type: 2}
-  - {fileID: 11400000, guid: 92dcd72c2dfff664b92d4ecc7f70e517, type: 2}
+  - {fileID: 11400000, guid: 88a24031da83d0d44b858d274d2d9a26, type: 2}
   - {fileID: 11400000, guid: f65d99c5ec6c6a840b88d90ca7c81d12, type: 2}
   propsHolder: {fileID: 86358253}
+  playerCamera: {fileID: 80820227}
 --- !u!114 &1418466189
 MonoBehaviour:
   m_ObjectHideFlags: 0
