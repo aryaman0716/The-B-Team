@@ -33,6 +33,11 @@ public class Pickup : MonoBehaviour
             if (distance <= maxDistance)
             {
                 isHolding = true;
+
+                if (CursorManager.Instance != null)
+                {
+                    CursorManager.Instance.SetCloseHand();
+                }
                 rb.useGravity = false;
                 rb.detectCollisions = true;
 
@@ -49,10 +54,19 @@ public class Pickup : MonoBehaviour
         // drop the object
         Drop();
     }
+    private void OnMouseEnter()
+    {
+        if (!isHolding && CursorManager.Instance != null)
+        {
+            CursorManager.Instance.SetOpenHand();
+        }
+    }
     private void OnMouseExit()
     {
-        // drop the object if the mouse exits the object while holding it
-        Drop();
+        if (!isHolding && CursorManager.Instance != null)
+        {
+            CursorManager.Instance.SetDefault();
+        }
     }
     private void Hold()
     {
@@ -82,6 +96,10 @@ public class Pickup : MonoBehaviour
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.useGravity = true;
+        }
+        if (CursorManager.Instance != null)
+        {
+            CursorManager.Instance.SetDefault();
         }
     }
 }
