@@ -2,12 +2,35 @@ using UnityEngine;
 public class VentSystem : MonoBehaviour
 {
     public GameObject vent;
+    public GameObject ventCover;
+    public VentFocusController focusController;
+    public bool isActivated = false;
+
+    private int screwsRemoved = 0;
+    private int totalScrews = 4;
     public void ActivateVent()
     {
+        isActivated = true;
         Debug.Log("Vent activated!");
-        if (vent != null)
+    }
+    public void ScrewRemoved()
+    {
+        screwsRemoved++;
+        if (screwsRemoved >= totalScrews)
         {
-            vent.SetActive(true);
+            RemoveVentCover();
+        }
+    }
+    void RemoveVentCover()
+    {
+        if (ventCover != null)
+        {
+            ventCover.GetComponent<Rigidbody>().isKinematic = false;
+            ventCover.GetComponent<Rigidbody>().useGravity = true;
+        }
+        if (focusController != null)
+        {
+            focusController.ExitFocusMode();
         }
     }
 }
