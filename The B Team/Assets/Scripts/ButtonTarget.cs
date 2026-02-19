@@ -2,11 +2,14 @@ using UnityEngine;
 public class ButtonTarget : MonoBehaviour
 {
     public VentSystem ventToActivate;
-    public void Activate()
+    public void OnCollisionEnter(Collision collision)
     {
-        if (ventToActivate != null)
+        if (collision.gameObject.CompareTag("TomatoProjectile"))
         {
-            ventToActivate.ActivateVent();
+            if (ventToActivate != null)
+            {
+                ventToActivate.ActivateVent();
+            }
         }
     }
 }
