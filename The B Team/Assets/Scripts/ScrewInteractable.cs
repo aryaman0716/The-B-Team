@@ -9,16 +9,19 @@ public class ScrewInteractable : MonoBehaviour
     public int knifeIndex = 0;
 
     private bool isRemoved = false;
-    private bool isUnscrewing = false;  
+    private bool isUnscrewing = false;
     void OnMouseOver()
     {
-        if (isRemoved) return;
-        if (!ventSystem.isActivated) return;
-        if (equipment.GetCurrentIndex() != knifeIndex) return;
+        
+        if (ventSystem.focusController != null && !ventSystem.isActivated) return;
 
         if (Input.GetMouseButtonDown(1) && !isUnscrewing)
         {
-            StartCoroutine(Unscrew());
+            
+            if (equipment.GetCurrentIndex() == knifeIndex)
+            {
+                StartCoroutine(Unscrew());
+            }
         }
     }
     IEnumerator Unscrew()

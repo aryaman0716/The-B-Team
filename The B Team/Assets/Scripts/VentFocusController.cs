@@ -20,10 +20,13 @@ public class VentFocusController : MonoBehaviour
     {
         if (isFocused) return;
         isFocused = true;
-        originalPos = playerCamera.transform.position;
-        originalRot = playerCamera.transform.rotation;
 
-        controller.SetCanMove(false);
+        if (controller != null)
+        {
+            controller.SetCanMove(false);
+            controller.enabled = false; 
+        }
+
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
     }
     public void ExitFocusMode()
