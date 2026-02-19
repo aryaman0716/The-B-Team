@@ -10,7 +10,6 @@ public class TomatoTool : ToolData
     {
         if (projectilePrefab == null) return;
 
-        
         Vector3 spawnPos = origin.position + (origin.forward * 1.0f);
 
         GameObject tomato = Instantiate(projectilePrefab, spawnPos, origin.rotation);

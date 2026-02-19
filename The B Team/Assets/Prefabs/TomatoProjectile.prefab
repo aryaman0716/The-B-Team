@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1394936943037884811}
   - component: {fileID: 4382574930622504835}
   - component: {fileID: 4044719786465871433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TomatoProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

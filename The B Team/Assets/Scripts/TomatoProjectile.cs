@@ -10,6 +10,6 @@ public class TomatoProjectile : MonoBehaviour
         {
             button.Activate();
         }
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
