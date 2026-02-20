@@ -4,7 +4,7 @@ using System.Collections;
 public class ScreenFade : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
-    [SerializeField] private float fadeSpeed = 2f;
+    [SerializeField] private float fadeSpeed = 1f;
     public IEnumerator FadeOut()
     {
         yield return Fade(0f, 1f); // fade from transparent to opaque
