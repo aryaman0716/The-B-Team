@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TomatoTool
   toolName: Tomato
   toolIcon: {fileID: 21300000, guid: e33ee85314ea564478b46fe026a98f94, type: 3}
-  toolPrefab: {fileID: 4916427495851915981, guid: 777dfd2dac046654f8b38db84173e93f, type: 3}
+  toolPrefab: {fileID: 6154722786346913725, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
   projectilePrefab: {fileID: 8055923679339722166, guid: 26c17fe801d8136419851ec678440286, type: 3}
   throwForce: 20
