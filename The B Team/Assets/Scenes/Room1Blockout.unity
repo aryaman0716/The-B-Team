@@ -9562,6 +9562,8 @@ MonoBehaviour:
   focusPoint: {fileID: 1941146418}
   focusFOV: 30
   normalFOV: 60
+  controller: {fileID: 1418466196}
+  propsHolder: {fileID: 111142937}
 --- !u!114 &242445069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77184,6 +77186,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1418466196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 357114033470058931, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+  m_PrefabInstance: {fileID: 111142936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418466186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a419a4c1a6ab384ea9267dbee838613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FPController
 --- !u!1 &1422511092
 GameObject:
   m_ObjectHideFlags: 0

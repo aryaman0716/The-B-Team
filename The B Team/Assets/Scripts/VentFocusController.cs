@@ -7,14 +7,14 @@ public class VentFocusController : MonoBehaviour
     public float normalFOV = 60f; // Normal field of view
 
     private Camera playerCamera;
-    private FPController controller;
+    public FPController controller;
+    public GameObject propsHolder; // Reference to the player's held items
     private Vector3 originalPos;
     private Quaternion originalRot;
     private bool isFocused = false;
     void Start()
     {
         playerCamera = Camera.main;
-        controller = playerCamera.GetComponent<FPController>();
     }
     public void EnterFocusMode()
     {
@@ -33,6 +33,7 @@ public class VentFocusController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        propsHolder.SetActive(false); // Hide the player's held items
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
     }
     public void ExitFocusMode()
@@ -48,6 +49,7 @@ public class VentFocusController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        propsHolder.SetActive(true); // Show the player's held items again
         StartCoroutine(SmoothFocus(originalPos, originalRot, normalFOV));
     }
 
