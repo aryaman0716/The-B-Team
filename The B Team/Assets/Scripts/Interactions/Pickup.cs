@@ -65,7 +65,7 @@ public class Pickup : MonoBehaviour
     {
         if (!isHolding && CursorManager.Instance != null)
         {
-            CursorManager.Instance.SetDefault();
+            CursorManager.Instance.SetNormal();
         }
     }
     private void Hold()
@@ -99,7 +99,7 @@ public class Pickup : MonoBehaviour
         }
         if (CursorManager.Instance != null)
         {
-            CursorManager.Instance.SetDefault();
+            CursorManager.Instance.SetNormal();
         }
     }
 }

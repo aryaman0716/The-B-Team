@@ -21,11 +21,17 @@ public class VentFocusController : MonoBehaviour
         if (isFocused) return;
         isFocused = true;
 
+        originalPos = playerCamera.transform.position;
+        originalRot = playerCamera.transform.rotation;
+
         if (controller != null)
         {
             controller.SetCanMove(false);
             controller.enabled = false; 
         }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
     }
@@ -33,7 +39,15 @@ public class VentFocusController : MonoBehaviour
     {
         if (!isFocused) return;
         isFocused = false;
-        controller.SetCanMove(true);
+        if (controller != null)
+        {
+            controller.enabled = true;
+            controller.SetCanMove(true);
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         StartCoroutine(SmoothFocus(originalPos, originalRot, normalFOV));
     }
 

@@ -12,14 +12,15 @@ public class ScrewInteractable : MonoBehaviour
     private bool isUnscrewing = false;
     void OnMouseOver()
     {
-        
+        Debug.Log("Mouse over screw");
+
         if (ventSystem.focusController != null && !ventSystem.isActivated) return;
 
         if (Input.GetMouseButtonDown(1) && !isUnscrewing)
         {
-            
             if (equipment.GetCurrentIndex() == knifeIndex)
             {
+                Debug.Log("Started unscrewing");
                 StartCoroutine(Unscrew());
             }
         }
