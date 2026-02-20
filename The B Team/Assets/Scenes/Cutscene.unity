@@ -513,6 +513,82 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1650034125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1650034126}
+  - component: {fileID: 1650034128}
+  - component: {fileID: 1650034127}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1650034126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650034125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2405052177353240969}
+  m_Father: {fileID: 9212797876839839271}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 45}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1650034127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650034125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1650034128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650034125}
+  m_CullTransparentMesh: 1
 --- !u!1 &1987799602
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,17 +741,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8558055234908665157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9212797876839839271}
+  m_Father: {fileID: 1650034126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 204.7998, y: 43.8108}
-  m_Pivot: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2907450780768295468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,11 +768,12 @@ MonoBehaviour:
   dialogueText: {fileID: 5327038630868845460}
   portraitImage: {fileID: 3104546496731082694}
   animator: {fileID: 3587044549035984957}
-  wa: {fileID: 8300000, guid: c3dafde37c035a44f8bbdbb5488741ff, type: 3}
+  wa: {fileID: 8300000, guid: 246ff226872b0b34aa01730d3a9a6afb, type: 3}
   talkSounds: {fileID: 7410913439615789344}
   cutScene: 1
   sentenceDone: 0
   nextScene: Room1Blockout
+  dialogueSpeedMod: 2
 --- !u!114 &3048350925559666560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +960,83 @@ MonoBehaviour:
       - speaker: Mobster 1
         portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
         sentence: "YOU\u2019RE JOKING? YOU\u2019RE ALL SICK? HOW WE S\u2019POSED
+          TO ROB A BANK WITHOUT YOU NITWITS? "
+      - speaker: Mobster 1
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "HOW WE S\u2019POSED TO GET THE CHEDDAR WITH NO COWS? HOW WE S\u2019POSED
+          TO MAKE SOME GOD DAMN DOUGH WITHOUT THE FLOUR? YOU PEOPLE- "
+      - speaker: Vick
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: Boss!
+      - speaker: Mobster 1
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "WHAT? CAN\u2019T YOU SEE I\u2019M ON THE PHONE RIGHT NOW? COME
+          ONNNN!"
+      - speaker: Mobster 1
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "God damnit, get that look off your face, Vick. I know you\u2019re
+          a stand-up guy. I didn\u2019t mean to go off at you. What is it?"
+      - speaker: Vick
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "They was at uh\u2026 Maurices\u2019 pizza place last night to
+          celebrate before the big day\u2026 surely if they\u2019re all sick\u2026"
+      - speaker: Mobster 1
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Course they was at Maurices\u2019\u2026 Come on, gotta go pay
+          \u2018im another visit. Not his first slip up, I reckon it's about time
+          we make him pay his dues. Get the van ready, Vick."
+      - speaker: Vick
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: Yes boss!
+      - speaker: Mobster 1
+        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: Hey Maurice, word on the street is our boys ate here last night.
+      - speaker: Maurice
+        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: ... ... ... (murmur)
+      - speaker: Mobster 1
+        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: Well, Maurice, they got sick. So, not only did you fail at recreating
+          the family recipe, again, but you also screwed up this job we had, again.
+      - speaker: Maurice
+        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Oh-\u2026"
+      - speaker: Mobster 1
+        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Save it, I\u2019m not interested in your half baked excuses. You\u2019re
+          going to do the job for us. Vick can give you the run down. I expect you
+          to be out in 10, if not I\u2019ll drag you out myself."
+      - speaker: Vick
+        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Sorry about him Maurice\u2026 you uh, you know what he\u2019s
+          like with this stuff. "
+      - speaker: Vick
+        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "I should give you the run down of the job. Planned this big heist
+          on the Russos\u2019 Dough Production Facility."
+      - speaker: Vick
+        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Their place is under construction which means lighter security.
+          Gave us the perfect opportunity for the job before, well y\u2019know. Which
+          is why we need you to do it, not much time left on this opportunity."
+    - entries:
+      - speaker: Mobster 1
+        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "What do you mean you\u2019re sick? There ain\u2019t no sick in
+          this business, Tony!"
+      - speaker: Phone
+        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: Mumble... Mumble >:(
+      - speaker: Mobster 1
+        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "Hey. Look, alright. We\u2019ll figure this out, yeah? Surely the
+          other guys\u2019ll be around to-"
+      - speaker: Phone
+        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: MUMBLE! >:(
+      - speaker: Mobster 1
+        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        sentence: "YOU\u2019RE JOKING? YOU\u2019RE ALL SICK? HOW WE S\u2019POSED
           TO ROB A BANK WITHOUT YOU MORONS? "
       - speaker: Mobster 1
         portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
@@ -1005,7 +1159,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 67
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1055,7 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1205,8 +1359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -21.906006}
-  m_SizeDelta: {x: 0.00012207, y: -43.81}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8558055234908665157
 GameObject:
@@ -1246,14 +1400,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1650034126}
   - {fileID: 8456828020637871425}
-  - {fileID: 2405052177353240969}
   m_Father: {fileID: 1864190012699449359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -11.6644, y: 116.6779}
-  m_SizeDelta: {x: 1580.34, y: 233.3558}
+  m_AnchoredPosition: {x: -11.6644, y: 101}
+  m_SizeDelta: {x: 1580.34, y: 242.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

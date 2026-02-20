@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     public bool cutScene = false;
     public bool sentenceDone = false;
     public string nextScene;
+    public float dialogueSpeedMod = 2f;
 
     void Start()
     {
@@ -74,10 +75,16 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f);
-            //talkSounds.pitch = (Random.Range(0.95f, 1.05f));
-            talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
-            talkSounds.PlayOneShot(wa);
+            if (letter == ' ')
+            {
+                yield return new WaitForSeconds(0.05f / dialogueSpeedMod);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.05f / dialogueSpeedMod);
+                talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
+                talkSounds.PlayOneShot(wa);
+            }
         }
 
         if (!cutScene)
