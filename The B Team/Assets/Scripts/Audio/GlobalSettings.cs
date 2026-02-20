@@ -6,8 +6,13 @@ using TMPro;
 public class GlobalSettings : MonoBehaviour
 {
     public static float MasterVolume = 1f;
-    public static float MusicVolume = 0f;
+    public static float MusicVolume = 0.5f;
     public static float SFXVolume = 1f;
+
+    public Slider MasterSlider;
+    public Slider MusicSlider;
+    public Slider SFXSlider;
+
     public bool fullScreen = true;
 
     private int selectedRes;
@@ -19,6 +24,13 @@ public class GlobalSettings : MonoBehaviour
     void Start()
     {
 
+    }
+
+    private void Awake()
+    {
+        MasterSlider.value = MasterVolume;
+        MusicSlider.value = MusicVolume;
+        SFXSlider.value = SFXVolume;
     }
 
     // Update is called once per frame

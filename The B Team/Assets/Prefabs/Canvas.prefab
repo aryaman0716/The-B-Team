@@ -724,13 +724,53 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5744196350134003481}
     m_Modifications:
+    - target: {fileID: 1343979578553512409, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343979578553512409, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343979578553512409, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556652182073455141, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556652182073455141, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660122506190848832, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660122506190848832, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845247927607310424, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845247927607310424, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845247927607310424, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4599412908534921592, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
       propertyPath: m_Name
       value: Pause Screen
       objectReference: {fileID: 0}
     - target: {fileID: 4599412908534921592, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5566382867442240212, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
       propertyPath: m_IsActive
@@ -832,6 +872,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: exitGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6866721174640888589, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866721174640888589, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929659301165458419, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: SFXSlider
+      value: 
+      objectReference: {fileID: 4840059526660736449}
+    - target: {fileID: 6929659301165458419, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: MusicSlider
+      value: 
+      objectReference: {fileID: 2841792390079007227}
+    - target: {fileID: 6929659301165458419, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: MasterSlider
+      value: 
+      objectReference: {fileID: 1454238195506909412}
     - target: {fileID: 6929659301165458419, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
       propertyPath: resolutions.Array.size
       value: 3
@@ -860,16 +920,61 @@ PrefabInstance:
       propertyPath: resolutions.Array.data[2].horizontal
       value: 854
       objectReference: {fileID: 0}
+    - target: {fileID: 7799612383028849065, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799612383028849065, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799612383028849065, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+--- !u!114 &1454238195506909412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1542637858352753959, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+  m_PrefabInstance: {fileID: 92025938154487235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &2841792390079007227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2753636734255281208, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+  m_PrefabInstance: {fileID: 92025938154487235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &4508829667116975291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4599412908534921592, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
   m_PrefabInstance: {fileID: 92025938154487235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4840059526660736449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4786668228133402626, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
+  m_PrefabInstance: {fileID: 92025938154487235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!224 &5518809031687537661 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5607067888090742334, guid: bbe529d907d9cdb4080385a5fac770f0, type: 3}
