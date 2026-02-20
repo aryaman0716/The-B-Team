@@ -3,52 +3,50 @@ using System.Collections;
 public class ScrewInteractable : MonoBehaviour
 {
     public VentSystem ventSystem;
-    public float unscrewTime = 5f;
     public AudioSource unscrewSound;
     public EquipmentController equipment;
     public int knifeIndex = 0;
 
     private bool isRemoved = false;
-    private bool isUnscrewing = false;
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    }
     void OnMouseOver()
     {
         Debug.Log("Mouse over screw");
 
-        if (ventSystem.focusController != null && !ventSystem.isActivated) return;
+        if (isRemoved) return;  // Prevent interaction if already removed
+        if (!ventSystem.isActivated) return;
 
-        if (Input.GetMouseButtonDown(1) && !isUnscrewing)
+        if (Input.GetMouseButtonDown(0))
         {
             if (equipment.GetCurrentIndex() == knifeIndex)
             {
-                Debug.Log("Started unscrewing");
-                StartCoroutine(Unscrew());
+                RemoveScrew();
             }
         }
     }
-    IEnumerator Unscrew()
+    void RemoveScrew()
     {
-        isUnscrewing = true;
-        float timer = 0f;
-
-        while (timer < unscrewTime)
-        {
-            // Stop unscrewing if the player releases the button
-            if (!Input.GetMouseButton(1))
-            {
-                isUnscrewing = false;
-                yield break;  
-            }
-            timer += Time.deltaTime;
-            yield return null;
-        }
         isRemoved = true;
+        Rigidbody rb = GetComponent<Rigidbody>();
 
-        if (unscrewSound != null)
+        if (rb == null)
         {
-            unscrewSound.Play();
+            rb = gameObject.AddComponent<Rigidbody>();
         }
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
         ventSystem.ScrewRemoved();
-        yield return new WaitForSeconds(0.1f); // Wait for the sound to play before destroying
-        Destroy(gameObject);
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (unscrewSound != null && isRemoved)
+        {
+            audioSource.PlayOneShot(unscrewSound.clip);
+        }
     }
 }

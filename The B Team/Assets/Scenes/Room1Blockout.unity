@@ -1198,6 +1198,7 @@ GameObject:
   - component: {fileID: 23856959}
   - component: {fileID: 23856958}
   - component: {fileID: 23856957}
+  - component: {fileID: 23856962}
   - component: {fileID: 23856956}
   - component: {fileID: 23856961}
   - component: {fileID: 23856960}
@@ -1411,10 +1412,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewInteractable
   ventSystem: {fileID: 242445069}
-  unscrewTime: 5
   unscrewSound: {fileID: 23856960}
   equipment: {fileID: 1418466188}
   knifeIndex: 0
+--- !u!54 &23856962
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23856955}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &25115454
 GameObject:
   m_ObjectHideFlags: 0
@@ -33366,6 +33393,7 @@ GameObject:
   - component: {fileID: 871224743}
   - component: {fileID: 871224742}
   - component: {fileID: 871224741}
+  - component: {fileID: 871224746}
   - component: {fileID: 871224740}
   - component: {fileID: 871224745}
   - component: {fileID: 871224744}
@@ -33579,10 +33607,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewInteractable
   ventSystem: {fileID: 242445069}
-  unscrewTime: 5
   unscrewSound: {fileID: 871224744}
   equipment: {fileID: 1418466188}
   knifeIndex: 0
+--- !u!54 &871224746
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871224739}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!43 &880554400
 Mesh:
   m_ObjectHideFlags: 0
@@ -38598,6 +38652,7 @@ GameObject:
   - component: {fileID: 1042767727}
   - component: {fileID: 1042767726}
   - component: {fileID: 1042767725}
+  - component: {fileID: 1042767730}
   - component: {fileID: 1042767724}
   - component: {fileID: 1042767729}
   - component: {fileID: 1042767728}
@@ -38811,10 +38866,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewInteractable
   ventSystem: {fileID: 242445069}
-  unscrewTime: 5
   unscrewSound: {fileID: 1042767728}
   equipment: {fileID: 1418466188}
   knifeIndex: 0
+--- !u!54 &1042767730
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042767723}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1057851128
 GameObject:
   m_ObjectHideFlags: 0
@@ -98123,6 +98204,7 @@ GameObject:
   - component: {fileID: 1879284516}
   - component: {fileID: 1879284515}
   - component: {fileID: 1879284514}
+  - component: {fileID: 1879284519}
   - component: {fileID: 1879284513}
   - component: {fileID: 1879284518}
   - component: {fileID: 1879284517}
@@ -98336,10 +98418,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewInteractable
   ventSystem: {fileID: 242445069}
-  unscrewTime: 5
   unscrewSound: {fileID: 1879284517}
   equipment: {fileID: 1418466188}
   knifeIndex: 0
+--- !u!54 &1879284519
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879284512}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1882158731
 GameObject:
   m_ObjectHideFlags: 0
@@ -101305,7 +101413,7 @@ Transform:
   m_GameObject: {fileID: 1941146417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.05, y: -0.099, z: 4.082}
+  m_LocalPosition: {x: -1.05, y: -0.099, z: 4.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

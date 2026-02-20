@@ -3,10 +3,13 @@ public class VentCover : MonoBehaviour
 {
     public VentSystem ventSystem;
     public VentFocusController focusController;
-    void OnMouseDown()
+    void OnMouseOver()
     {
         Debug.Log("Vent cover clicked");
         if (!ventSystem.isActivated) return;
-        focusController.EnterFocusMode();
+        if (Input.GetMouseButtonDown(1))
+        {
+            focusController.EnterFocusMode();
+        }
     }
 }

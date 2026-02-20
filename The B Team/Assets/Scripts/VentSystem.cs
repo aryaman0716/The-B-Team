@@ -25,8 +25,13 @@ public class VentSystem : MonoBehaviour
     {
         if (ventCover != null)
         {
-            ventCover.GetComponent<Rigidbody>().isKinematic = false;
-            ventCover.GetComponent<Rigidbody>().useGravity = true;
+            Rigidbody rb = ventCover.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = ventCover.AddComponent<Rigidbody>();
+            }
+            rb.isKinematic = false;
+            rb.useGravity = true;
         }
         if (focusController != null)
         {
