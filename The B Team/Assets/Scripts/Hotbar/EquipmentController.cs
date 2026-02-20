@@ -22,9 +22,6 @@ public class EquipmentController : MonoBehaviour
             UseCurrentTool();
         }
     }
-
-
-
     void HandleScrollInput()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
