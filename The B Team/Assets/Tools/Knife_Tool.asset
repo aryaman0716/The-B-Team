@@ -16,4 +16,3 @@ MonoBehaviour:
   toolIcon: {fileID: 21300000, guid: ec73f0e2be2b00742bfa16f54ef3113b, type: 3}
   toolPrefab: {fileID: 6805996006956408835, guid: bdee3ffa368d69842a01d8df820665c4, type: 3}
   holdPosition: {x: 0.37, y: -0.08, z: 0.5}
-  animator: {fileID: 0}

@@ -3,12 +3,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Tools/Knife Tool")]
 public class KnifeTool : ToolData
 {
-
-    public Animator animator;
     public override void UseTool(Transform origin)
     {
         Debug.Log("Knife used!");
-        animator = GameObject.FindGameObjectWithTag("Tool").GetComponent<Animator>();
-        animator.SetTrigger("Slash");
+        EquipmentController equipment = FindFirstObjectByType<EquipmentController>();
+        if (equipment == null) return;
+
+        Animator anim = origin.GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Slash");
+        }
     }
 }
