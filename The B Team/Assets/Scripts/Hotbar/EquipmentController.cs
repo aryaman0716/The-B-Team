@@ -107,4 +107,9 @@ public class EquipmentController : MonoBehaviour
     {
         return currentIndex;
     }
+    public Animator GetCurrentToolAnimator()
+    {
+        if (currentToolObject == null) return null;
+        return currentToolObject.GetComponentInChildren<Animator>();
+    }
 }

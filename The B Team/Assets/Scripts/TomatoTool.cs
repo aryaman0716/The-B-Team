@@ -5,13 +5,15 @@ public class TomatoTool : ToolData
 {
     public GameObject projectilePrefab; 
     public float throwForce = 20f;
-    public Animator animator;
 
     public override void UseTool(Transform origin)
     {
-        animator = GameObject.FindGameObjectWithTag("Tool").GetComponent<Animator>();
-        animator.SetTrigger("Throw");
-
+        EquipmentController equipment = FindFirstObjectByType<EquipmentController>();
+        Animator anim = origin.GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("Throw");
+        }
 
         if (projectilePrefab == null) return;
 
@@ -24,7 +26,5 @@ public class TomatoTool : ToolData
         {
             rb.AddForce(origin.forward * throwForce, ForceMode.VelocityChange);
         }
-
-        
     }
 }
