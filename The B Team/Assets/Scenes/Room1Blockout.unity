@@ -4395,6 +4395,10 @@ PrefabInstance:
       propertyPath: m_StepOffset
       value: 1.08
       objectReference: {fileID: 0}
+    - target: {fileID: 7818005459152084276, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: Amplitude
+      value: 0.0055
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6190914748737517710, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
     - {fileID: 5885901593315218908, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}

@@ -9,6 +9,8 @@ public class GlobalSettings : MonoBehaviour
     public static float MusicVolume = 0.5f;
     public static float SFXVolume = 1f;
 
+    public static bool HeadBob = true;
+
     public Slider MasterSlider;
     public Slider MusicSlider;
     public Slider SFXSlider;
@@ -77,6 +79,11 @@ public class GlobalSettings : MonoBehaviour
     public void updateFullscreen(bool fullscreen)
     {
         fullScreen = fullscreen;
+    }
+
+    public void updateBobbing(bool bob)
+    {
+        HeadBob = bob;
     }
 }
 
