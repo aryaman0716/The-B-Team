@@ -5,6 +5,7 @@ public class VentSystem : MonoBehaviour
     public GameObject ventCover;
     public VentFocusController focusController;
     public bool isActivated = false;
+    public bool ventOpened = false;
 
     private int screwsRemoved = 0;
     private int totalScrews = 4;
@@ -33,6 +34,7 @@ public class VentSystem : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
         }
+        ventOpened = true;
         if (focusController != null)
         {
             focusController.ExitFocusMode();
