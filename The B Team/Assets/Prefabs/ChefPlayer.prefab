@@ -668,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4951683929555679109}
-  - component: {fileID: 7818005459152084276}
+  - component: {fileID: 5893142456401481571}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -692,7 +692,7 @@ Transform:
   - {fileID: 2260111842617068238}
   m_Father: {fileID: 7546375704230180616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7818005459152084276
+--- !u!114 &5893142456401481571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Headbob
   Enabled: 1
-  Amplitude: 0.015
+  Amplitude: 0.0055
   Frequency: 10
   Camera: {fileID: 2260111842617068238}
   CameraHolder: {fileID: 4951683929555679109}
@@ -735,7 +735,7 @@ Transform:
   m_GameObject: {fileID: 7522353478344207595}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.2, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

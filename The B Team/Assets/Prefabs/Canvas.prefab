@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   Source: {fileID: 7086568246277909630}
-  PlaceholderMusic: {fileID: 8300000, guid: b33efb545f24fd541af480464e7065ea, type: 3}
+  PlaceholderMusic: {fileID: 8300000, guid: b58e60c3fa32c8f4385fcde915d047eb, type: 3}
   baseVolume: 0.5
 --- !u!82 &7086568246277909630
 AudioSource:
