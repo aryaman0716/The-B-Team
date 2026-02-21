@@ -15,3 +15,4 @@ MonoBehaviour:
   toolName: Spatula
   toolIcon: {fileID: 21300000, guid: ca3bfab66519d2f419dd49080ece870f, type: 3}
   toolPrefab: {fileID: 8427785894118442723, guid: 936545c7b15038147a6783abeebc621f, type: 3}
+  holdPosition: {x: 0.5, y: -0.35, z: 1}
