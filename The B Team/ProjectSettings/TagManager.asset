@@ -8,6 +8,7 @@ TagManager:
   - PlayerCollider
   - TomatoProjectile
   - UIDeath
+  - Tool
   layers:
   - Default
   - TransparentFX
