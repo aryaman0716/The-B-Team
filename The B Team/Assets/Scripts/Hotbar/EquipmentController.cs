@@ -47,9 +47,7 @@ public class EquipmentController : MonoBehaviour
     {
         if (currentIndex >=0 && currentIndex < tools.Length)
         {
-            
-                tools[currentIndex].UseTool(propsHolder);
-            
+            tools[currentIndex].UseTool(propsHolder);
         }
     }
     void CycleTool(int direction)
@@ -84,8 +82,9 @@ public class EquipmentController : MonoBehaviour
 
         // Instantiate the new tool and parent it to the props holder
         currentToolObject = Instantiate(tools[index].toolPrefab, propsHolder);
-        currentToolObject.transform.localPosition = new Vector3(0.5f, -0.35f, 1.0f);  // Reset position
-        //currentToolObject.transform.localRotation = Quaternion.identity;  // Reset rotation
+        //currentToolObject.transform.localPosition = new Vector3(0.5f, -0.35f, 1.0f);  
+        //currentToolObject.transform.localRotation = Quaternion.identity;
+        currentToolObject.transform.localPosition = tools[index].holdPosition;  // Set position from ToolData
     }
     void UnequipTool()
     {
