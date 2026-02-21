@@ -7,5 +7,6 @@ public abstract class ToolData : ScriptableObject
     public Sprite toolIcon;
     public GameObject toolPrefab;
 
+    public Vector3 holdPosition;
     public abstract void UseTool(Transform origin);
 }
