@@ -39592,6 +39592,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.5, y: 7.4999995, z: 0}
   m_Center: {x: 0.75, y: 1.2499998, z: 0}
+--- !u!1 &1009654226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8432242160183254744, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1009654231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009654226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d2016fafdbfc4479dea3a5be84ff25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  keyCode: 1234
+  currentCode: 
+  focusController: {fileID: 1722194477}
+  targetButtons: []
+  highlightedMaterial: {fileID: 0}
+  keyFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 793181788}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Open
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1020927438
 GameObject:
   m_ObjectHideFlags: 0
@@ -90180,6 +90217,10 @@ PrefabInstance:
       value: 1234
       objectReference: {fileID: 0}
     - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: focusController
+      value: 
+      objectReference: {fileID: 1722194477}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
       propertyPath: keyFunction.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -90213,8 +90254,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 699693349994854195, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570402644}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 257100967851724937, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1722194477}
+    - targetCorrespondingSourceObject: {fileID: 8432242160183254744, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009654231}
   m_SourcePrefab: {fileID: 100100000, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
 --- !u!1 &1519802213
 GameObject:
@@ -93397,6 +93447,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718931039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1570402643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570402644}
+  m_Layer: 0
+  m_Name: Keypad Focus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1570402644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570402643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.923}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722194476}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1575871711
 GameObject:
   m_ObjectHideFlags: 0
@@ -99499,6 +99580,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.5, y: 7.4999995, z: 0}
   m_Center: {x: 0.75, y: 1.2499998, z: 0}
+--- !u!1 &1722194474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 257100967851724937, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1722194476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 699693349994854195, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1722194477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722194474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77a8df393a3caf43955912744f90788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeypadFocusController
+  focusPoint: {fileID: 1570402644}
+  focusFOV: 30
+  normalFOV: 60
+  controller: {fileID: 1418466196}
+  propsHolder: {fileID: 111142937}
 --- !u!1 &1733069295
 GameObject:
   m_ObjectHideFlags: 0

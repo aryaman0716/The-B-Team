@@ -1,9 +1,8 @@
 using UnityEngine;
 using System.Collections;
-
 public class KeypadFocusController : MonoBehaviour
 {
-    public Transform focusPoint; 
+    public Transform focusPoint;
     public float focusFOV = 30f;
     public float normalFOV = 60f;
 
@@ -19,7 +18,7 @@ public class KeypadFocusController : MonoBehaviour
     {
         playerCamera = Camera.main;
     }
-
+    public bool IsFocused => isFocused;
     public void EnterFocusMode()
     {
         if (isFocused) return;

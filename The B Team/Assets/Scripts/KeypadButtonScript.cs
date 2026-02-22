@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
-
 public class KeypadButtonScript : MonoBehaviour
 {
     public string buttonID;
     public KeyPadController controller;
     private GameObject Player;
 
-    //if you want the button to be for a keypad or a general use button
     public bool keyPad = true;
     [SerializeField] private UnityEvent buttonFunction;
 
@@ -20,7 +18,7 @@ public class KeypadButtonScript : MonoBehaviour
         if (keyPad)
         {
             if (controller != null)
-            controller.AddNumber(buttonID);
+                controller.AddNumber(buttonID);
         }
         else
         {
@@ -28,17 +26,23 @@ public class KeypadButtonScript : MonoBehaviour
         }
     }
 
-   
     void OnMouseDown()
     {
+        if (controller != null && controller.focusController != null && controller.focusController.IsFocused)
+        {
+            PressButton();
+            return;
+        }
 
-        if (Player!=null)
+        if (Player != null)
         {
             if (PlayerDistance() < 3f) PressButton();
         }
-        else PressButton();
+        else
+        {
+            PressButton();
+        }
     }
-
 
     private float PlayerDistance()
     {
