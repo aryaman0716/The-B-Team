@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Value: {x: 0.97442555, y: 0.97483647, z: 1, w: 0.000000006386212}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.14285713}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.020408172}
   highlights:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.22448978}
@@ -34,6 +34,22 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 8.5
+--- !u!114 &-4135993079167867021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChromaticAberration
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.065
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,6 +67,8 @@ MonoBehaviour:
   - {fileID: -6441360928311983417}
   - {fileID: 625946210391117896}
   - {fileID: 7138274215056314029}
+  - {fileID: 8812825881910705557}
+  - {fileID: -4135993079167867021}
 --- !u!114 &625946210391117896
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -122,7 +140,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.172
+    m_Value: 0.191
   smoothness:
     m_OverrideState: 1
     m_Value: 1
@@ -144,10 +162,32 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: -0.10204082}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.0000000034972114}
   gamma:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.14285715}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.30612242}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.22448976}
+--- !u!114 &8812825881910705557
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.SplitToning
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.08223568, g: 0.23311085, b: 0.5283019, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.92871624, b: 0.7688679, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: 9
