@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Elevator : MonoBehaviour
 {
@@ -27,11 +28,9 @@ public class Elevator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(toggleKey) && !isMoving)
+        if (Input.GetKeyDown(toggleKey))
         {
-            float targetY = atEndPosition ? startYPos : endYPos;
-            StartCoroutine(MoveToY(targetY));
-            atEndPosition = !atEndPosition;
+            Activate();
         }
     }
 
@@ -60,4 +59,14 @@ public class Elevator : MonoBehaviour
 
         isMoving = false;
     }
+
+    public void Activate()
+    {
+        if (isMoving) return;
+
+        float targetY = atEndPosition ? startYPos : endYPos;
+        StartCoroutine(MoveToY(targetY));
+        atEndPosition = !atEndPosition;
+    }
+    
 }
