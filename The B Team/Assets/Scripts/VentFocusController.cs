@@ -11,7 +11,7 @@ public class VentFocusController : MonoBehaviour
     public GameObject propsHolder; // Reference to the player's held items
     private Vector3 originalPos;
     private Quaternion originalRot;
-    private bool isFocused = false;
+    public bool isFocused = false;
     void Start()
     {
         playerCamera = Camera.main;
@@ -19,6 +19,7 @@ public class VentFocusController : MonoBehaviour
     public void EnterFocusMode()
     {
         if (isFocused) return;
+        Headbob.canBob = false;
         isFocused = true;
 
         originalPos = playerCamera.transform.position;
@@ -39,6 +40,7 @@ public class VentFocusController : MonoBehaviour
     public void ExitFocusMode()
     {
         if (!isFocused) return;
+
         isFocused = false;
         if (controller != null)
         {
@@ -51,6 +53,7 @@ public class VentFocusController : MonoBehaviour
 
         propsHolder.SetActive(true); // Show the player's held items again
         StartCoroutine(SmoothFocus(originalPos, originalRot, normalFOV));
+        Headbob.canBob = true;
     }
 
     // Smoothly transition the camera to the target position, rotation, and FOV

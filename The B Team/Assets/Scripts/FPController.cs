@@ -51,7 +51,7 @@ public class FPController : MonoBehaviour
             HandleMovement();
             HandleCrouch();
             HandleMouseLook();
-            HandleButtonRaycast();
+            //HandleButtonRaycast();
         }
 
         if (Input.GetKeyDown(KeyCode.L)) // press L change Scene
@@ -135,7 +135,7 @@ public class FPController : MonoBehaviour
     {
         //basically what this does is do a raycast forward from the camera when you press left mouse and if it hits a button it runs the press function on that button, might be better with the interact system but i didnt make that so
 
-
+        
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

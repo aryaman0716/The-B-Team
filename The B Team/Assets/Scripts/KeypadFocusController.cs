@@ -24,6 +24,7 @@ public class KeypadFocusController : MonoBehaviour
     {
         if (isFocused) return;
         isFocused = true;
+        Headbob.canBob = false;
 
         originalPos = playerCamera.transform.position;
         originalRot = playerCamera.transform.rotation;
@@ -57,6 +58,7 @@ public class KeypadFocusController : MonoBehaviour
 
         if (propsHolder != null) propsHolder.SetActive(true);
         StartCoroutine(SmoothFocus(originalPos, originalRot, normalFOV));
+        Headbob.canBob = true;
     }
 
     IEnumerator SmoothFocus(Vector3 targetPos, Quaternion targetRot, float targetFOV)
