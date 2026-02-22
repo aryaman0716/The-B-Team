@@ -9,29 +9,58 @@ public class ScrewInteractable : MonoBehaviour
 
     private bool isRemoved = false;
     private AudioSource audioSource;
+    private Collider myCollider;
+
     private void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        myCollider = GetComponent<Collider>();
+        if (myCollider == null)
+            Debug.Log("ScrewInteractable on " + gameObject.name + " has no Collider component. Please add one for proper interaction.");
     }
-    void OnMouseOver()
-    {
-        Debug.Log("Mouse over screw");
 
+    void Update()
+    {
         if (isRemoved) return;  // Prevent interaction if already removed
-        if (!ventSystem.isActivated) return;
+        if (!ventSystem || !ventSystem.isActivated) return;
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (equipment.GetCurrentIndex() == knifeIndex)
+            if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            const float maxDistance = 5f;
+
+            // Ignore Player layer; also ignore trigger colliders
+            int mask = ~LayerMask.GetMask("Player");
+
+            // Gather all hits so we can determine what the ray actually intersects first
+            RaycastHit[] hits = Physics.RaycastAll(ray, maxDistance, mask, QueryTriggerInteraction.Ignore);
+            if (hits == null || hits.Length == 0)
             {
-                RemoveScrew();
+                // no hits at all
+                return;
+            }
+
+            // Find the first hit that is this screw (or a child of it)
+            foreach (var hit in hits)
+            {
+                if (hit.collider == null) continue;
+
+                // If the hit collider belongs to this screw, accept it
+                if (hit.collider.gameObject == gameObject || hit.collider.transform.IsChildOf(transform))
+                {
+                    RemoveScrew();
+                    return;
+                }
             }
         }
     }
+
     void RemoveScrew()
     {
         isRemoved = true;
-        Collider col = GetComponent<Collider>();
+        Collider col = myCollider ?? GetComponent<Collider>();
         if (col != null)
         {
             col.enabled = false; // Disable collider to prevent further interactions
@@ -47,6 +76,7 @@ public class ScrewInteractable : MonoBehaviour
 
         ventSystem.ScrewRemoved();
     }
+
     void OnCollisionEnter(Collision collision)
     {
         if (unscrewSound != null && isRemoved)

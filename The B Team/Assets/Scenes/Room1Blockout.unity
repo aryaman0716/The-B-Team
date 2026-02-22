@@ -4296,6 +4296,10 @@ PrefabInstance:
       value: ChefPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3725655295169908655, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725655295169908655, guid: 0905c963d33fcae409e9cf85d077ff8f, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
