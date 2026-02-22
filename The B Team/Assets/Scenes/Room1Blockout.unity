@@ -5558,6 +5558,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718931039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &147316549 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8296427390979992397, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148921857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10513,6 +10518,7 @@ MonoBehaviour:
   normalFOV: 60
   controller: {fileID: 1418466196}
   propsHolder: {fileID: 111142937}
+  isFocused: 0
 --- !u!114 &242445069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16705,7 +16711,7 @@ Transform:
   m_GameObject: {fileID: 503444249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.192, y: -0.0253, z: 4.103}
+  m_LocalPosition: {x: 0.012, y: 0.018, z: 1.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20295,6 +20301,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718931039}
   m_LocalEulerAnglesHint: {x: -0.038, y: 0, z: 90}
+--- !u!23 &577119962 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3558619647983891267, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578715089
 GameObject:
   m_ObjectHideFlags: 0
@@ -40230,6 +40241,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!23 &1069168351 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7899500169894214681, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1071545329
 GameObject:
   m_ObjectHideFlags: 0
@@ -87892,6 +87908,26 @@ PrefabInstance:
       propertyPath: keyCode
       value: 4567
       objectReference: {fileID: 0}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: targetButtons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: 'targetButtons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1069168351}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: 'targetButtons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 147316549}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: 'targetButtons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1821401264}
+    - target: {fileID: 8816016642602703075, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      propertyPath: 'targetButtons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 577119962}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -97916,6 +97952,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!23 &1821401264 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 320886203559103399, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1829348103
 Mesh:
   m_ObjectHideFlags: 0
