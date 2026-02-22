@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeyPadController : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class KeyPadController : MonoBehaviour
 
     [Header("Flour System")]
     public MeshRenderer[] targetButtons; 
-    public Material highlightedMaterial; 
+    public Material highlightedMaterial;
+
+    //use this in the editor to assign a public funtion of another script to the keypad when correct code is done
+    [SerializeField] private UnityEvent keyFunction;
 
     void Update()
     {
@@ -41,6 +45,7 @@ public class KeyPadController : MonoBehaviour
     {
         Debug.Log("Unlocked!");
         if (focusController != null) focusController.ExitFocusMode();
+        if (keyFunction != null) keyFunction.Invoke();
     }
 
 
