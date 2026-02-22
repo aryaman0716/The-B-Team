@@ -1,18 +1,32 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeypadButtonScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public string buttonID;
     public KeyPadController controller;
-    void Start()
-    {
 
-    }
+
+    //if you want the button to be for a keypad or a general use button
+    public bool keyPad = true;
+    [SerializeField] private UnityEvent buttonFunction;
 
     public void PressButton()
     {
-        controller.AddNumber(buttonID);
+        if (keyPad)
+        {
+            if (controller != null)
+            controller.AddNumber(buttonID);
+        }
+        else
+        {
+            buttonFunction.Invoke();
+        }
+    }
+
+   
+    void OnMouseDown()
+    {
+        PressButton();
     }
 }

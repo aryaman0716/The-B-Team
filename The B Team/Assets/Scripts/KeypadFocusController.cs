@@ -1,26 +1,30 @@
 using UnityEngine;
 using System.Collections;
-public class VentFocusController : MonoBehaviour
+
+public class KeypadFocusController : MonoBehaviour
 {
-    public Transform focusPoint;
-    public float focusFOV = 30f;  // Field of view when vent is in focus
-    public float normalFOV = 60f; // Normal field of view
+    public Transform focusPoint; 
+    public float focusFOV = 30f;
+    public float normalFOV = 60f;
 
     private Camera playerCamera;
     public FPController controller;
-    public GameObject propsHolder; // Reference to the player's held items
+    public GameObject propsHolder;
+
     private Vector3 originalPos;
     private Quaternion originalRot;
-    public bool isFocused = false;
+    private bool isFocused = false;
+
     void Start()
     {
         playerCamera = Camera.main;
     }
+
     public void EnterFocusMode()
     {
         if (isFocused) return;
-        Headbob.canBob = false;
         isFocused = true;
+        Headbob.canBob = false;
 
         originalPos = playerCamera.transform.position;
         originalRot = playerCamera.transform.rotation;
@@ -28,20 +32,21 @@ public class VentFocusController : MonoBehaviour
         if (controller != null)
         {
             controller.SetCanMove(false);
-            controller.enabled = false; 
+            controller.enabled = false;
         }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        propsHolder.SetActive(false); // Hide the player's held items
+        if (propsHolder != null) propsHolder.SetActive(false);
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
     }
+
     public void ExitFocusMode()
     {
         if (!isFocused) return;
-
         isFocused = false;
+
         if (controller != null)
         {
             controller.enabled = true;
@@ -51,12 +56,11 @@ public class VentFocusController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        propsHolder.SetActive(true); // Show the player's held items again
+        if (propsHolder != null) propsHolder.SetActive(true);
         StartCoroutine(SmoothFocus(originalPos, originalRot, normalFOV));
         Headbob.canBob = true;
     }
 
-    // Smoothly transition the camera to the target position, rotation, and FOV
     IEnumerator SmoothFocus(Vector3 targetPos, Quaternion targetRot, float targetFOV)
     {
         float t = 0f;
@@ -70,7 +74,6 @@ public class VentFocusController : MonoBehaviour
             playerCamera.transform.position = Vector3.Lerp(startPos, targetPos, t);
             playerCamera.transform.rotation = Quaternion.Slerp(startRot, targetRot, t);
             playerCamera.fieldOfView = Mathf.Lerp(startFOV, targetFOV, t);
-
             yield return null;
         }
     }

@@ -46,6 +46,7 @@ public class ScrewInteractable : MonoBehaviour
     {
         if (unscrewSound != null && isRemoved)
         {
+            audioSource.volume = (0.5f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
             audioSource.PlayOneShot(unscrewSound.clip);
         }
     }

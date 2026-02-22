@@ -16,6 +16,7 @@ public class Headbob : MonoBehaviour
     private Vector3 toolStartPos;
 
     public GameObject ToolHolder;
+    public static bool canBob = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Headbob : MonoBehaviour
 
         if (Time.timeScale < 0.1f) return;
         if (!Enabled) return;
+        if (!canBob) return;
 
         CheckMotion();
         Camera.LookAt(FocusTarget());
