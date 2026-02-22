@@ -31,8 +31,13 @@ public class ScrewInteractable : MonoBehaviour
     void RemoveScrew()
     {
         isRemoved = true;
-        Rigidbody rb = GetComponent<Rigidbody>();
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+        {
+            col.enabled = false; // Disable collider to prevent further interactions
+        }
 
+        Rigidbody rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
