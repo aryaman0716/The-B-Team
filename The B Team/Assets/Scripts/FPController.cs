@@ -154,4 +154,27 @@ public class FPController : MonoBehaviour
             }
         }
     }
+    public void ResetPlayerState()
+    {
+        // Ensure we have a valid CharacterController reference
+        if (characterController == null)
+            characterController = GetComponent<CharacterController>();
+
+        isCrouching = false;
+        moveDirection = Vector3.zero;
+
+        bool wasEnabled = characterController.enabled;
+        characterController.enabled = false;
+
+        characterController.height = standingHeight;
+        characterController.center = new Vector3(0, standingHeight / 2f, 0);
+
+        characterController.enabled = wasEnabled;
+
+        Vector3 camPos = cameraHolder.localPosition;
+        camPos.y = standingCameraHeight;
+        cameraHolder.localPosition = camPos;
+
+        characterController.Move(Vector3.zero);
+    }
 }

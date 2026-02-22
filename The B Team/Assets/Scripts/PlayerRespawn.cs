@@ -27,14 +27,15 @@ public class PlayerRespawn : MonoBehaviour
         controller.SetCanMove(false);
         yield return new WaitForSeconds(0.5f);
         yield return screenFade.FadeOut();  
-
         
         characterController.enabled = false; 
         transform.position = spawnPoint.position;  // Move the player to the respawn point.
         characterController.enabled = true;
-        yield return new WaitForSeconds(0.1f);
+        controller.ResetPlayerState();
 
+        yield return new WaitForSeconds(0.1f);
         yield return screenFade.FadeIn();
         controller.SetCanMove(true);
+        controller.enabled = true;
     }
 }
