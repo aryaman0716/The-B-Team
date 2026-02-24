@@ -3,6 +3,7 @@ public class Room1ExitDoor : MonoBehaviour
 {
     public Animator animator;
     private bool opened = false;
+    public DialogueTrigger dia;
     public void ApplyOil()
     {
         if (opened) return;
@@ -11,5 +12,9 @@ public class Room1ExitDoor : MonoBehaviour
         {
             animator.SetTrigger("Open");
         }
+    }
+    private void OnMouseOver()
+    {
+        dia.TriggerDialogue();
     }
 }
