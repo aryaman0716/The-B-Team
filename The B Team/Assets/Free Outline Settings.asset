@@ -47,7 +47,7 @@ MonoBehaviour:
   scaling: 0
   width: 1.9
   minWidth: 3.5
-  scaleWithResolution: 0
+  scaleWithResolution: 1
   referenceResolution: 0
   customResolution: 0
   materialType: 0
