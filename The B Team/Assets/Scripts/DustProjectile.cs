@@ -13,10 +13,16 @@ public class DustProjectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         VentFlourTarget vent = other.GetComponent<VentFlourTarget>();
-
         if (vent != null)
         {
             vent.RevealLasers();
+            Destroy(gameObject);
+        }
+
+        KeypadFlourTarget keypad = other.GetComponent<KeypadFlourTarget>();
+        if (keypad != null)
+        {
+            keypad.RevealButtons();
             Destroy(gameObject);
         }
     }

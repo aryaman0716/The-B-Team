@@ -22011,6 +22011,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1718931039}
   m_LocalEulerAnglesHint: {x: -0.038, y: 0, z: 90}
+--- !u!23 &576677260 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7899500169894214681, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578715089
 GameObject:
   m_ObjectHideFlags: 0
@@ -40466,8 +40471,12 @@ MonoBehaviour:
   keyCode: 1234
   currentCode: 
   focusController: {fileID: 1722194477}
-  targetButtons: []
-  highlightedMaterial: {fileID: 0}
+  targetButtons:
+  - {fileID: 1472648438}
+  - {fileID: 1531222959}
+  - {fileID: 1676748543}
+  - {fileID: 576677260}
+  highlightedMaterial: {fileID: 2100000, guid: a9f83546c61de1446ae80dbff1128bf4, type: 2}
   keyFunction:
     m_PersistentCalls:
       m_Calls:
@@ -40483,6 +40492,19 @@ MonoBehaviour:
           m_StringArgument: Open
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1009654236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009654226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0dd544e3486e4d4e804cbf5019c4178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeypadFlourTarget
+  keyPad: {fileID: 1009654231}
 --- !u!1 &1020927438
 GameObject:
   m_ObjectHideFlags: 0
@@ -89343,6 +89365,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!23 &1472648438 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5239566200878220676, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473485719
 GameObject:
   m_ObjectHideFlags: 0
@@ -91414,6 +91441,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8432242160183254744, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1009654231}
+    - targetCorrespondingSourceObject: {fileID: 8432242160183254744, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009654236}
   m_SourcePrefab: {fileID: 100100000, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
 --- !u!1 &1519802213
 GameObject:
@@ -93345,6 +93375,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!23 &1531222959 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 52209672601255224, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1544603119
 Mesh:
   m_ObjectHideFlags: 0
@@ -100181,6 +100216,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!23 &1676748543 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2019523475284107991, guid: f0f48a1e20b5ae4449b8005aa04dff56, type: 3}
+  m_PrefabInstance: {fileID: 1510713759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1679270353
 Mesh:
   m_ObjectHideFlags: 0
