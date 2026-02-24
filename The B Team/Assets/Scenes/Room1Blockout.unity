@@ -3301,7 +3301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[0].speaker
@@ -3309,7 +3309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[1].speaker
-      value: Maurice
+      value: Vick
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[2].speaker
@@ -3330,9 +3330,7 @@ PrefabInstance:
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[0].sentence
       value: "A code lock on some cupboard? Geez\u2026 one of the men who were originally
-        gonna do the job, before you got them sick, has this uh, this tool, this
-        thingamajig he can use on stuff like this to figure out the code. Something
-        bout seeing fingerprints or something. You got anything like that Maurice?"
+        gonna do the job, before you got them sick, has this uh, this tool,"
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[1].portrait
@@ -3340,7 +3338,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 50d32ec142bcb624f881102ae31edc70, type: 3}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[1].sentence
-      value: ...
+      value: this thingamajig he can use on stuff like this to figure out the code.
+        Something bout seeing fingerprints or something. You got anything like that
+        Maurice?
       objectReference: {fileID: 0}
     - target: {fileID: 2720379465307292874, guid: 76003735b719f694ab13aaf3dcd89cf1, type: 3}
       propertyPath: dialogue.dialogueSets.Array.data[0].entries.Array.data[2].portrait
