@@ -3,6 +3,7 @@ public class ButtonTarget : MonoBehaviour
 {
     public VentSystem ventToActivate;
     public DialogueTrigger dia;
+    public WireActivate relatedWire;
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("TomatoProjectile"))
@@ -11,6 +12,7 @@ public class ButtonTarget : MonoBehaviour
             {
                 dia.TriggerDialogue();
                 ventToActivate.ActivateVent();
+                relatedWire.ActivateWire();
             }
         }
     }
