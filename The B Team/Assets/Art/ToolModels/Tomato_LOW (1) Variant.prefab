@@ -8,9 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111451159793079204, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832199828203737073, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568124701756253544, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941030909609563407, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6154722786346913725, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
       propertyPath: m_Name
       value: Tomato_LOW (1) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6154722786346913725, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6783027347567514887, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +71,14 @@ PrefabInstance:
     - target: {fileID: 6783027347567514887, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783714649018797893, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704805114574323648, guid: 75a7c70eb1339684ab1d45c7490e7c9b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

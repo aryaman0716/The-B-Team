@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112331773237800032}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spatula_LOW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2283990445991451553}
   - component: {fileID: 8787077477344646670}
   - component: {fileID: 7601974580994175076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 482988795100186251}
   - component: {fileID: 1525643999929824870}
   - component: {fileID: 4520758691412739080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddlePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7730689985873112803}
   - component: {fileID: 1654901542985240551}
   - component: {fileID: 4632002325752984528}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}

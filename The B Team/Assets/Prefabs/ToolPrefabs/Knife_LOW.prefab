@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7334951474422550414, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3514555067213717089, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -57,13 +61,25 @@ PrefabInstance:
       value: Knife_LOW
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
       propertyPath: m_TagString
       value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2504680495766498764, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7518109182203623404, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a2a93cf917ff32547b4c05fd9124225a, type: 2}
+    - target: {fileID: 7672072930005336875, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8084854973141751649, guid: e361b5e0f93d3ac43a408dca2ea48496, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

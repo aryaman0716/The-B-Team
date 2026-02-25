@@ -101,8 +101,24 @@ PrefabInstance:
       value: Spatula_LOW
       objectReference: {fileID: 0}
     - target: {fileID: 775962238927533786, guid: db05add9597d524438bf8e61f4fcf54f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 775962238927533786, guid: db05add9597d524438bf8e61f4fcf54f, type: 3}
       propertyPath: m_TagString
       value: Tool
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334592797773895046, guid: db05add9597d524438bf8e61f4fcf54f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039746257417456050, guid: db05add9597d524438bf8e61f4fcf54f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818550448117432231, guid: db05add9597d524438bf8e61f4fcf54f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
