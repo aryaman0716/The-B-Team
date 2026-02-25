@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Headbob
   Enabled: 1
-  Amplitude: 0.0055
+  Amplitude: 0.0045
   Frequency: 10
   Camera: {fileID: 2260111842617068238}
   CameraHolder: {fileID: 4951683929555679109}
