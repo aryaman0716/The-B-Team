@@ -1,4 +1,3 @@
-//using UnityEditor;
 using UnityEngine;
 public class EquipmentController : MonoBehaviour
 {
@@ -11,12 +10,18 @@ public class EquipmentController : MonoBehaviour
 
     private int currentIndex = 0;
     private GameObject currentToolObject;
+    private bool canEquip = true;
+    private bool isHoldingObject = false;
 
     void Start() => EquipTool(0);
     void Update()
     {
-        HandleScrollInput();
-        HandleKeyInput();
+        if (canEquip)
+        {
+            HandleScrollInput();
+            HandleKeyInput();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             UseCurrentTool();
@@ -45,21 +50,21 @@ public class EquipmentController : MonoBehaviour
     }
     private void UseCurrentTool()
     {
-        if (currentIndex >=0 && currentIndex < tools.Length)
+        if (currentIndex >= 0 && currentIndex < tools.Length)
         {
             tools[currentIndex].UseTool(propsHolder);
         }
     }
     void CycleTool(int direction)
     {
-        currentIndex += direction;  // Move index based on scroll direction
+        currentIndex += direction;
         int maxIndex = tools.Length;
 
         // Wrap around the index if it goes out of bounds
         if (currentIndex < 0)
-            currentIndex = maxIndex;  
+            currentIndex = maxIndex;
         if (currentIndex > maxIndex)
-            currentIndex = 0;  
+            currentIndex = 0;
 
         if (currentIndex == tools.Length)
         {
@@ -73,18 +78,19 @@ public class EquipmentController : MonoBehaviour
     void EquipTool(int index)
     {
         if (index < 0 || index >= tools.Length)
-            return;  
-        currentIndex = index;  
+            return;
+        currentIndex = index;
 
-        // Destroy the currently equipped tool if it exists
         if (currentToolObject != null)
             Destroy(currentToolObject);
 
-        // Instantiate the new tool and parent it to the props holder
-        currentToolObject = Instantiate(tools[index].toolPrefab, propsHolder);
-        //currentToolObject.transform.localPosition = new Vector3(0.5f, -0.35f, 1.0f);  
-        //currentToolObject.transform.localRotation = Quaternion.identity;
-        currentToolObject.transform.localPosition = tools[index].holdPosition;  // Set position from ToolData
+        if (tools[index].toolPrefab != null && propsHolder != null)
+        {
+            currentToolObject = Instantiate(tools[index].toolPrefab, propsHolder);
+            currentToolObject.transform.localPosition = tools[index].holdPosition;  // Set position from ToolData
+
+            currentToolObject.SetActive(!isHoldingObject);
+        }
     }
     void UnequipTool()
     {
@@ -111,5 +117,26 @@ public class EquipmentController : MonoBehaviour
     {
         if (currentToolObject == null) return null;
         return currentToolObject.GetComponentInChildren<Animator>();
+    }
+
+    public void SetCanEquip(bool value)
+    {
+        canEquip = value;
+    }
+
+    public bool CanEquip()
+    {
+        return canEquip;
+    }
+    public void SetHolding(bool holding)
+    {
+        isHoldingObject = holding;
+
+        if (currentToolObject != null)
+        {
+            currentToolObject.SetActive(!holding);
+        }
+        if (holding)
+            canEquip = false;
     }
 }

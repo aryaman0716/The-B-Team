@@ -12,10 +12,16 @@ public class Pickup : MonoBehaviour
 
     Vector3 objectPos;
 
+    private EquipmentController equipmentController;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            equipmentController = player.GetComponent<EquipmentController>();
     }
     void Update()
     {
@@ -42,6 +48,13 @@ public class Pickup : MonoBehaviour
                 rb.detectCollisions = true;
 
                 this.transform.SetParent(propHolder.transform);
+
+                // Disable equipping while holding this object and hide equipped tool
+                if (equipmentController != null)
+                {
+                    equipmentController.SetCanEquip(false);
+                    equipmentController.SetHolding(true);
+                }
             }
         }
         else
@@ -51,7 +64,6 @@ public class Pickup : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        // drop the object
         Drop();
     }
     private void OnMouseEnter()
@@ -75,6 +87,7 @@ public class Pickup : MonoBehaviour
         if (distance >= maxDistance)
         {
             Drop();
+            return;
         }
 
         rb.linearVelocity = Vector3.zero;
@@ -96,6 +109,13 @@ public class Pickup : MonoBehaviour
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.useGravity = true;
+
+            // Re-enable equipping and restore equipped tool visibility when dropped
+            if (equipmentController != null)
+            {
+                equipmentController.SetCanEquip(true);
+                equipmentController.SetHolding(false);
+            }
         }
         if (CursorManager.Instance != null)
         {
