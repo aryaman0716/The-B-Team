@@ -4,6 +4,7 @@ public class RoombaBehaviour : MonoBehaviour
 {
     public float baseSpeed;
     public float sprintSpeed;
+    public float rotateSpeed;
     private float speed;
 
     public Transform[] patrolPoints;
@@ -34,7 +35,9 @@ public class RoombaBehaviour : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, patrolPoints[targetPoint].position, speed * Time.deltaTime);
-        transform.LookAt(patrolPoints[targetPoint].position);
+        var lookPos = patrolPoints[targetPoint].position - transform.position;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
         if(directionChangeTimer > 0)
         {
