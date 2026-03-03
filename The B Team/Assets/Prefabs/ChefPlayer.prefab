@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 556214443917675116}
   - component: {fileID: 1095652585776447338}
   - component: {fileID: 260906759569994661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 357114033470058931}
   - component: {fileID: 3362398634262039557}
   - component: {fileID: 8480169469854552170}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ChefPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 8502156283452971595}
   - component: {fileID: 7370219410552569885}
   - component: {fileID: 2457250561070251479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -523,7 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4951683929555679109}
   - component: {fileID: 5893142456401481571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6026362905920931624}
   - component: {fileID: 7694568220724857049}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PropsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

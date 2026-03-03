@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8885518576048058765}
   - component: {fileID: 8179788475825380337}
   - component: {fileID: 2456116839353100377}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leaf2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 227686428316797613}
   - component: {fileID: 4483183246126853498}
   - component: {fileID: 6561123719872157410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 3724125971219740831}
   - component: {fileID: 8634304590317464686}
   - component: {fileID: 1901253278555486334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 2809540870659529010}
   - component: {fileID: 3304631147537617236}
   - component: {fileID: 1226000753352835916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leaf3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5098791410955453748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tomato_LOW (1) Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 4512512018536768952}
   - component: {fileID: 3330037482854072396}
   - component: {fileID: 4081014367205138122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leaf1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 5982476610049618040}
   - component: {fileID: 6248363875026546129}
   - component: {fileID: 3093818545795212791}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leaf4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 1394936943037884811}
   - component: {fileID: 4382574930622504835}
   - component: {fileID: 4044719786465871433}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: TomatoProjectile
   m_TagString: TomatoProjectile
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5098791410955453748}
