@@ -11,5 +11,17 @@ public class SpatulaTool : ToolData
         {
             anim.SetTrigger("Use");
         }
+
+        Ray ray = new Ray(origin.position, origin.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 3f))
+        {
+            SinkMixSystem sink = hit.collider.GetComponent<SinkMixSystem>();
+            if (sink != null)
+            {
+                sink.MixWithSpatula();
+                return;
+            }
+        }
     }
 }

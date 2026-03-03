@@ -39,4 +39,8 @@ public class SinkInteractable : MonoBehaviour
                 faucetSound.Stop();
         }
     }
+    public bool IsOn()
+    {
+        return isOn;
+    }
 }
