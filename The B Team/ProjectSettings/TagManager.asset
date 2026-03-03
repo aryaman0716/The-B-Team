@@ -9,6 +9,7 @@ TagManager:
   - TomatoProjectile
   - UIDeath
   - Tool
+  - CameraWire
   layers:
   - Default
   - TransparentFX
