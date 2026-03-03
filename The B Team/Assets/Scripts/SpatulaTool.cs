@@ -22,6 +22,11 @@ public class SpatulaTool : ToolData
                 sink.MixWithSpatula();
                 return;
             }
+            Room1ExitDoor door = (hit.collider.GetComponent<Room1ExitDoor>());
+            if (door != null)
+            {
+                door.Pry();
+            }
         }
     }
 }
