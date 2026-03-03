@@ -139,4 +139,8 @@ public class EquipmentController : MonoBehaviour
         if (holding)
             canEquip = false;
     }
+    public int TotalTools()
+    {
+        return tools.Length;
+    }
 }

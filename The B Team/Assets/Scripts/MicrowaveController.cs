@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class MicrowaveController : MonoBehaviour
 {
     public Transform doorPivot;
@@ -8,7 +7,6 @@ public class MicrowaveController : MonoBehaviour
     private bool isOpen = false;
     private Quaternion closedRotation;
     private Quaternion openRotation;
-
     void Start()
     {
         
@@ -16,7 +14,6 @@ public class MicrowaveController : MonoBehaviour
         
         openRotation = Quaternion.Euler(0, openAngle, 0);
     }
-
     void Update()
     {
         
@@ -29,10 +26,8 @@ public class MicrowaveController : MonoBehaviour
             CheckInteraction();
         }
     }
-
     void CheckInteraction()
     {
-        //Raycast 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -41,13 +36,10 @@ public class MicrowaveController : MonoBehaviour
             // Check if we clicked on this microwave.
             if (hit.transform == this.transform || hit.transform.IsChildOf(this.transform))
             {
-                // Let's assume "Empty Hand" is a check for a certain condition. 
-                // Here, we will immediately toggle the state on/off.
                 ToggleDoor();
             }
         }
     }
-
     public void ToggleDoor()
     {
         isOpen = !isOpen;
