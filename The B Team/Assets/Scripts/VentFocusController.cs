@@ -12,9 +12,22 @@ public class VentFocusController : MonoBehaviour
     private Vector3 originalPos;
     private Quaternion originalRot;
     public bool isFocused = false;
+    public bool canLeave = false;
     void Start()
     {
         playerCamera = Camera.main;
+    }
+    private void Update()
+    {
+        if (isFocused && canLeave)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                ExitFocusMode();
+            }
+
+        }
+
     }
     public void EnterFocusMode()
     {
@@ -36,9 +49,11 @@ public class VentFocusController : MonoBehaviour
 
         propsHolder.SetActive(false); // Hide the player's held items
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
+        StartCoroutine(EnableLeaving());
     }
     public void ExitFocusMode()
     {
+        canLeave = false;
         if (!isFocused) return;
 
         isFocused = false;
@@ -74,4 +89,10 @@ public class VentFocusController : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator EnableLeaving()
+    {
+        yield return null;
+        canLeave = true;
+    }
+
 }

@@ -13,10 +13,23 @@ public class KeypadFocusController : MonoBehaviour
     private Vector3 originalPos;
     private Quaternion originalRot;
     private bool isFocused = false;
+    public bool canLeave = false;
 
     void Start()
     {
         playerCamera = Camera.main;
+    }
+    private void Update()
+    {
+        if (isFocused && canLeave)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                ExitFocusMode();
+            }
+
+        }
+
     }
     public bool IsFocused => isFocused;
     public void EnterFocusMode()
@@ -39,10 +52,12 @@ public class KeypadFocusController : MonoBehaviour
 
         if (propsHolder != null) propsHolder.SetActive(false);
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
+        StartCoroutine(EnableLeaving());
     }
 
     public void ExitFocusMode()
     {
+        canLeave = false;
         if (!isFocused) return;
         isFocused = false;
 
@@ -76,4 +91,10 @@ public class KeypadFocusController : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator EnableLeaving()
+    {
+        yield return null;
+        canLeave = true;
+    }
+
 }
