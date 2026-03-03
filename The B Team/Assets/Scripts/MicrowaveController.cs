@@ -3,7 +3,7 @@ using UnityEngine;
 public class MicrowaveController : MonoBehaviour
 {
     public Transform doorPivot;
-    public float openAngle = -90f; 
+    public float openAngle = 90f; 
     public float smoothSpeed = 5f; 
     private bool isOpen = false;
     private Quaternion closedRotation;
