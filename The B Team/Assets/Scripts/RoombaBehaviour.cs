@@ -60,7 +60,7 @@ public class RoombaBehaviour : MonoBehaviour
         }
         if (targetPoint - 1 == 0 && directionMultiplier == -1)
         {
-            targetPoint = 13;
+            targetPoint = patrolPoints.Length - 1;
             return;
         }
 
