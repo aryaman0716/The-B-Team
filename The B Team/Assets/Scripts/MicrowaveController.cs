@@ -7,12 +7,12 @@ public class MicrowaveController : MonoBehaviour
     private bool isOpen = false;
     private Quaternion closedRotation;
     private Quaternion openRotation;
+    private EquipmentController equipment;
     void Start()
     {
-        
         closedRotation = doorPivot.localRotation;
-        
         openRotation = Quaternion.Euler(0, openAngle, 0);
+        equipment = FindFirstObjectByType<EquipmentController>();
     }
     void Update()
     {
@@ -28,6 +28,11 @@ public class MicrowaveController : MonoBehaviour
     }
     void CheckInteraction()
     {
+        if (equipment != null && equipment.GetCurrentIndex() != equipment.TotalTools())
+        {
+            Debug.Log("Can't interact with microwave while holding a tool.");
+            return;
+        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
