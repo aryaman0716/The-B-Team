@@ -17,7 +17,7 @@ public class GlobalSettings : MonoBehaviour
 
     public bool fullScreen = true;
 
-    private int selectedRes;
+    public int selectedRes = 0;
 
     public List<ResolutionItem> resolutions = new List<ResolutionItem>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,20 +25,27 @@ public class GlobalSettings : MonoBehaviour
     public TMP_Text resolutionLabel;
     void Start()
     {
-
+        
     }
 
     private void Awake()
     {
+        if (selectedRes == 0)
+        {
+            Debug.Log("nullres");
+            selectedRes = resolutions.Count - 1;
+        }
         MasterSlider.value = MasterVolume;
         MusicSlider.value = MusicVolume;
         SFXSlider.value = SFXVolume;
+        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
+        UpdateResLabel();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
+        //Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
     }
 
     public void MasterVolumeSlider(float sliderValue)
