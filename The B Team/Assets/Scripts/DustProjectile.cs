@@ -4,7 +4,8 @@ public class DustProjectile : MonoBehaviour
     public float speed = 5f;
     void Start()
     {
-        Destroy(gameObject, 4f);
+        Destroy(transform.parent.gameObject, 4f);
+        //Destroy(gameObject, 4f);
     }
     void Update()
     {
