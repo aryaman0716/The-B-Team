@@ -81,11 +81,13 @@ public class GlobalSettings : MonoBehaviour
     public void UpdateResLabel()
     {
         resolutionLabel.text = resolutions[selectedRes].horizontal.ToString() + " X " + resolutions[selectedRes].vertical.ToString();
+        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
     }
 
     public void updateFullscreen(bool fullscreen)
     {
         fullScreen = fullscreen;
+        Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
     }
 
     public void updateBobbing(bool bob)
