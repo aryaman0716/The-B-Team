@@ -10,6 +10,7 @@ TagManager:
   - UIDeath
   - Tool
   - CameraWire
+  - Dough
   layers:
   - Default
   - TransparentFX
