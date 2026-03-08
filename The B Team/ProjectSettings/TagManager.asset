@@ -11,6 +11,8 @@ TagManager:
   - Tool
   - CameraWire
   - Dough
+  - MouldedKey
+  - CookedKey
   layers:
   - Default
   - TransparentFX

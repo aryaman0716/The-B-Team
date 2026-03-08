@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5850531057903166979}
   m_Layer: 0
   m_Name: MouldedKey
-  m_TagString: Untagged
+  m_TagString: MouldedKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
