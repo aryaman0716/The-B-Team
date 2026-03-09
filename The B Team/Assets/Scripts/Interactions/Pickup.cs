@@ -14,6 +14,8 @@ public class Pickup : MonoBehaviour
 
     private EquipmentController equipmentController;
 
+    [SerializeField] private GameObject placementArea;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -82,7 +84,13 @@ public class Pickup : MonoBehaviour
     }
     private void Hold()
     {
+        
         distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
+
+        if (placementArea != null) 
+        {
+            placementArea.SetActive(true);
+        }
 
         if (distance >= maxDistance)
         {
@@ -106,6 +114,11 @@ public class Pickup : MonoBehaviour
         {
             isHolding = false;
             objectPos = this.transform.position;
+            if (placementArea != null)
+            {
+                placementArea.SetActive(false);
+            }
+           
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.useGravity = true;

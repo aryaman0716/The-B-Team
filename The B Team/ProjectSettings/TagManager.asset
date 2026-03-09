@@ -13,6 +13,7 @@ TagManager:
   - Dough
   - MouldedKey
   - CookedKey
+  - Room1ExitDoor
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - PlayerBody
   - Projectile
   - Tomato
-  - 
+  - PlacementHighlights
   - 
   - 
   - 

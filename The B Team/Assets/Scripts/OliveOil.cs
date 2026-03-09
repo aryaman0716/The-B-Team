@@ -2,6 +2,8 @@ using UnityEngine;
 public class OliveOil : MonoBehaviour
 {
     public float useDistance = 3f;
+    [SerializeField] private GameObject placementHighlight;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -24,4 +26,6 @@ public class OliveOil : MonoBehaviour
             }
         }
     }
+
+    
 }
