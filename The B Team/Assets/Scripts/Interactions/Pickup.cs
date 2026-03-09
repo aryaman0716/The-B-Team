@@ -57,6 +57,10 @@ public class Pickup : MonoBehaviour
                     equipmentController.SetCanEquip(false);
                     equipmentController.SetHolding(true);
                 }
+
+                var blender = GetComponent<BlenderPuree>();
+                if (blender != null)
+                    blender.SetHeld(true);
             }
         }
         else
@@ -129,6 +133,9 @@ public class Pickup : MonoBehaviour
                 equipmentController.SetCanEquip(true);
                 equipmentController.SetHolding(false);
             }
+            var blender = GetComponent<BlenderPuree>();
+            if (blender != null)
+                blender.SetHeld(false);
         }
         if (CursorManager.Instance != null)
         {

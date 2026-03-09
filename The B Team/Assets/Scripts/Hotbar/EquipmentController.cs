@@ -26,6 +26,19 @@ public class EquipmentController : MonoBehaviour
         {
             UseCurrentTool();
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            // validity check for current tool
+            if (currentIndex >= 0 && currentIndex < tools.Length && tools[currentIndex] != null)
+            {
+                // we check if the current tool is a TomatoTool before trying to call UseBlender
+                var tomato = tools[currentIndex] as TomatoTool;
+                if (tomato != null)
+                {
+                    tomato.UseBlender(propsHolder);
+                }
+            }
+        }
     }
     void HandleScrollInput()
     {
@@ -141,6 +154,6 @@ public class EquipmentController : MonoBehaviour
     }
     public int TotalTools()
     {
-        return tools.Length;
+        return tools != null ? tools.Length : 0;  // Return the number of tools defined in the array
     }
 }

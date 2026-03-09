@@ -5,7 +5,7 @@ public class TomatoTool : ToolData
 {
     public GameObject projectilePrefab; 
     public float throwForce = 20f;
-
+    public float interactionRange = 3f;
     public override void UseTool(Transform origin)
     {
         EquipmentController equipment = FindFirstObjectByType<EquipmentController>();
@@ -25,6 +25,20 @@ public class TomatoTool : ToolData
         if (rb != null)
         {
             rb.AddForce(origin.forward * throwForce, ForceMode.VelocityChange);
+        }
+    }
+    public void UseBlender(Transform origin)
+    {
+        Ray ray = new Ray(origin.position, origin.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, interactionRange))
+        {
+            BlenderPuree blender = hit.collider.GetComponent<BlenderPuree>();
+            if (blender != null)
+            {
+                blender.FillBlender();
+                Debug.Log("Blender filled!");
+            }
         }
     }
 }

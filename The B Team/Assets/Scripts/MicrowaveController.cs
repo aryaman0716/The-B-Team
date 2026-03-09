@@ -34,22 +34,21 @@ public class MicrowaveController : MonoBehaviour
     }
     void CheckInteraction()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (!Physics.Raycast(ray, out hit))
+            return;
+
+        if (!(hit.transform == this.transform || hit.transform.IsChildOf(this.transform)))
+            return;
+
         if (equipment != null && equipment.GetCurrentIndex() != equipment.TotalTools())
         {
             Debug.Log("Can't interact with microwave while holding a tool.");
             return;
         }
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            // Check if we clicked on this microwave.
-            if (hit.transform == this.transform || hit.transform.IsChildOf(this.transform))
-            {
-                ToggleDoor();
-            }
-        }
+        ToggleDoor();
     }
     public void ToggleDoor()
     {
