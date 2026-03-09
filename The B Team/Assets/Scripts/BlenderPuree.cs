@@ -30,12 +30,19 @@ public class BlenderPuree : MonoBehaviour
     void SpawnPuddle()
     {
         if (pureePuddlePrefab == null) return;
-        Vector3 spawnPos = transform.position + Vector3.down * 0.5f;
+
+        
+        Vector3 spawnPos = transform.position + Vector3.down * 0.6f;
         GameObject puddle = Instantiate(pureePuddlePrefab, spawnPos, Quaternion.identity);
+
         Rigidbody rb = puddle.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.useGravity = true;
+            rb.isKinematic = false; 
+            rb.useGravity = true;   
+
+            
+            rb.WakeUp();
         }
     }
     public void FillBlender()
