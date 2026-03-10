@@ -31,18 +31,12 @@ public class BlenderPuree : MonoBehaviour
     {
         if (pureePuddlePrefab == null) return;
 
-        
-        Vector3 spawnPos = transform.position + Vector3.down * 0.6f;
-        GameObject puddle = Instantiate(pureePuddlePrefab, spawnPos, Quaternion.identity);
-
-        Rigidbody rb = puddle.GetComponent<Rigidbody>();
-        if (rb != null)
+        // make the puree puddle spawn and fall to the ground below the blender
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f))
         {
-            rb.isKinematic = false; 
-            rb.useGravity = true;   
-
-            
-            rb.WakeUp();
+            Vector3 spawnPosition = hit.point + Vector3.up * 0.1f; 
+            Instantiate(pureePuddlePrefab, spawnPosition, Quaternion.identity);
         }
     }
     public void FillBlender()
