@@ -8,7 +8,7 @@ public class KeypadButtonScript : MonoBehaviour
 
     public bool keyPad = true;
     [SerializeField] private UnityEvent buttonFunction;
-
+    public bool tomatoButton = false;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -48,5 +48,13 @@ public class KeypadButtonScript : MonoBehaviour
     {
         float distance = Vector3.Distance(Player.transform.position, transform.position);
         return distance;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("TomatoProjectile") && tomatoButton)
+        {
+            PressButton();
+        }
     }
 }
