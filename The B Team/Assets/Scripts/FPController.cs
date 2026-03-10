@@ -34,7 +34,7 @@ public class FPController : MonoBehaviour
     private bool isCrouching = false;
 
     public float ButtonPressDistance = 4f;
-
+    private Vector3 conveyorVelocity = Vector3.zero;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -48,6 +48,7 @@ public class FPController : MonoBehaviour
 
         if (canMove && !paused)
         {
+            CheckConveyor();
             HandleMovement();
             HandleCrouch();
             HandleMouseLook();
@@ -98,7 +99,10 @@ public class FPController : MonoBehaviour
         {
             moveDirection.y += gravity * Time.deltaTime;
         }
-        characterController.Move(moveDirection * Time.deltaTime);
+        Vector3 finalMove = moveDirection + conveyorVelocity;
+        characterController.Move(finalMove * Time.deltaTime);
+
+        conveyorVelocity = Vector3.zero;
     }
     void HandleCrouch()
     {
@@ -176,5 +180,17 @@ public class FPController : MonoBehaviour
         cameraHolder.localPosition = camPos;
 
         characterController.Move(Vector3.zero);
+    }
+    void CheckConveyor()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f))
+        {
+            if (hit.collider.CompareTag("ConveyerOn"))
+            {
+                conveyorVelocity = hit.transform.forward * -10f;
+            }
+        }
     }
 }

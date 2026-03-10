@@ -18,15 +18,12 @@ public class ConveyerBelt : MonoBehaviour
 
     public void turnOff()
     {
-        on = false;
-    }
-    public void HandleCollision(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && on)
+        Debug.Log("off");
+        foreach (Transform child in transform)
         {
-            Debug.Log("onbelt");
-            collision.transform.position += new Vector3(0, 0, speed * Time.deltaTime);
+            child.gameObject.tag = "Untagged";
         }
     }
+
 
 }
