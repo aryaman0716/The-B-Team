@@ -37,7 +37,7 @@ public class KeyPadController : MonoBehaviour
     {
         currentCode = currentCode + number;
         if (currentCode.Length > keyCode.Length)
-            currentCode = currentCode.Substring(currentCode.Length - 4);
+            currentCode = currentCode.Substring(currentCode.Length - keyCode.Length);
         Debug.Log("Current Input: " + currentCode);
     }
 
