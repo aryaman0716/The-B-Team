@@ -11,7 +11,7 @@ public class SinkInteractable : MonoBehaviour
     }
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             if (equipment != null && equipment.GetCurrentIndex() != equipment.TotalTools())
             {
