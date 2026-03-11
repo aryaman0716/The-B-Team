@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7983428971440856077}
   - component: {fileID: 1515979015041652050}
   - component: {fileID: -3582587491672498198}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TomatoPureePuddle
-  m_TagString: Puree
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

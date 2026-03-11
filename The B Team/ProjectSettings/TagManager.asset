@@ -15,6 +15,7 @@ TagManager:
   - CookedKey
   - Room1ExitDoor
   - ConveyerOn
+  - Puree
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Tomato
   - PlacementHighlights
   - Blender
-  - TomatoPureePuddle
+  - Puree
   - 
   - 
   - 

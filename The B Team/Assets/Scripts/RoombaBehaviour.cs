@@ -18,6 +18,8 @@ public class RoombaBehaviour : MonoBehaviour
     public float directionChangeTimer;
     public GameObject managerKeyPrefab;
     public Transform keySpawnPoint;
+    public float puddleCheckDistance = 0.5f;
+    public LayerMask pureeLayer;
 
     private bool isShortCircuited = false;
 
@@ -32,6 +34,13 @@ public class RoombaBehaviour : MonoBehaviour
     void Update()
     {
         if (isShortCircuited) return;  // if the Roomba is short-circuited, we render it malfunctioned
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, puddleCheckDistance, pureeLayer))
+        {
+            ShortCircuit();
+            return;
+        }
 
         if (transform.position == patrolPoints[targetPoint].position)
         {
@@ -86,10 +95,6 @@ public class RoombaBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Player" && directionChangeTimer == 0)
         {
             changeDirection();
-        }
-        if (col.CompareTag("Puree"))
-        {
-            ShortCircuit();
         }
     }
     void ShortCircuit()

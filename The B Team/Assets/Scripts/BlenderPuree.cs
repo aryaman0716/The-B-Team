@@ -35,7 +35,7 @@ public class BlenderPuree : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f))
         {
-            Vector3 spawnPosition = hit.point + Vector3.up * 0.1f; 
+            Vector3 spawnPosition = hit.point + Vector3.up * 0.05f; 
             Instantiate(pureePuddlePrefab, spawnPosition, Quaternion.identity);
         }
     }
