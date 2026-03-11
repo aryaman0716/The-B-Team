@@ -16,7 +16,10 @@ public class RoombaBehaviour : MonoBehaviour
     private int directionMultiplier = 1;
     public float directionChangeBuffer;
     public float directionChangeTimer;
+    public GameObject managerKeyPrefab;
+    public Transform keySpawnPoint;
 
+    private bool isShortCircuited = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +31,7 @@ public class RoombaBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isShortCircuited) return;  // if the Roomba is short-circuited, we render it malfunctioned
 
         if (transform.position == patrolPoints[targetPoint].position)
         {
@@ -39,7 +43,7 @@ public class RoombaBehaviour : MonoBehaviour
         var rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
-        if(directionChangeTimer > 0)
+        if (directionChangeTimer > 0)
         {
             speed = sprintSpeed;
             directionChangeTimer = Mathf.Clamp(directionChangeTimer - Time.deltaTime, 0, directionChangeBuffer);
@@ -82,6 +86,21 @@ public class RoombaBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Player" && directionChangeTimer == 0)
         {
             changeDirection();
+        }
+        if (col.CompareTag("Puree"))
+        {
+            ShortCircuit();
+        }
+    }
+    void ShortCircuit()
+    {
+        if (isShortCircuited) return; 
+        isShortCircuited = true;
+        Debug.Log("Roomba short-circuited! Dropping key...");
+        if (managerKeyPrefab != null)
+        {
+            Vector3 spawnPos = keySpawnPoint != null ? keySpawnPoint.position : transform.position + transform.forward * 0.5f;
+            Instantiate(managerKeyPrefab, spawnPos, Quaternion.identity);
         }
     }
 
