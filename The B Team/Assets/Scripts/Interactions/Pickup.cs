@@ -32,6 +32,8 @@ public class Pickup : MonoBehaviour
             Hold();
         }
     }
+    public bool IsHolding => isHolding;  // making this public so that other scripts can check if this object is currently being held
+
     private void OnMouseDown()
     {
         // pick up the object
@@ -88,7 +90,6 @@ public class Pickup : MonoBehaviour
     }
     private void Hold()
     {
-        
         distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
 
         if (placementArea != null) 
@@ -125,12 +126,11 @@ public class Pickup : MonoBehaviour
             }
             else
             {
-                
                 Debug.Log("Manager Key detected: Throwing disabled.");
             }
         }
     }
-    private void Drop()
+    public void Drop()
     {
         if (isHolding)
         {
@@ -140,7 +140,7 @@ public class Pickup : MonoBehaviour
             {
                 placementArea.SetActive(false);
             }
-           
+
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.useGravity = true;

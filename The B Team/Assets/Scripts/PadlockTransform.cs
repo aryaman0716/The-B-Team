@@ -63,26 +63,26 @@ public class PadlockTransform : MonoBehaviour
     void UnlockPadlock(GameObject cookedKey)
     {
         Debug.Log("Cooked key used! Shutter is now opening...");
-        bool wasHeld = false; 
-        var propHolder = PropHolder.Instance;
-        if (propHolder != null && cookedKey != null)
+
+        // if the player is holding the cooked key, they drop it
+        if (cookedKey != null)
         {
-            wasHeld = cookedKey.transform.IsChildOf(propHolder.transform);
+            var pickup = cookedKey.GetComponent<Pickup>();
+            if (pickup != null && pickup.IsHolding)
+            {
+                pickup.Drop();
+            }
         }
 
         if (equipment == null)
             equipment = FindFirstObjectByType<EquipmentController>();
 
-        if (equipment != null && wasHeld)
-        {
-            Debug.Log("Cooked key was held by player. Updating equipment state...");
-            equipment.SetCanEquip(true);
-            equipment.SetHolding(false);
-        }
         if (equipment != null)
         {
             equipment.SetCanEquip(true);
+            equipment.SetHolding(false);
         }
+
         Destroy(cookedKey);
         unlocking = true;
     }
