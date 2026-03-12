@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5962265730874823774}
   - component: {fileID: 3399043953367332120}
   - component: {fileID: 6571822242180466462}
+  - component: {fileID: 8611147549517300349}
   m_Layer: 0
   m_Name: ManagerKey
   m_TagString: CookedKey
@@ -101,6 +102,20 @@ MonoBehaviour:
   throwForce: 500
   maxDistance: 3
   placementArea: {fileID: 0}
+--- !u!114 &8611147549517300349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674638422547531139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a3e6a4f79409f4cb9e841bb5efc73b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ManagerKey
+  interactDistance: 2.5
+  isGrabbed: 1
 --- !u!1 &1416675062669848848
 GameObject:
   m_ObjectHideFlags: 0

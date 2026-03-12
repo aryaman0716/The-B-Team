@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
   throwForce: 500
   maxDistance: 3
+  placementArea: {fileID: 0}
 --- !u!1 &5657481096184392760
 GameObject:
   m_ObjectHideFlags: 0

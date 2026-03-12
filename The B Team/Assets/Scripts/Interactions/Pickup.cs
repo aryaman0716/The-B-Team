@@ -105,11 +105,29 @@ public class Pickup : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
+        //if (Input.GetMouseButton(1))
+        //{
+        //    // throw the object
+        //    rb.AddForce(propHolder.transform.forward * throwForce);
+        //    Drop();
+        //}
         if (Input.GetMouseButton(1))
         {
-            // throw the object
-            rb.AddForce(propHolder.transform.forward * throwForce);
-            Drop();
+            
+            ManagerKey isManagerKey = GetComponent<ManagerKey>();
+
+            
+            if (isManagerKey == null)
+            {
+                rb.AddForce(propHolder.transform.forward * throwForce);
+                Drop();
+                Debug.Log("Object thrown!");
+            }
+            else
+            {
+                
+                Debug.Log("Manager Key detected: Throwing disabled.");
+            }
         }
     }
     private void Drop()
