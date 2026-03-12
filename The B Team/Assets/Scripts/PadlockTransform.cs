@@ -13,6 +13,7 @@ public class PadlockTransform : MonoBehaviour
     private bool unlocking = false;
     private Vector3 shutterClosedPos;
     private Vector3 shutterOpenPos;
+    private EquipmentController equipment;
     void Start()
     {
         if (shutter != null)
@@ -20,6 +21,7 @@ public class PadlockTransform : MonoBehaviour
             shutterClosedPos = shutter.position;
             shutterOpenPos = shutterClosedPos + Vector3.up * openHeight;
         }
+        equipment = FindFirstObjectByType<EquipmentController>();
     }
     void Update()
     {
@@ -61,6 +63,26 @@ public class PadlockTransform : MonoBehaviour
     void UnlockPadlock(GameObject cookedKey)
     {
         Debug.Log("Cooked key used! Shutter is now opening...");
+        bool wasHeld = false; 
+        var propHolder = PropHolder.Instance;
+        if (propHolder != null && cookedKey != null)
+        {
+            wasHeld = cookedKey.transform.IsChildOf(propHolder.transform);
+        }
+
+        if (equipment == null)
+            equipment = FindFirstObjectByType<EquipmentController>();
+
+        if (equipment != null && wasHeld)
+        {
+            Debug.Log("Cooked key was held by player. Updating equipment state...");
+            equipment.SetCanEquip(true);
+            equipment.SetHolding(false);
+        }
+        if (equipment != null)
+        {
+            equipment.SetCanEquip(true);
+        }
         Destroy(cookedKey);
         unlocking = true;
     }
