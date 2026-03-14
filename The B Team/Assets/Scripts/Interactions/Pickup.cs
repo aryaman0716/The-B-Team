@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
 
+    [SerializeField] PlacementHighlight ph;
     float distance;
     PropHolder propHolder;
     Rigidbody rb;
@@ -13,8 +14,6 @@ public class Pickup : MonoBehaviour
     Vector3 objectPos;
 
     private EquipmentController equipmentController;
-
-    [SerializeField] private GameObject placementArea;
 
     void Start()
     {
@@ -36,6 +35,7 @@ public class Pickup : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (GetComponent<Pickup>().enabled == false) { return; }//Disabling the script doesn't stop non monobehaviour functions from running, such as unity input system
         // pick up the object
         if (propHolder != null)
         {
@@ -90,12 +90,9 @@ public class Pickup : MonoBehaviour
     }
     private void Hold()
     {
-        distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
+        
 
-        if (placementArea != null) 
-        {
-            placementArea.SetActive(true);
-        }
+        distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
 
         if (distance >= maxDistance)
         {
@@ -136,10 +133,6 @@ public class Pickup : MonoBehaviour
         {
             isHolding = false;
             objectPos = this.transform.position;
-            if (placementArea != null)
-            {
-                placementArea.SetActive(false);
-            }
 
             this.transform.position = objectPos;
             this.transform.SetParent(null);
@@ -158,6 +151,18 @@ public class Pickup : MonoBehaviour
         if (CursorManager.Instance != null)
         {
             CursorManager.Instance.SetNormal();
+        }
+        if (ph != null & ph.InPlace)//If object is in range of placement area when dropped, set position
+        {
+            
+            Transform t = ph.GetPlacementTransform();
+            transform.position = t.position;
+            transform.rotation = t.rotation;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            GetComponent<Pickup>().enabled = false;
+            ph.isPlaced = true;
+            return;
+
         }
     }
 }

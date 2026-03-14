@@ -2,50 +2,56 @@ using UnityEngine;
 
 public class PlacementHighlight : MonoBehaviour
 {
-    [SerializeField] private GameObject objectHighlight;
-    [SerializeField] private MeshRenderer parent_mr;
-    [SerializeField] private GameObject listener;
+    //Highlight is the green highlight that shows when object is held, placement is "placed" object visual
+    [SerializeField] private Pickup pickupScript;//Parent object pickup script
+    [SerializeField] private GameObject highlight;//Green highlight
+    [SerializeField] private GameObject placedObject;//Copy of placed object's mesh
+    [SerializeField] private MeshRenderer[] meshesToHide;//Meshes on held object to hide while showing placedObject
+    [SerializeField] private GameObject listener;//Listener gameobject to detect when in range to show placedObject
+
+    public bool isPlaced = false;
+    public bool InPlace => placedObject.activeSelf;
 
     void Start()
     { 
-        if(objectHighlight == null)
+        if(highlight == null)
         {
             GetComponent<PlacementHighlight>().enabled = false; return;
         }
-        objectHighlight.SetActive(false);
+        highlight.SetActive(false);
+        placedObject.SetActive(false);
 
     }
 
-    void ActivateHighlight()
+    void Update()
     {
-        if (objectHighlight == null)
+        if (isPlaced == true) { OnDestroy(); }
+        if (pickupScript.IsHolding)
         {
-            Debug.Log("Placement highlight object null");
-            return;
+            ShowHighlight(true);
         }
-        Debug.Log("Highlight activated");
-        objectHighlight.SetActive(true);
-        parent_mr.enabled = false;
+        else
+        {
+            ShowHighlight(false);
+        }
     }
 
-    void DeactivateHighlight()
+    void ShowHighlight(bool val)
     {
-        if (objectHighlight == null)
-        {
-            Debug.Log("Placement highlight object null");
-            return;
-        }
-        Debug.Log("Highlight deactivated");
+        highlight.SetActive(val);
+    }
 
-        objectHighlight.SetActive(false);
-        parent_mr.enabled = true;
+    void ShowPlaced(bool val)
+    {
+        HideMeshes(val);
+        placedObject.SetActive(val);
     }
 
     void OnTriggerEnter(Collider col)
     {
         if (Input.GetMouseButton(0))
         {
-            ActivateHighlight();
+            ShowPlaced(true);
         }
     }
 
@@ -53,23 +59,38 @@ public class PlacementHighlight : MonoBehaviour
     {
         if (!Input.GetMouseButton(0))
         {
-            DeactivateHighlight();
+            ShowPlaced(false);
             return;
         }
-        else if(objectHighlight.activeSelf == false)
+        else
         {
-            ActivateHighlight();
+            ShowPlaced(true);
         }
     }
     void OnTriggerExit(Collider col)
     {
-        DeactivateHighlight();
+        ShowPlaced(false);
         
     }
 
-    void OnDestroy()
+    public void OnDestroy()
     {
         GetComponent<SphereCollider>().enabled = false;
-        DeactivateHighlight();
+        ShowHighlight(false);
+        ShowPlaced(false);
+        GetComponent<PlacementHighlight>().enabled = false;
+    }
+
+    void HideMeshes(bool val)
+    {
+        for(int i = 0; i < meshesToHide.Length; i++)
+        {
+            meshesToHide[i].enabled = !val;
+        }
+    }
+
+    public Transform GetPlacementTransform()
+    {
+        return placedObject.transform; 
     }
 }
