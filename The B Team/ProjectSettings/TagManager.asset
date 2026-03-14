@@ -16,6 +16,8 @@ TagManager:
   - Room1ExitDoor
   - ConveyerOn
   - Puree
+  - Room4_Microwave
+  - Room4_Cutlery
   layers:
   - Default
   - TransparentFX

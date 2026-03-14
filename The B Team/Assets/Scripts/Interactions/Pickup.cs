@@ -3,6 +3,9 @@ public class Pickup : MonoBehaviour
 {
     bool isHolding = false;
 
+    private static GameObject heldObject;
+    public GameObject HeldObject => heldObject;
+
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
 
@@ -152,7 +155,7 @@ public class Pickup : MonoBehaviour
         {
             CursorManager.Instance.SetNormal();
         }
-        if (ph != null & ph.InPlace)//If object is in range of placement area when dropped, set position
+        if (ph != null & ph.inPlace)//If object is in range of placement area when dropped, set position
         {
             
             Transform t = ph.GetPlacementTransform();
@@ -161,7 +164,6 @@ public class Pickup : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
             GetComponent<Pickup>().enabled = false;
             ph.isPlaced = true;
-            return;
 
         }
     }

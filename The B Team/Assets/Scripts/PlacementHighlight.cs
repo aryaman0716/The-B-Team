@@ -9,8 +9,10 @@ public class PlacementHighlight : MonoBehaviour
     [SerializeField] private MeshRenderer[] meshesToHide;//Meshes on held object to hide while showing placedObject
     [SerializeField] private GameObject listener;//Listener gameobject to detect when in range to show placedObject
 
+    [SerializeField] public bool active = true;
+
     public bool isPlaced = false;
-    public bool InPlace => placedObject.activeSelf;
+    public bool inPlace = false;
 
     void Start()
     { 
@@ -25,6 +27,7 @@ public class PlacementHighlight : MonoBehaviour
 
     void Update()
     {
+        if (!active) { return; }
         if (isPlaced == true) { OnDestroy(); }
         if (pickupScript.IsHolding)
         {
@@ -49,6 +52,8 @@ public class PlacementHighlight : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.tag != gameObject.tag) { return; }
+        inPlace = true;
         if (Input.GetMouseButton(0))
         {
             ShowPlaced(true);
@@ -57,6 +62,7 @@ public class PlacementHighlight : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+        if (col.gameObject.tag != gameObject.tag) { return; }
         if (!Input.GetMouseButton(0))
         {
             ShowPlaced(false);
@@ -69,8 +75,9 @@ public class PlacementHighlight : MonoBehaviour
     }
     void OnTriggerExit(Collider col)
     {
+        if (col.gameObject.tag != gameObject.tag) { return; }
+        inPlace = false;
         ShowPlaced(false);
-        
     }
 
     public void OnDestroy()
