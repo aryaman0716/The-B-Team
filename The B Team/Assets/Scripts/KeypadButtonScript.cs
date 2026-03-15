@@ -9,6 +9,9 @@ public class KeypadButtonScript : MonoBehaviour
     public bool keyPad = true;
     [SerializeField] private UnityEvent buttonFunction;
     public bool tomatoButton = false;
+
+    public AudioSource buttonSource;
+    public AudioClip buttonSound;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -23,6 +26,12 @@ public class KeypadButtonScript : MonoBehaviour
         else
         {
             buttonFunction.Invoke();
+        }
+        if (buttonSound != null && buttonSource != null)
+        {
+            buttonSource.volume = 0.25f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume;
+            buttonSource.clip = buttonSound;
+            buttonSource.Play();
         }
     }
 

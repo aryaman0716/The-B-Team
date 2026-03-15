@@ -14,6 +14,8 @@ public class KeyPadController : MonoBehaviour
     //use this in the editor to assign a public funtion of another script to the keypad when correct code is done
     [SerializeField] private UnityEvent keyFunction;
 
+    public AudioSource keypadSource;
+    public AudioClip correctClip;
     void Update()
     {
         if (currentCode == keyCode)
@@ -46,6 +48,12 @@ public class KeyPadController : MonoBehaviour
         Debug.Log("Unlocked!");
         if (focusController != null) focusController.ExitFocusMode();
         if (keyFunction != null) keyFunction.Invoke();
+        if (keypadSource != null && correctClip != null)
+        {
+            keypadSource.clip = correctClip;
+            keypadSource.volume = 0.25f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume;
+            keypadSource.Play();
+        }
     }
 
 
