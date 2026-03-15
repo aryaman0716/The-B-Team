@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class keyCardReceptical : MonoBehaviour
+{
+    public KeypadButtonScript button;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("KeyCard"))
+        {
+            button.needsKey = false;
+            collision.gameObject.SetActive(false);
+        }
+    }
+}

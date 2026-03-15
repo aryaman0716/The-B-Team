@@ -12,12 +12,14 @@ public class KeypadButtonScript : MonoBehaviour
 
     public AudioSource buttonSource;
     public AudioClip buttonSound;
+    public bool needsKey = false;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
     public void PressButton()
     {
+        if (needsKey) return;
         if (keyPad)
         {
             if (controller != null)

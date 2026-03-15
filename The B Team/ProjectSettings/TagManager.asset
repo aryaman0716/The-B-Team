@@ -18,6 +18,8 @@ TagManager:
   - Puree
   - Room4_Microwave
   - Room4_Cutlery
+  - Sauce
+  - KeyCard
   layers:
   - Default
   - TransparentFX
