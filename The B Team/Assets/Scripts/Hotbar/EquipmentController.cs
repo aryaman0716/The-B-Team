@@ -13,7 +13,7 @@ public class EquipmentController : MonoBehaviour
     private bool canEquip = true;
     private bool isHoldingObject = false;
 
-    void Start() => EquipTool(0);
+    void Start() => UnequipTool();
     void Update()
     {
         if (canEquip)

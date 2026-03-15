@@ -11,8 +11,8 @@ public class PlacementHighlight : MonoBehaviour
 
     [SerializeField] public bool active = true;
 
-    public bool isPlaced = false;
-    public bool inPlace = false;
+    public bool isPlaced = false;//Flag for if object has been dropped inside placement area and placed there
+    public bool inPlace = false;//If object is in placement area, still held
 
     void Start()
     { 
@@ -41,11 +41,13 @@ public class PlacementHighlight : MonoBehaviour
 
     void ShowHighlight(bool val)
     {
+        if (highlight == null) { return; }
         highlight.SetActive(val);
     }
 
     void ShowPlaced(bool val)
     {
+        if (placedObject == null) { return; } 
         HideMeshes(val);
         placedObject.SetActive(val);
     }
