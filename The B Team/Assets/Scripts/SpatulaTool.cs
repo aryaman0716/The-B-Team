@@ -27,6 +27,11 @@ public class SpatulaTool : ToolData
             {
                 door.Pry();
             }
+            FridgeDoor fridgeDoor = (hit.collider.GetComponent<FridgeDoor>());
+            if (fridgeDoor != null)
+            {
+                fridgeDoor.Pry();
+            }
         }
     }
 }
