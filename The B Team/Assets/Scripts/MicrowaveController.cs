@@ -14,7 +14,7 @@ public class MicrowaveController : MonoBehaviour
     private bool isOpen = false;
     private bool keyInside = false;
     private GameObject currentKey;
-    private bool keyCooked = false;
+    private bool keyCooked;
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private EquipmentController equipment;
@@ -34,6 +34,11 @@ public class MicrowaveController : MonoBehaviour
         {
             CheckInteraction();
         }
+
+        if(keyCooked && isOpen && doorPivot.localRotation == targetRotation)
+        {
+            GetComponent<MicrowaveController>().enabled = false;
+        }
     }
     void CheckInteraction()
     {
@@ -52,28 +57,25 @@ public class MicrowaveController : MonoBehaviour
             return;
         }
         ToggleDoor();
-        TMP_Text text = GetComponentInChildren<TMP_Text>();
-        if (text == null) return;
-        if (isOpen)
-        {
-            text.text = "Microwave\nOpen";
-        }
-        else
-        {
-            text.text = "Microwave\nClosed";
-        }
+
+        
     }
     public void ToggleDoor()
     {
-        if (keyCooked)
+        if(keyCooked && !isOpen)
         {
             isOpen = true;
-            GetComponent<MicrowaveController>().enabled = false;
+            return;
         }
         isOpen = !isOpen;
         if (!isOpen && keyInside)
         {
             CookKey();
+        }
+        var fText = GetComponentInChildren<TMP_Text>();
+        if (fText != null)
+        {
+            fText.text = isOpen ? "Microwave\nOpen" : "Microwave\nClosed";
         }
         Debug.Log(isOpen ? "Microwave opened" : "Microwave closed");
     }
@@ -88,6 +90,7 @@ public class MicrowaveController : MonoBehaviour
         {
             Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
             keyCooked = true;
+            GetComponent<BoxCollider>().enabled = false;
         }
         keyInside = false;
         currentKey = null;

@@ -155,9 +155,9 @@ public class Pickup : MonoBehaviour
         {
             CursorManager.Instance.SetNormal();
         }
-        if (ph != null & ph.inPlace)//If object is in range of placement area when dropped, set position
+        if (ph != null)//If object is in range of placement area when dropped, set position
         {
-            
+            if (!ph.inPlace) { return; }   
             Transform t = ph.GetPlacementTransform();
             transform.position = t.position;
             transform.rotation = t.rotation;
