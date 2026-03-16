@@ -29,13 +29,14 @@ public class MicrowaveController : MonoBehaviour
     {
         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
         doorPivot.localRotation = Quaternion.Slerp(doorPivot.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
-        
+
         if (Input.GetMouseButtonDown(0)) 
         {
             CheckInteraction();
+            return;
         }
 
-        if(keyCooked && isOpen && doorPivot.localRotation == targetRotation)
+        if (keyCooked && isOpen && doorPivot.localRotation == openRotation)
         {
             GetComponent<MicrowaveController>().enabled = false;
         }
@@ -72,11 +73,11 @@ public class MicrowaveController : MonoBehaviour
         {
             CookKey();
         }
-        var fText = GetComponentInChildren<TMP_Text>();
-        if (fText != null)
-        {
-            fText.text = isOpen ? "Microwave\nOpen" : "Microwave\nClosed";
-        }
+        //var fText = GetComponentInChildren<TMP_Text>();
+        //if (fText != null)
+        //{
+        //    fText.text = isOpen ? "Microwave\nOpen" : "Microwave\nClosed";
+        //}
         Debug.Log(isOpen ? "Microwave opened" : "Microwave closed");
     }
     void CookKey()
@@ -88,7 +89,9 @@ public class MicrowaveController : MonoBehaviour
         }
         if (cookedKeyPrefab != null)
         {
-            Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
+            var obj = Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
+            obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
+            obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
             keyCooked = true;
             GetComponent<BoxCollider>().enabled = false;
         }

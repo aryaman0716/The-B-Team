@@ -25,11 +25,11 @@ public class SinkMixSystem : MonoBehaviour
         
         flourAdded = true;
         Debug.Log("Flour added to water!");
-        TMP_Text fText = GetComponentInChildren<TMP_Text>();
-        if (fText != null) 
-        {
-            fText.text = "Sink + Flour";
-        }
+        //TMP_Text fText = GetComponentInChildren<TMP_Text>();
+        //if (fText != null) 
+        //{
+        //    fText.text = "Sink + Flour";
+        //}
     }
     public void MixWithSpatula()
     {
@@ -46,7 +46,10 @@ public class SinkMixSystem : MonoBehaviour
         Debug.Log("Dough created!");
         if (doughPrefab != null && doughSpawnPoint != null)
         {
-            Instantiate(doughPrefab, doughSpawnPoint.position, Quaternion.identity);
+            GameObject obj = Instantiate(doughPrefab, doughSpawnPoint.position, Quaternion.identity);
+            obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("doughPreviewMeshSolid").GetComponent<MeshRenderer>();
+            obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("doughPreviewHighlight").GetComponent<MeshRenderer>();
+
         }
     }
 }

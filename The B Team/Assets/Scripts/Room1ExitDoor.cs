@@ -11,11 +11,11 @@ public class Room1ExitDoor : MonoBehaviour
     public void ApplyOil()
     {
         oiled = true;
-        TMP_Text fText = GetComponentInChildren<TMP_Text>();
-        if (fText != null)
-        {
-            fText.text = "Oiled Door";
-        }
+        //TMP_Text fText = GetComponentInChildren<TMP_Text>();
+        //if (fText != null)
+        //{
+        //    fText.text = "Oiled Door";
+        //}
         
 
     }

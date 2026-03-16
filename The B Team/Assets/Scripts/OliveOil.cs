@@ -7,7 +7,7 @@ public class OliveOil : MonoBehaviour
 
     void Update()
     {
-        if (GetComponentInChildren<PlacementHighlight>().isPlaced)
+        if (GetComponent<PlacementEmitter>().IsPlaced)
         {
             UseOil();
         }

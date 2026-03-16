@@ -21,6 +21,7 @@ TagManager:
   - Sauce
   - KeyCard
   - ObjectLabels
+  - ItemUI
   layers:
   - Default
   - TransparentFX

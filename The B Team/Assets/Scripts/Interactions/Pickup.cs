@@ -9,7 +9,6 @@ public class Pickup : MonoBehaviour
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
 
-    [SerializeField] PlacementHighlight ph;
     float distance;
     PropHolder propHolder;
     Rigidbody rb;
@@ -38,7 +37,7 @@ public class Pickup : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GetComponent<Pickup>().enabled == false) { return; }//Disabling the script doesn't stop non monobehaviour functions from running, such as unity input system
+        if (!enabled) { return; }//Disabling the script doesn't stop non monobehaviour functions from running, such as unity input system
         // pick up the object
         if (propHolder != null)
         {
@@ -139,6 +138,8 @@ public class Pickup : MonoBehaviour
 
             this.transform.position = objectPos;
             this.transform.SetParent(null);
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             rb.useGravity = true;
 
             // Re-enable equipping and restore equipped tool visibility when dropped
@@ -154,17 +155,6 @@ public class Pickup : MonoBehaviour
         if (CursorManager.Instance != null)
         {
             CursorManager.Instance.SetNormal();
-        }
-        if (ph != null)//If object is in range of placement area when dropped, set position
-        {
-            if (!ph.inPlace) { return; }   
-            Transform t = ph.GetPlacementTransform();
-            transform.position = t.position;
-            transform.rotation = t.rotation;
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-            GetComponent<Pickup>().enabled = false;
-            ph.isPlaced = true;
-
         }
     }
 }
