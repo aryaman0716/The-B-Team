@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room3Blockout.unity
     guid: c791afa40f2293b41a405ec507258fbf
+  - enabled: 1
+    path: Assets/Scenes/Cutscene End.unity
+    guid: 5bb3f83cb4882eb40a7dd2b32550c350
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
