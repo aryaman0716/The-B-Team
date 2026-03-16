@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+
 public class Room1ExitDoor : MonoBehaviour
 {
     public Animator animator;
@@ -9,6 +11,11 @@ public class Room1ExitDoor : MonoBehaviour
     public void ApplyOil()
     {
         oiled = true;
+        if (GetComponentInChildren<TMP_Text>())
+        {
+            GetComponentInChildren<TMP_Text>().text = "Oiled Door";
+        }
+        
 
     }
     private void Awake()

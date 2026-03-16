@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+
 public class MicrowaveController : MonoBehaviour
 {
     public Transform doorPivot;
@@ -12,6 +14,7 @@ public class MicrowaveController : MonoBehaviour
     private bool isOpen = false;
     private bool keyInside = false;
     private GameObject currentKey;
+    private bool keyCooked = false;
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private EquipmentController equipment;
@@ -27,7 +30,7 @@ public class MicrowaveController : MonoBehaviour
         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
         doorPivot.localRotation = Quaternion.Slerp(doorPivot.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
         
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetMouseButtonDown(0)) 
         {
             CheckInteraction();
         }
@@ -49,9 +52,24 @@ public class MicrowaveController : MonoBehaviour
             return;
         }
         ToggleDoor();
+        TMP_Text text = GetComponentInChildren<TMP_Text>();
+        if (text == null) return;
+        if (isOpen)
+        {
+            text.text = "Microwave\nOpen";
+        }
+        else
+        {
+            text.text = "Microwave\nClosed";
+        }
     }
     public void ToggleDoor()
     {
+        if (keyCooked)
+        {
+            isOpen = true;
+            GetComponent<MicrowaveController>().enabled = false;
+        }
         isOpen = !isOpen;
         if (!isOpen && keyInside)
         {
@@ -69,6 +87,7 @@ public class MicrowaveController : MonoBehaviour
         if (cookedKeyPrefab != null)
         {
             Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
+            keyCooked = true;
         }
         keyInside = false;
         currentKey = null;

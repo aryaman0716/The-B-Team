@@ -33,11 +33,11 @@ public class FlourTool : ToolData
             Debug.Log("VentSystem not found!");
             return;
         }
-        if (!ventSystem.ventOpened)
-        {
-            Debug.Log("VentSystem is not opened!");
-            return;
-        }
+        //if (!ventSystem.ventOpened)
+        //{
+        //    Debug.Log("VentSystem is not opened!");
+        //    return;
+        //}
         Debug.Log("Flour used!");
         Vector3 spawnPos = origin.position + origin.forward * 0.8f;
         Instantiate(flourDustPrefab, spawnPos, origin.rotation);

@@ -5,6 +5,7 @@ public class SinkInteractable : MonoBehaviour
     public AudioSource faucetSound;
     private bool isOn = false;
     private EquipmentController equipment;
+
     void Start()
     {
         equipment = FindFirstObjectByType<EquipmentController>();
