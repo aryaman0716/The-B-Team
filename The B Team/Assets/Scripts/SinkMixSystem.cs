@@ -22,9 +22,14 @@ public class SinkMixSystem : MonoBehaviour
             Debug.Log("Flour already added!");
             return;
         }
-        GetComponentInChildren<TMP_Text>().text = "Sink + Flour";
+        
         flourAdded = true;
         Debug.Log("Flour added to water!");
+        TMP_Text fText = GetComponentInChildren<TMP_Text>();
+        if (fText != null) 
+        {
+            fText.text = "Sink + Flour";
+        }
     }
     public void MixWithSpatula()
     {
