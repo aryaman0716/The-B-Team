@@ -16,7 +16,7 @@ public class GlobalSettings : MonoBehaviour
     public Slider SFXSlider;
 
     public bool fullScreen = true;
-
+    public bool debugObjectLabels = true;
     public int selectedRes = 0;
 
     public List<ResolutionItem> resolutions = new List<ResolutionItem>();
@@ -25,7 +25,8 @@ public class GlobalSettings : MonoBehaviour
     public TMP_Text resolutionLabel;
     void Start()
     {
-        
+        updateObjectLabels(debugObjectLabels);
+        gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -40,6 +41,7 @@ public class GlobalSettings : MonoBehaviour
         SFXSlider.value = SFXVolume;
         Screen.SetResolution(resolutions[selectedRes].horizontal, resolutions[selectedRes].vertical, fullScreen);
         UpdateResLabel();
+        
     }
 
     // Update is called once per frame
@@ -93,6 +95,16 @@ public class GlobalSettings : MonoBehaviour
     public void updateBobbing(bool bob)
     {
         HeadBob = bob;
+    }
+
+    public void updateObjectLabels(bool val)
+    {
+        var labels = GameObject.FindGameObjectsWithTag("ObjectLabels");
+        if (labels == null) { return; }
+        for(int i = 0; i < labels.Length; i++)
+        {
+            labels[i].SetActive(val);
+        }
     }
 }
 

@@ -20,6 +20,7 @@ TagManager:
   - Room4_Cutlery
   - Sauce
   - KeyCard
+  - ObjectLabels
   layers:
   - Default
   - TransparentFX
