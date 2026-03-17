@@ -17,7 +17,7 @@ public class PlacementEmitter : MonoBehaviour
     public bool IsPlaced => isPlaced;
 
 
-    void Awake()
+    void Start()
     {
         pickup = GetComponent<Pickup>();
         rb = GetComponent<Rigidbody>();

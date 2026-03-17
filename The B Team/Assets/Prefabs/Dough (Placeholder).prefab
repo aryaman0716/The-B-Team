@@ -131,7 +131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
   throwForce: 500
   maxDistance: 5
-  ph: {fileID: 0}
 --- !u!114 &4391344211412253418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,10 +144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementEmitter
   placementID: dough
+  isActive: 1
   placementTrigger: {fileID: 5373260659768832058}
   previewHighlight: {fileID: 0}
   previewMeshes:
   - {fileID: 0}
+  meshesToHide:
+  - {fileID: 7290216261575791420}
 --- !u!54 &4096911279415334167
 Rigidbody:
   m_ObjectHideFlags: 0
