@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlacementEmitter : MonoBehaviour
 {
     public string placementID;
+    public bool isActive = true;
 
     private PlacementListener currentListener;
     private Pickup pickup;
@@ -10,17 +11,22 @@ public class PlacementEmitter : MonoBehaviour
     public Collider placementTrigger;
     public MeshRenderer previewHighlight;
     public MeshRenderer[] previewMeshes;
-    private MeshRenderer ownMesh;
+    public MeshRenderer[] meshesToHide;
 
     private bool isPlaced = false;
     public bool IsPlaced => isPlaced;
 
 
-    void Start()
+    void Awake()
     {
         pickup = GetComponent<Pickup>();
         rb = GetComponent<Rigidbody>();
-        ownMesh = GetComponent<MeshRenderer>();
+        if(meshesToHide == null)
+        {
+            Debug.Log("Meshes to hide not assigned");
+        }
+
+        previewHighlight.enabled = false;
         EnablePreviewMeshes(false);
         
         placementTrigger = GetComponentInChildren<Collider>(true);
@@ -33,16 +39,16 @@ public class PlacementEmitter : MonoBehaviour
 
     void Update()
     {
-        if (isPlaced || pickup == null) { return; }
+        if (!isActive || isPlaced || pickup == null) { return; }
 
-        //if (pickup.IsHolding)
-        //{
-        //    EnablePreviewHighlight(true);
-        //}
-        //else
-        //{
-        //    EnablePreviewHighlight(false);
-        //}
+        if (pickup.IsHolding)
+        {
+            EnablePreviewHighlight(true);
+        }
+        else
+        {
+            EnablePreviewHighlight(false);
+        }
 
         if (currentListener == null) { return; }
 
@@ -78,10 +84,9 @@ public class PlacementEmitter : MonoBehaviour
 
     private void EnablePreviewMeshes(bool val)
     {
-        if(previewMeshes == null || ownMesh == null) { return; }
+        if(previewMeshes == null || meshesToHide == null) { return; }
 
-        ownMesh.enabled = !val;
-        Debug.Log("Own mesh visible: " + ownMesh);
+        HideOwnMeshes(val);
 
         for (int i = 0; i < previewMeshes.Length; i++)
         {
@@ -95,15 +100,28 @@ public class PlacementEmitter : MonoBehaviour
     {
         if(previewHighlight == null) { return; }
 
+        Debug.Log("Object picked up, highlighter enabled is " + val);
         previewHighlight.enabled = val;
+    }
+
+    private void HideOwnMeshes(bool val)
+    {
+        if(meshesToHide == null) { return; }
+
+        for (int i = 0; i < meshesToHide.Length; i++) 
+        { 
+            meshesToHide[i].enabled = !val;
+        }
     }
 
     public void TriggerEnter(Collider col)//called from placementTrigger child
     {
         if (isPlaced) { return; }
-
+        Debug.Log("Emitter entering listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
-        if (listener == null || listener.placementID != placementID) { return; }
+
+        if (listener == null) { Debug.Log("Listener not found"); return; }
+        if(listener.placementID != placementID) { Debug.Log("Listener ID not matching"); return; }
 
         currentListener = listener;
         EnablePreviewMeshes(true);
@@ -112,7 +130,7 @@ public class PlacementEmitter : MonoBehaviour
     public void TriggerExit(Collider col)//also called from placementTrigger child
     {
         if (isPlaced) { return; }
-
+        Debug.Log("Emitter exiting listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
         if (listener == null || listener.placementID != placementID) { return; }
 

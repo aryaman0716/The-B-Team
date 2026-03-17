@@ -4,12 +4,12 @@ public class Room4_Microwave : MonoBehaviour
 {
     
     [SerializeField] private Animator doorAnimator;
-    [SerializeField] private PlacementHighlight ph;
+    [SerializeField] private PlacementEmitter emitter;
     //[SerializeField] private PlacementHighlight cutleryPlacementEmitter;
 
     [SerializeField] private bool doorOpened = false;
     public bool DoorOpened => doorOpened;
-    [SerializeField] private bool cutleryPlaced = false;
+    public bool cutleryPlaced = false;
     //[SerializeField] private bool doorClosed = false;
     [SerializeField] private bool primed = false;
     public bool Primed => primed;
@@ -21,24 +21,19 @@ public class Room4_Microwave : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        emitter = GetComponent<PlacementEmitter>();
+        equipment = FindFirstObjectByType<EquipmentController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ph.isPlaced && openable == false)
+        if (emitter.IsPlaced && openable == false)
         {
             openable = true;
+            emitter.enabled = false;
             doorAnimator.enabled = true;
         }
-
-        if(cutleryObj.GetComponentInChildren<PlacementHighlight>().isPlaced == true)
-        {
-            cutleryPlaced = true;
-        }
-
-        
         
     }
 

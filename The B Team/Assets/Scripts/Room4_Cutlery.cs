@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class Room4_Cutlery : MonoBehaviour
 {
-    [SerializeField] private GameObject highlightEmitter;
+    [SerializeField] private PlacementEmitter emitter;
 
     [SerializeField] private GameObject microwaveObj;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        emitter = GetComponent<PlacementEmitter>();
+        microwaveObj = GameObject.Find("Room4_Microwave");
     }
 
     // Update is called once per frame
@@ -18,8 +20,13 @@ public class Room4_Cutlery : MonoBehaviour
 
         if (microwaveObj.GetComponent<Room4_Microwave>().DoorOpened)
         {
-            highlightEmitter.GetComponent<PlacementHighlight>().active = true;
+            emitter.isActive = true;
         }
 
+        if (emitter.IsPlaced)
+        {
+            microwaveObj.GetComponent<Room4_Microwave>().cutleryPlaced = true;
+            emitter.enabled = false;
+        }
     }
 }
