@@ -7,5 +7,10 @@ public class LasersHidden : MonoBehaviour
         {
             r.enabled = false; // Hide the lasers
         }
+        GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>().Stop();
+    }
+
+    void Update()
+    {
     }
 }
