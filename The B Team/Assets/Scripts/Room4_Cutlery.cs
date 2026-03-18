@@ -22,6 +22,10 @@ public class Room4_Cutlery : MonoBehaviour
         {
             emitter.isActive = true;
         }
+        else
+        {
+            emitter.isActive = false;
+        }
 
         if (emitter.IsPlaced)
         {

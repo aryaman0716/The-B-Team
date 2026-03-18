@@ -116,7 +116,7 @@ public class PlacementEmitter : MonoBehaviour
 
     public void TriggerEnter(Collider col)//called from placementTrigger child
     {
-        if (isPlaced) { return; }
+        if (isPlaced || !isActive) { return; }
         Debug.Log("Emitter entering listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
 
@@ -129,7 +129,7 @@ public class PlacementEmitter : MonoBehaviour
 
     public void TriggerExit(Collider col)//also called from placementTrigger child
     {
-        if (isPlaced) { return; }
+        if (isPlaced || !isActive) { return; }
         Debug.Log("Emitter exiting listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
         if (listener == null || listener.placementID != placementID) { return; }
