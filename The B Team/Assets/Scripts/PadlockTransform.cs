@@ -15,6 +15,7 @@ public class PadlockTransform : MonoBehaviour
     private Vector3 shutterOpenPos;
     private EquipmentController equipment;
     //private PlacementListener listener;
+    public DialogueTrigger dia;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class PadlockTransform : MonoBehaviour
 
     public void TransformDoughToKey(GameObject dough)
     {
+        dia.TriggerDialogue();
         Debug.Log("Dough touching padlock! Transforming to Key...");  
         Destroy(dough);
         if (keyPrefab != null)
