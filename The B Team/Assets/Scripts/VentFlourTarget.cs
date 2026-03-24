@@ -10,6 +10,6 @@ public class VentFlourTarget : MonoBehaviour
         {
             r.enabled = true; // Show the lasers
         }
-        GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>().Play();
+        if (GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>() != null) { GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>().Play(); }
     }
 }
