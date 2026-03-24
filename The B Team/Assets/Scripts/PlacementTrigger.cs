@@ -8,7 +8,7 @@ public class PlacementTrigger : MonoBehaviour
     void Awake()
     {
         emitter = GetComponentInParent<PlacementEmitter>();
-        if(emitter == null) { Debug.Log("Emitter parent not found"); }
+        if(emitter == null) { Debug.Log("Emitter parent not found"); enabled = false; }
     }
 
     void OnTriggerEnter(Collider col)
