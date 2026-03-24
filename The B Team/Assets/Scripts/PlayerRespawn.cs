@@ -8,12 +8,30 @@ public class PlayerRespawn : MonoBehaviour
 
     private FPController controller;
     private CharacterController characterController;
+    private Transform defaultSpawnPoint;
+
     private void Start()
     {
         controller = GetComponent<FPController>();
         characterController = GetComponent<CharacterController>();
+        defaultSpawnPoint = spawnPoint;
 
         screenFade = GameObject.FindAnyObjectByType(typeof(ScreenFade)) as ScreenFade;
+    }
+    public void SetCheckpoint(Transform checkpoint)
+    {
+        if (checkpoint == null)
+        {
+            return;
+        }
+        spawnPoint = checkpoint;
+    }
+    public void ResetToDefaultCheckpoint()
+    {
+        if (defaultSpawnPoint != null)
+        {
+            spawnPoint = defaultSpawnPoint;
+        }
     }
     public void Respawn()
     {
