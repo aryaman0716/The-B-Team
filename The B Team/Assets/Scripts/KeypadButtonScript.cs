@@ -1,3 +1,4 @@
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Events;
 public class KeypadButtonScript : MonoBehaviour
@@ -13,9 +14,14 @@ public class KeypadButtonScript : MonoBehaviour
     public AudioSource buttonSource;
     public AudioClip buttonSound;
     public bool needsKey = false;
+    public static bool mousingB = false;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+    }
+    private void Update()
+    {
+        mousingB = false;
     }
     public void PressButton()
     {
@@ -36,9 +42,24 @@ public class KeypadButtonScript : MonoBehaviour
             buttonSource.Play();
         }
     }
+    public void OnMouseOver()
+    {
+        if (EquipmentController.publicIndex < 4)
+        {
+            return;
+        }
+        if (Player != null)
+        {
+            if (PlayerDistance() < 3f) mousingB = true;
+        }
 
+    }
     void OnMouseDown()
     {
+        if (EquipmentController.publicIndex < 4)
+        {
+            return;
+        }
         if (controller != null && controller.focusController != null && controller.focusController.IsFocused)
         {
             PressButton();

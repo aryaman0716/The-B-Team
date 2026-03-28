@@ -31,7 +31,9 @@ public class VentFocusController : MonoBehaviour
     }
     public void EnterFocusMode()
     {
+        
         if (isFocused) return;
+        CrosshairController.anyFocus = true;
         Headbob.canBob = false;
         isFocused = true;
 
@@ -45,7 +47,7 @@ public class VentFocusController : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
 
         propsHolder.SetActive(false); // Hide the player's held items
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
@@ -53,6 +55,7 @@ public class VentFocusController : MonoBehaviour
     }
     public void ExitFocusMode()
     {
+        CrosshairController.anyFocus = false;
         canLeave = false;
         if (!isFocused) return;
 

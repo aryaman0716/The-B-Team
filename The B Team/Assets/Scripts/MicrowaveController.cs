@@ -18,21 +18,27 @@ public class MicrowaveController : MonoBehaviour
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private EquipmentController equipment;
+    public GameObject Player;
+    public static bool mousingM = false;
+    
 
     void Start()
     {
         closedRotation = doorPivot.localRotation;
         openRotation = Quaternion.Euler(0, openAngle, 0);
         equipment = FindFirstObjectByType<EquipmentController>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
+        mousingM = false;
+        CheckInteraction();
         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
         doorPivot.localRotation = Quaternion.Slerp(doorPivot.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
 
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && mousingM) 
         {
-            CheckInteraction();
+            ToggleDoor();
             return;
         }
 
@@ -41,8 +47,17 @@ public class MicrowaveController : MonoBehaviour
             GetComponent<MicrowaveController>().enabled = false;
         }
     }
+
     void CheckInteraction()
     {
+        if (EquipmentController.publicIndex < 4)
+        {
+            return;
+        }
+        if (Player != null)
+        {
+            if (PlayerDistance() > 3f) return ;
+        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -57,8 +72,7 @@ public class MicrowaveController : MonoBehaviour
             Debug.Log("Can't interact with microwave while holding a tool.");
             return;
         }
-        ToggleDoor();
-
+        mousingM = true;
         
     }
     public void ToggleDoor()
@@ -106,5 +120,10 @@ public class MicrowaveController : MonoBehaviour
             currentKey = other.gameObject;
             Debug.Log("Moulded key placed inside microwave.");
         }
+    }
+    private float PlayerDistance()
+    {
+        float distance = Vector3.Distance(Player.transform.position, transform.position);
+        return distance;
     }
 }

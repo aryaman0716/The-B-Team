@@ -33,7 +33,7 @@ public class UIController : MonoBehaviour
 
     public void PauseGame()
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Paused = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0.0f;

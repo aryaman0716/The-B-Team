@@ -16,9 +16,13 @@ public class Pickup : MonoBehaviour
     Vector3 objectPos;
 
     private EquipmentController equipmentController;
+    public static bool carrying = false;
+    public static bool mousing = false;
+
 
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
 
@@ -28,6 +32,7 @@ public class Pickup : MonoBehaviour
     }
     void Update()
     {
+        mousing = false;
         if (isHolding)
         {
             Hold();
@@ -35,8 +40,33 @@ public class Pickup : MonoBehaviour
     }
     public bool IsHolding => isHolding;  // making this public so that other scripts can check if this object is currently being held
 
+    public void OnMouseOver()
+    {
+        if (EquipmentController.publicIndex < 4)
+        {
+            return;
+        }
+        if (propHolder != null)
+        {
+            distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
+            if (distance <= maxDistance)
+            {
+                mousing = true;
+            }
+        }
+
+    }
+
+
     private void OnMouseDown()
     {
+        if (EquipmentController.publicIndex < 4)
+        {
+            return;
+        }
+
+
+
         if (!enabled) { return; }//Disabling the script doesn't stop non monobehaviour functions from running, such as unity input system
         // pick up the object
         if (propHolder != null)
@@ -46,12 +76,9 @@ public class Pickup : MonoBehaviour
             {
                 isHolding = true;
 
-                if (CursorManager.Instance != null)
-                {
-                    CursorManager.Instance.SetCloseHand();
-                }
                 rb.useGravity = false;
                 rb.detectCollisions = true;
+                carrying = true;
 
                 this.transform.SetParent(propHolder.transform);
 
@@ -66,15 +93,19 @@ public class Pickup : MonoBehaviour
                 if (blender != null)
                     blender.SetHeld(true);
             }
+            else { carrying = false; }
         }
         else
         {
             Debug.Log("PropHolder instance not found in scene.");
         }
     }
+
+     
     private void OnMouseUp()
     {
         Drop();
+        carrying = false;
     }
     private void OnMouseEnter()
     {
@@ -131,6 +162,7 @@ public class Pickup : MonoBehaviour
     }
     public void Drop()
     {
+        carrying = false;
         if (isHolding)
         {
             isHolding = false;
@@ -157,4 +189,10 @@ public class Pickup : MonoBehaviour
             CursorManager.Instance.SetNormal();
         }
     }
+    private void OnDisable()
+    {
+        carrying = false;
+        mousing = false;
+    }
+
 }

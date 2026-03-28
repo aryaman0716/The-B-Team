@@ -48,7 +48,8 @@ public class KeypadFocusController : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
+        CrosshairController.anyFocus = true;
 
         if (propsHolder != null) propsHolder.SetActive(false);
         StartCoroutine(SmoothFocus(focusPoint.position, focusPoint.rotation, focusFOV));
@@ -66,7 +67,7 @@ public class KeypadFocusController : MonoBehaviour
             controller.enabled = true;
             controller.SetCanMove(true);
         }
-
+        CrosshairController.anyFocus = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

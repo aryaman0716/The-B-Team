@@ -12,10 +12,12 @@ public class EquipmentController : MonoBehaviour
     private GameObject currentToolObject;
     private bool canEquip = true;
     private bool isHoldingObject = false;
+    public static int publicIndex;
 
     void Start() => UnequipTool();
     void Update()
     {
+        publicIndex =  currentIndex;
         if (canEquip)
         {
             HandleScrollInput();
