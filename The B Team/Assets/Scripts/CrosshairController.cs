@@ -22,6 +22,7 @@ public class CrosshairController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(KeypadButtonScript.mousingB);
         image.sprite = sprites[handshape];
         bool overUI = IsPointerOverUI();
 
@@ -51,6 +52,10 @@ public class CrosshairController : MonoBehaviour
             CenterCrosshair();
         }
 
+        KeypadButtonScript.mousingB = false;
+        MicrowaveController.mousingM = false;
+        SinkInteractable.mousingS = false;
+        Pickup.mousing = false;
 
     }
 

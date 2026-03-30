@@ -13,10 +13,6 @@ public class SinkInteractable : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         equipment = FindFirstObjectByType<EquipmentController>();
     }
-    private void Update()
-    {
-        mousingS = false;
-    }
     void OnMouseOver()
     {
         if (EquipmentController.publicIndex < 4)

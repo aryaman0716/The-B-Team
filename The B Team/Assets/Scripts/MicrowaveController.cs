@@ -31,7 +31,6 @@ public class MicrowaveController : MonoBehaviour
     }
     void Update()
     {
-        mousingM = false;
         CheckInteraction();
         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
         doorPivot.localRotation = Quaternion.Slerp(doorPivot.localRotation, targetRotation, Time.deltaTime * smoothSpeed);

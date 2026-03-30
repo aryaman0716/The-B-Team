@@ -32,7 +32,6 @@ public class Pickup : MonoBehaviour
     }
     void Update()
     {
-        mousing = false;
         if (isHolding)
         {
             Hold();

@@ -100,7 +100,7 @@ public class PlacementEmitter : MonoBehaviour
     {
         if(previewHighlight == null) { return; }
 
-        Debug.Log("Object picked up, highlighter enabled is " + val);
+        //Debug.Log("Object picked up, highlighter enabled is " + val);
         previewHighlight.enabled = val;
     }
 

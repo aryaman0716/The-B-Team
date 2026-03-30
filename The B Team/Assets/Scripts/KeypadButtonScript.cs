@@ -19,10 +19,6 @@ public class KeypadButtonScript : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
-    private void Update()
-    {
-        mousingB = false;
-    }
     public void PressButton()
     {
         if (needsKey) return;
@@ -44,13 +40,17 @@ public class KeypadButtonScript : MonoBehaviour
     }
     public void OnMouseOver()
     {
+        Debug.Log("mouse over button" + PlayerDistance());
         if (EquipmentController.publicIndex < 4)
         {
             return;
         }
         if (Player != null)
         {
-            if (PlayerDistance() < 3f) mousingB = true;
+            if (PlayerDistance() < 3f)
+            {
+                mousingB = true;
+            }
         }
 
     }

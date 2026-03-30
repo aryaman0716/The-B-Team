@@ -48,7 +48,11 @@ public class DialogueManager : MonoBehaviour
        {
          sentences.Enqueue(entry);
        }
-       DisplayNextSentence();
+       if (animator == null)
+        {
+            DisplayNextSentence();
+        }
+        
     }
 
     public void DisplayNextSentence()
