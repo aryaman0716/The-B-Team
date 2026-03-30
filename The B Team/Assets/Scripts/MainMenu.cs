@@ -21,9 +21,13 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.DeleteKey("CheckpointIndex"); // start fresh without any checkpoint progress
         SceneManager.LoadScene(gameStartName);
     }
-
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene(gameStartName);
+    }
     public void LoadScene(string SceneName)
     {
         SceneManager.LoadScene(SceneName);

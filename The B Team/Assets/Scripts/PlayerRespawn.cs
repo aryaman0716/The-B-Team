@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform[] checkpoints;
     [SerializeField] private ScreenFade screenFade;
 
     private FPController controller;
@@ -17,6 +18,13 @@ public class PlayerRespawn : MonoBehaviour
         defaultSpawnPoint = spawnPoint;
 
         screenFade = GameObject.FindAnyObjectByType(typeof(ScreenFade)) as ScreenFade;
+
+        int checkpointIndex = PlayerPrefs.GetInt("CheckpointIndex", 0);
+        if (checkpointIndex < checkpoints.Length)
+        {
+            spawnPoint = checkpoints[checkpointIndex];
+            transform.position = spawnPoint.position;  // move the player to the respective checkpoint position 
+        }
     }
     public void SetCheckpoint(Transform checkpoint)
     {
