@@ -15,6 +15,13 @@ public class EquipmentController : MonoBehaviour
     public static int publicIndex;
 
     void Start() => UnequipTool();
+
+    public AudioSource toolSoundSource;
+
+    public AudioClip[] knifeSounds;
+    public AudioClip[] spatulaSounds;
+    public AudioClip[] tomatoSounds;
+    public AudioClip[] flourSounds;
     void Update()
     {
         publicIndex =  currentIndex;
@@ -68,6 +75,32 @@ public class EquipmentController : MonoBehaviour
         if (currentIndex >= 0 && currentIndex < tools.Length)
         {
             tools[currentIndex].UseTool(propsHolder);
+            switch (currentIndex)
+            {
+                case 0:
+                    {
+                        toolSoundSource.clip = knifeSounds[Random.Range(0, knifeSounds.Length)];
+                        break;
+                    }
+                case 1:
+                    {
+                        toolSoundSource.clip = spatulaSounds[Random.Range(0, spatulaSounds.Length)];
+                        break;
+                    }
+                case 2:
+                    {
+                        toolSoundSource.clip = tomatoSounds[Random.Range(0, tomatoSounds.Length)];
+                        break;
+                    }
+                case 3:
+                    {
+                        toolSoundSource.clip = flourSounds[Random.Range(0, flourSounds.Length)];
+                        break;
+                    }
+            }
+            toolSoundSource.pitch = Random.Range(0.9f, 1.1f);
+            toolSoundSource.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
+            toolSoundSource.Play();
         }
     }
     void CycleTool(int direction)
