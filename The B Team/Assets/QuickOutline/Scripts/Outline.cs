@@ -306,4 +306,9 @@ public class Outline : MonoBehaviour {
         break;
     }
   }
+
+    void Start()
+    {
+        this.enabled = false; // Raycast
+    }
 }
