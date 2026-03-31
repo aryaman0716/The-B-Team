@@ -14,7 +14,6 @@ public class Pickup : MonoBehaviour
     Rigidbody rb;
 
     Vector3 objectPos;
-    Vector3 holdOffset;
 
     private EquipmentController equipmentController;
     public static bool carrying = false;
@@ -36,10 +35,6 @@ public class Pickup : MonoBehaviour
         if (isHolding)
         {
             Hold();
-            if (Input.GetMouseButtonUp(0))
-            {
-                Drop();
-            }
         }
     }
     public bool IsHolding => isHolding;  // making this public so that other scripts can check if this object is currently being held
@@ -81,12 +76,10 @@ public class Pickup : MonoBehaviour
                 isHolding = true;
 
                 rb.useGravity = false;
-                rb.isKinematic = true;
-                rb.detectCollisions = false;
+                rb.detectCollisions = true;
                 carrying = true;
 
                 this.transform.SetParent(propHolder.transform);
-                holdOffset = transform.localPosition;
 
                 // Disable equipping while holding this object and hide equipped tool
                 if (equipmentController != null)
@@ -108,11 +101,11 @@ public class Pickup : MonoBehaviour
     }
 
      
-    //private void OnMouseUp()
-    //{
-    //    Drop();
-    //    carrying = false;
-    //}
+    private void OnMouseUp()
+    {
+        Drop();
+        carrying = false;
+    }
     private void OnMouseEnter()
     {
         if (!isHolding && CursorManager.Instance != null)
@@ -142,7 +135,6 @@ public class Pickup : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
-        transform.localPosition = holdOffset;
         //if (Input.GetMouseButton(1))
         //{
         //    // throw the object
@@ -157,8 +149,6 @@ public class Pickup : MonoBehaviour
             
             if (isManagerKey == null)
             {
-                rb.isKinematic = false;
-                rb.detectCollisions = true;
                 rb.AddForce(propHolder.transform.forward * throwForce);
                 Drop();
                 Debug.Log("Object thrown!");
@@ -181,9 +171,7 @@ public class Pickup : MonoBehaviour
             this.transform.SetParent(null);
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = false;
             rb.useGravity = true;
-            rb.detectCollisions = true;
 
             // Re-enable equipping and restore equipped tool visibility when dropped
             if (equipmentController != null)
