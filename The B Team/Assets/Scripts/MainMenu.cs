@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public string gameStartName;
+    public string gameContinueName;
     //write the file name of the scene you want the button to load into, i think it has to be enabled in the build settings too.
 
     void Start()
@@ -26,7 +27,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ContinueGame()
     {
-        SceneManager.LoadScene(gameStartName);
+        SceneManager.LoadScene(gameContinueName);
     }
     public void LoadScene(string SceneName)
     {

@@ -1740,6 +1740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gameStartName: Cutscene
+  gameContinueName: Room1Blockout
 --- !u!1 &1474788598
 GameObject:
   m_ObjectHideFlags: 0
