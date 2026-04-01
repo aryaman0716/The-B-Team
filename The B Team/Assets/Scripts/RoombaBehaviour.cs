@@ -105,7 +105,9 @@ public class RoombaBehaviour : MonoBehaviour
         if (managerKeyPrefab != null)
         {
             Vector3 spawnPos = keySpawnPoint != null ? keySpawnPoint.position : transform.position + transform.forward * 0.5f;
-            Instantiate(managerKeyPrefab, spawnPos, Quaternion.identity);
+            GameObject obj = Instantiate(managerKeyPrefab, spawnPos, Quaternion.identity);
+            obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("managerKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
+            obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("managerKeyPreviewHighlight").GetComponent<MeshRenderer>();
         }
     }
 

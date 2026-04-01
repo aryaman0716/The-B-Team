@@ -28,8 +28,8 @@ public class PlacementEmitter : MonoBehaviour
 
         previewHighlight.enabled = false;
         EnablePreviewMeshes(false);
-        
-        placementTrigger = GetComponentInChildren<Collider>(true);
+
+        if (placementTrigger == null) { placementTrigger = GetComponentInChildren<Collider>(true); }
 
         if (placementTrigger == null || !placementTrigger.isTrigger)
         {
