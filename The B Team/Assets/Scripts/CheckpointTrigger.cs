@@ -7,7 +7,7 @@ public class CheckpointTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         { 
             // saving checkpoint using player prefs to keep it persistent across the game
-            PlayerPrefs.SetInt("Checkpoint", checkpointIndex);
+            PlayerPrefs.SetInt("CheckpointIndex", checkpointIndex);
             PlayerPrefs.Save(); 
             Debug.Log("Checkpoint saved: " + checkpointIndex);
         }
