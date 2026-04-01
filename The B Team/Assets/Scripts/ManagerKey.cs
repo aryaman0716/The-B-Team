@@ -31,23 +31,35 @@ public class ManagerKey : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 1.5f);
     }
 
-    void ShootRaycast()
+    //void ShootRaycast()
+    //{
+    //    RaycastHit hit;
+    //    Vector3 startPos = transform.position + (transform.forward * 0.5f);
+    //    if (Physics.Raycast(startPos, transform.forward, out hit, interactDistance))
+    //    {
+    //        Debug.Log("Raycast Hit: " + hit.collider.name);
+
+    //        if (hit.collider.name != "ManagerDoor") { return; }
+
+    //        GeneralDoor door = hit.collider.GetComponent<GeneralDoor>();
+
+    //        if (door != null)
+    //        {
+    //            door.SetDoorLocked(false);
+    //        }
+    //    }
+    //}
+
+    void OnTriggerEnter(Collider col)
     {
-        RaycastHit hit;
-        Vector3 startPos = transform.position + (transform.forward * 0.5f);
-        if (Physics.Raycast(startPos, transform.forward, out hit, interactDistance))
+        if (col.name != "ManagerDoor") { return; }
+
+        GeneralDoor door = col.GetComponent<GeneralDoor>();
+
+        if (door != null)
         {
-            Debug.Log("Raycast Hit: " + hit.collider.name);
-
-            
-            ManagerDoor door = hit.collider.GetComponentInParent<ManagerDoor>();
-
-            if (door != null)
-            {
-                door.UnlockAndOpen();
-            }
+            door.SetDoorLocked(false);
+            gameObject.SetActive(false);
         }
     }
-
-
 }

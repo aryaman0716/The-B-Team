@@ -2,7 +2,7 @@ using UnityEngine;
 public class OliveOil : MonoBehaviour
 {
     public float useDistance = 3f;
-    public Room1ExitDoor exitDoor;
+    public GeneralDoor door;
     //[SerializeField] private GameObject highlightEmitter;
 
     void Update()
@@ -14,7 +14,7 @@ public class OliveOil : MonoBehaviour
     }
     void UseOil()
     {
-        exitDoor.ApplyOil();
+        door.SetDoorLocked(false);
         gameObject.SetActive(false);
     }
 
