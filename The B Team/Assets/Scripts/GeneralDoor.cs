@@ -11,12 +11,14 @@ public class GeneralDoor : MonoBehaviour
 
     private Animator a;
     private Transform playerTransform;
+    private Outline outline;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         a = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        outline = GetComponent<Outline>();
         if(a == null) { Debug.LogWarning("Animator not initialised"); }
         if(playerTransform == null) { Debug.LogWarning("Player transform not found"); }
         SetDoorLocked(locked);
@@ -27,6 +29,8 @@ public class GeneralDoor : MonoBehaviour
     void Update()
     {
         if (locked) { return; }
+
+        outline.enabled = mouseOver;
 
         if (mouseOver && Input.GetMouseButtonDown(0))
         {
