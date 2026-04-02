@@ -3,6 +3,7 @@ using UnityEngine;
 public class ManagerRoomButton : MonoBehaviour
 {
     private GeneralDoor doorToUnlock;
+    private WireActivate wireToActivate;
     private Outline outline;
     private Transform playerTransform;
     public float interactRange;
@@ -15,6 +16,7 @@ public class ManagerRoomButton : MonoBehaviour
     {
         doorToUnlock = GameObject.Find("Room3AccessDoor").GetComponent<GeneralDoor>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        wireToActivate = GameObject.Find("ManagerRoomWire").GetComponent<WireActivate>();
         outline = GetComponent<Outline>();
         mouseOver = false;
         pressed = false;
@@ -23,11 +25,12 @@ public class ManagerRoomButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!mouseOver || pressed) { return; }
+        if (pressed) { return; }
         outline.enabled = mouseOver;
-        if (Input.GetMouseButtonDown(0)) 
+        if (mouseOver && Input.GetMouseButtonDown(0)) 
         {
             doorToUnlock.SetDoorLocked(false);
+            wireToActivate.ActivateWire();
             outline.enabled = false;
             pressed = true;
         }
