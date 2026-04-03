@@ -23,7 +23,9 @@ public class PlayerRespawn : MonoBehaviour
         if (checkpointIndex < checkpoints.Length)
         {
             spawnPoint = checkpoints[checkpointIndex];
+            characterController.enabled = false;
             transform.position = spawnPoint.position;  // move the player to the respective checkpoint position 
+            characterController.enabled = true;
         }
     }
     public void SetCheckpoint(Transform checkpoint)
