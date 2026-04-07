@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7373264665298019010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -9137014667691520519, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d06dd5d5eaff2141989c0e772e287a1, type: 2}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.572133
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.607993
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.2079086
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2726937285475358752, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d06dd5d5eaff2141989c0e772e287a1, type: 2}
+    - target: {fileID: 919132149155446097, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: m_Name
+      value: FlourBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241845104303046358, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d06dd5d5eaff2141989c0e772e287a1, type: 2}
+    - target: {fileID: 2014335556940938097, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d06dd5d5eaff2141989c0e772e287a1, type: 2}
+    - target: {fileID: 7978297438636487142, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d06dd5d5eaff2141989c0e772e287a1, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a955188382beb6e4d889c96e74ebeeae, type: 3}
