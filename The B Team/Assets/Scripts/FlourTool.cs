@@ -5,9 +5,13 @@ public class FlourTool : ToolData
 {
     public GameObject flourDustPrefab;
     public float maxUseDistance = 5f;
-
     public override void UseTool(Transform origin)
     {
+        Animator anim = origin.GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("toss");
+        }
         Camera cam = Camera.main;
         if (cam == null)
         {

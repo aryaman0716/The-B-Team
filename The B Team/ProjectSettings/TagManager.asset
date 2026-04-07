@@ -22,6 +22,7 @@ TagManager:
   - KeyCard
   - ObjectLabels
   - ItemUI
+  - Flour
   layers:
   - Default
   - TransparentFX
