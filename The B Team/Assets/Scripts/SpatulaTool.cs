@@ -14,7 +14,7 @@ public class SpatulaTool : ToolData
 
         Ray ray = new Ray(origin.position, origin.forward);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 3f))
+        if (Physics.Raycast(ray, out hit, 4f))
         {
             SinkMixSystem sink = hit.collider.GetComponent<SinkMixSystem>();
             if (sink != null)

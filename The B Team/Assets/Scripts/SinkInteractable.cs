@@ -8,10 +8,13 @@ public class SinkInteractable : MonoBehaviour
     public GameObject Player;
     public static bool mousingS = false;
     public static bool anyfocus = false;
+    private GameObject water_obj;
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         equipment = FindFirstObjectByType<EquipmentController>();
+        water_obj = GameObject.Find("water_obj");
+        water_obj.SetActive(false);
     }
     void OnMouseOver()
     {
@@ -29,7 +32,7 @@ public class SinkInteractable : MonoBehaviour
             ToggleSink();
         }
     }
-    void ToggleSink()
+    public void ToggleSink()
     {
         isOn = !isOn;
         if (isOn)
@@ -38,6 +41,9 @@ public class SinkInteractable : MonoBehaviour
                 water.Play();
             if (faucetSound != null)
                 faucetSound.Play();
+            if (water_obj != null)
+                water_obj.SetActive(true);
+                water_obj.GetComponent<Animator>().speed = 1;
         }
         else
         {
@@ -45,11 +51,13 @@ public class SinkInteractable : MonoBehaviour
                 water.Stop();
             if (faucetSound != null)
                 faucetSound.Stop();
+            if (water_obj != null)
+                water_obj.GetComponent<Animator>().speed = 0;
         }
     }
     public bool IsOn()
     {
-        return isOn;
+        return water_obj.activeSelf ? true : false ;
     }
     private float PlayerDistance()
     {

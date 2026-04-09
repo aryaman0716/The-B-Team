@@ -7,9 +7,17 @@ public class SinkMixSystem : MonoBehaviour
     public SinkInteractable sinkInteractable;
     public GameObject doughPrefab;
     public Transform doughSpawnPoint;
+    private GameObject flour_obj;
 
     private bool flourAdded = false;
     private bool doughCreated = false;
+
+    void Start()
+    {
+        flour_obj = GameObject.Find("flour_obj");
+        flour_obj.SetActive(false);
+    }
+
     public void AddFlour()
     {
         if (!sinkInteractable.IsOn())
@@ -24,6 +32,7 @@ public class SinkMixSystem : MonoBehaviour
         }
         
         flourAdded = true;
+        flour_obj.SetActive(true);
         Debug.Log("Flour added to water!");
         //TMP_Text fText = GetComponentInChildren<TMP_Text>();
         //if (fText != null) 
@@ -43,6 +52,8 @@ public class SinkMixSystem : MonoBehaviour
             return;
         }
         doughCreated = true;
+        if (sinkInteractable.IsOn()) { sinkInteractable.ToggleSink(); }
+        GetComponent<Collider>().enabled = false;
         Debug.Log("Dough created!");
         if (doughPrefab != null && doughSpawnPoint != null)
         {
