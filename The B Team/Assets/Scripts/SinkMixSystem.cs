@@ -20,9 +20,9 @@ public class SinkMixSystem : MonoBehaviour
 
     public void AddFlour()
     {
-        if (!sinkInteractable.IsOn())
+        if (!sinkInteractable.Filled)
         {
-            Debug.Log("Water is not running! Cannot add flour.");
+            Debug.Log("Needs more water");
             return;
         }
         if (flourAdded)
@@ -51,9 +51,10 @@ public class SinkMixSystem : MonoBehaviour
         {
             return;
         }
-        doughCreated = true;
-        if (sinkInteractable.IsOn()) { sinkInteractable.ToggleSink(); }
         GetComponent<Collider>().enabled = false;
+        flour_obj.SetActive(false);
+        GameObject.Find("water_obj").SetActive(false);
+        doughCreated = true;
         Debug.Log("Dough created!");
         if (doughPrefab != null && doughSpawnPoint != null)
         {

@@ -13,6 +13,8 @@ public class GeneralDoor : MonoBehaviour
     private Transform playerTransform;
     private Outline outline;
 
+    public static GeneralDoor currentDoor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,8 +36,8 @@ public class GeneralDoor : MonoBehaviour
 
         if (mouseOver && Input.GetMouseButtonDown(0))
         {
-            if (a.GetBool("Opened") == true) { a.SetBool("Opened", false); return; }
-            if (a.GetBool("Opened") == false) { a.SetBool("Opened", true); return; }
+            if (a.GetBool("Opened") == true) { a.SetBool("Opened", false); opened = a.GetBool("Opened"); return; }
+            if (a.GetBool("Opened") == false) { a.SetBool("Opened", true); opened = a.GetBool("Opened"); return; }
         }
 
         
@@ -45,6 +47,7 @@ public class GeneralDoor : MonoBehaviour
     {
         var dist = Vector3.Distance(playerTransform.position, transform.position);
         if (dist > interactRange) { mouseOver = false; return;}
+        currentDoor = this;
         mouseOver = true;
         if (locked) { Debug.Log("Door locked."); return;  }
         
@@ -52,6 +55,7 @@ public class GeneralDoor : MonoBehaviour
 
     void OnMouseExit()
     {
+        currentDoor = null;
         mouseOver = false;
     }
 

@@ -12,9 +12,11 @@ public class MicrowaveController : MonoBehaviour
     public Transform spawnPoint;
 
     private bool isOpen = false;
+    public bool open => isOpen;
     private bool keyInside = false;
     private GameObject currentKey;
     private bool keyCooked;
+    public bool KeyCooked => keyCooked;
     private Quaternion closedRotation;
     private Quaternion openRotation;
     private EquipmentController equipment;
