@@ -51,7 +51,7 @@ public class CrosshairController : MonoBehaviour
         //{
         //    handshape = 0;
         //}
-
+        HandleUI();
         if (anyFocus || UIController.Paused)
         {
             FollowMouse();
@@ -61,7 +61,7 @@ public class CrosshairController : MonoBehaviour
             CenterCrosshair();
         }
 
-        HandleUI();
+        
 
         KeypadButtonScript.mousingB = false;
         MicrowaveController.mousingM = false;
@@ -97,8 +97,13 @@ public class CrosshairController : MonoBehaviour
 
     void HandleUI()
     {
-        
-        if(Pickup.carrying)
+        if(UIController.Paused && IsPointerOverUI())
+        {
+            handshape = 2;
+            popupText.text = "";
+            return;
+        }
+        if (Pickup.carrying)
         {
             handshape = 3;
             popupText.text = "<b>(M2)\nThrow";
@@ -113,7 +118,7 @@ public class CrosshairController : MonoBehaviour
         if (GeneralDoor.currentDoor != null)
         {
             handshape = 3;
-            if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor)
+            if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor && GeneralDoor.currentDoor.locked)
             {
                 popupText.text = "Jammed...";
                 return;
@@ -175,7 +180,7 @@ public class CrosshairController : MonoBehaviour
         if (KeypadButtonScript.mousingB)
         {
             handshape = 2;
-            popupText.text = "<b>(M1)\nPress";
+            popupText.text = "<b>(M1)\nPush";
             return;
         }
 
