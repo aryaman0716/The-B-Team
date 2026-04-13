@@ -4,8 +4,9 @@ using UnityEngine.EventSystems;
 using TMPro;
 public class CrosshairController : MonoBehaviour
 {
-    public Image image;
-    public Sprite[] sprites;
+    private Image cursorImage;
+    [SerializeField] private Sprite[] cursorSprites;
+    [SerializeField] private Sprite[] popupIcons;
     public static int handshape = 0;
     public static bool anyFocus = false;
     private RectTransform rectTransform;
@@ -13,12 +14,13 @@ public class CrosshairController : MonoBehaviour
     [SerializeField] private Vector2 pausedOffset;
     [SerializeField] private Vector2 normalOffset;
 
+    private Image popupImage;
     private TMP_Text popupText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        image = GetComponent<Image>();
+        cursorImage = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 
@@ -29,7 +31,7 @@ public class CrosshairController : MonoBehaviour
     void Update()
     {
         Debug.Log(KeypadButtonScript.mousingB);
-        image.sprite = sprites[handshape];
+        cursorImage.sprite = cursorSprites[handshape];
         bool overUI = IsPointerOverUI();
 
         //if (Pickup.carrying)
@@ -106,36 +108,48 @@ public class CrosshairController : MonoBehaviour
         if (Pickup.carrying)
         {
             handshape = 3;
-            popupText.text = "<b>(M2)\nThrow";
+            popupImage.sprite = popupIcons[2];
+            popupText.text = "Throw";
             return;
         }
         if (Pickup.mousing)
         {
+            popupImage.sprite = popupIcons[1];
             handshape = 1;
-            popupText.text = "<b>(M1)\nGrab";
+            popupText.text = "Grab";
             return;
         }
         if (GeneralDoor.currentDoor != null)
         {
-            handshape = 3;
+            
             if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor && GeneralDoor.currentDoor.locked)
             {
+                popupImage.sprite = popupIcons[0];
+                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -100.5f);
+                handshape = 4;
                 popupText.text = "Jammed...";
                 return;
             }
             if (GeneralDoor.currentDoor.locked == true)
             {
+                popupImage.sprite = popupIcons[0];
+                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -100.5f);
+                handshape = 4;
                 popupText.text = "It's locked...";
                 return;
             }
             if (GeneralDoor.currentDoor.opened)
             {
-                popupText.text = "<b>(M1)</b>\nClose";
+                popupImage.sprite = popupIcons[1];
+                handshape = 1;
+                popupText.text = "Close";
                 return;
             }
             else
             {
-                popupText.text = "<b>(M1)</b>\nOpen";
+                popupImage.sprite = popupIcons[1];
+                handshape = 1;
+                popupText.text = "Open";
                 return;
             }
         }
@@ -147,17 +161,20 @@ public class CrosshairController : MonoBehaviour
             {
                 handshape = 0;
                 popupText.text = "";
+                popupImage.sprite = popupIcons[0];
                 return;
             }
             handshape = 2;
             if (obj.IsOn)
             {
-                popupText.text = ("<b>(M1)</b>\nTurn Off");
+                popupImage.sprite = popupIcons[1];
+                popupText.text = ("Turn Off");
                 return;
             }
             else
             {
-                popupText.text = ("<b>(M1)</b>\nTurn On");
+                popupImage.sprite = popupIcons[1];
+                popupText.text = ("Turn On");
                 return;
             }
         }
@@ -165,32 +182,40 @@ public class CrosshairController : MonoBehaviour
         {
             var obj = GameObject.Find("Microwave").GetComponent<MicrowaveController>();
             if (obj == null || obj.enabled == false || obj.KeyCooked) { return; }
-            handshape = 2;
+            
             if (obj.open)
             {
-                popupText.text = "<b>(M1)</b>\nClose";
+                popupImage.sprite = popupIcons[1];
+                handshape = 1;
+                popupText.text = "Close";
                 return;
             }
             else
             {
-                popupText.text = "<b>(M1)</b>\nOpen";
+                popupImage.sprite = popupIcons[1];
+                handshape = 3;
+                popupText.text = "Open";
                 return;
             }
         }
         if (KeypadButtonScript.mousingB)
         {
+            popupImage.sprite = popupIcons[1];
             handshape = 2;
-            popupText.text = "<b>(M1)\nPush";
+            popupText.text = "Push";
             return;
         }
 
         handshape = 0;
+        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -180);
+        popupImage.sprite = popupIcons[0];
         popupText.text = "";
     }
 
     void InitialisePopupUI()
     {
         popupText = GameObject.Find("popupText").GetComponent<TMP_Text>();
+        popupImage = GameObject.Find("popupImage").GetComponent<Image>();
         
     }
 
