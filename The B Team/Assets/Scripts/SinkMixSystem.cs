@@ -10,6 +10,7 @@ public class SinkMixSystem : MonoBehaviour
     private GameObject flour_obj;
 
     private bool flourAdded = false;
+    public bool FlourAdded => flourAdded;
     private bool doughCreated = false;
 
     void Start()

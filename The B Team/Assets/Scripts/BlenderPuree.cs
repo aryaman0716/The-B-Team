@@ -1,7 +1,10 @@
 using UnityEngine;
+using TMPro;
+
 public class BlenderPuree : MonoBehaviour
 {
     public GameObject pureePuddlePrefab;
+    public LayerMask pureeLayer;
     public float dropInterval = 0.5f;
 
     private bool isFilled = false;
@@ -11,6 +14,7 @@ public class BlenderPuree : MonoBehaviour
     private void Start()
     {
         pickup = GetComponent<Pickup>();
+        GetComponent<Rigidbody>().isKinematic = true;
         // The blender cannot be picked up until it is filled with puree.
         if (pickup != null)
         {
@@ -33,7 +37,7 @@ public class BlenderPuree : MonoBehaviour
 
         // make the puree puddle spawn and fall to the ground below the blender
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 10f, 1 << LayerMask.NameToLayer("Ground")))
         {
             Vector3 spawnPosition = hit.point + Vector3.up * 0.05f; 
             Instantiate(pureePuddlePrefab, spawnPosition, Quaternion.identity);
@@ -42,6 +46,8 @@ public class BlenderPuree : MonoBehaviour
     public void FillBlender()
     {
         if (isFilled) return;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponentInChildren<TMP_Text>().text = "Filled Blender";
         isFilled = true;
         Debug.Log("Blender filled with tomato puree!");
         if (pickup != null)

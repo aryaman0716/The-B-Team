@@ -35,12 +35,12 @@ public class RoombaBehaviour : MonoBehaviour
     {
         if (isShortCircuited) return;  // if the Roomba is short-circuited, we render it malfunctioned
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, puddleCheckDistance, pureeLayer))
-        {
-            ShortCircuit();
-            return;
-        }
+        //RaycastHit hit;
+        //if (Physics.Raycast(transform.position, transform.forward, out hit, puddleCheckDistance, pureeLayer))
+        //{
+        //    ShortCircuit();
+        //    return;
+        //}
 
         if (transform.position == patrolPoints[targetPoint].position)
         {
@@ -95,6 +95,12 @@ public class RoombaBehaviour : MonoBehaviour
         if (col.gameObject.tag == "Player" && directionChangeTimer == 0)
         {
             changeDirection();
+        }
+        if(col.gameObject.tag == "Puree" && !isShortCircuited)
+        {
+            var distance = Vector3.Distance(transform.position, col.transform.position);
+            if(distance > 0.5f) { return; }
+            ShortCircuit();
         }
     }
     void ShortCircuit()

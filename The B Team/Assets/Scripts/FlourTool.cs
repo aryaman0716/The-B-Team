@@ -23,25 +23,10 @@ public class FlourTool : ToolData
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, maxUseDistance, ~0, QueryTriggerInteraction.Ignore))
         {
-            SinkMixSystem sink = hit.collider.GetComponentInParent<SinkMixSystem>();
-            if (sink != null)
-            {
-                SpawnParticle(hit);
-                sink.AddFlour();
-                return;
-            }
+            SpawnParticle(hit);
+
         }
-        /*VentSystem ventSystem = GameObject.FindFirstObjectByType<VentSystem>();
-        if (ventSystem == null)
-        {
-            Debug.Log("VentSystem not found!");
-            return;
-        }
-        if (!ventSystem.ventOpened)
-        {
-            Debug.Log("VentSystem is not opened!");
-            return;
-        }*/
+
         Debug.Log("Flour used!");
         Vector3 spawnPos = origin.position + origin.forward * 0.8f;
         Instantiate(flourDustPrefab, spawnPos, origin.rotation);

@@ -26,5 +26,12 @@ public class DustProjectile : MonoBehaviour
             keypad.RevealButtons();
             Destroy(gameObject);
         }
+        
+        if(other.transform == GameObject.Find("Sink_Base").transform)
+        {
+            var sink = GameObject.Find("Sink_Base").GetComponent<SinkMixSystem>();
+            if (sink.FlourAdded) { return; }
+            sink.AddFlour();
+        }
     }
 }
