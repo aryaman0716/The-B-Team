@@ -5,6 +5,7 @@ using TMPro;
 public class CrosshairController : MonoBehaviour
 {
     private Image cursorImage;
+    [SerializeField]private GameObject seperatingLine;
     [SerializeField] private Sprite[] cursorSprites;
     [SerializeField] private Sprite[] popupIcons;
     public static int handshape = 0;
@@ -109,6 +110,7 @@ public class CrosshairController : MonoBehaviour
             handshape = 3;
             popupImage.sprite = popupIcons[2];
             popupText.text = "Throw";
+            seperatingLine.SetActive(true);
             return;
         }
         if (Pickup.mousing)
@@ -116,6 +118,7 @@ public class CrosshairController : MonoBehaviour
             popupImage.sprite = popupIcons[1];
             handshape = 1;
             popupText.text = "Grab";
+            seperatingLine.SetActive(true);
             return;
         }
         if (GeneralDoor.currentDoor != null)
@@ -124,17 +127,19 @@ public class CrosshairController : MonoBehaviour
             if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor && GeneralDoor.currentDoor.locked)
             {
                 popupImage.sprite = popupIcons[0];
-                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -100.5f);
+                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(436f, 13f);
                 handshape = 4;
                 popupText.text = "Jammed...";
+                seperatingLine.SetActive(true);
                 return;
             }
             if (GeneralDoor.currentDoor.locked == true)
             {
                 popupImage.sprite = popupIcons[0];
-                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -100.5f);
+                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(436f, 13f);
                 handshape = 4;
                 popupText.text = "It's locked...";
+                seperatingLine.SetActive(true);
                 return;
             }
             if (GeneralDoor.currentDoor.opened)
@@ -142,6 +147,7 @@ public class CrosshairController : MonoBehaviour
                 popupImage.sprite = popupIcons[1];
                 handshape = 1;
                 popupText.text = "Close";
+                seperatingLine.SetActive(true);
                 return;
             }
             else
@@ -149,6 +155,7 @@ public class CrosshairController : MonoBehaviour
                 popupImage.sprite = popupIcons[1];
                 handshape = 1;
                 popupText.text = "Open";
+                seperatingLine.SetActive(true);
                 return;
             }
         }
@@ -164,11 +171,13 @@ public class CrosshairController : MonoBehaviour
                     handshape = 3;
                     popupText.text = "Knead";
                     popupImage.sprite = popupIcons[1];
+                    seperatingLine.SetActive(true);
                     return;
                 }
                 handshape = 0;
                 popupText.text = "";
                 popupImage.sprite = popupIcons[0];
+
                 return;
             }
             handshape = 2;
@@ -176,12 +185,14 @@ public class CrosshairController : MonoBehaviour
             {
                 popupImage.sprite = popupIcons[1];
                 popupText.text = ("Turn Off");
+                seperatingLine.SetActive(true);
                 return;
             }
             else
             {
                 popupImage.sprite = popupIcons[1];
                 popupText.text = ("Turn On");
+                seperatingLine.SetActive(true);
                 return;
             }
         }
@@ -195,6 +206,7 @@ public class CrosshairController : MonoBehaviour
                 popupImage.sprite = popupIcons[1];
                 handshape = 1;
                 popupText.text = "Close";
+                seperatingLine.SetActive(true);
                 return;
             }
             else
@@ -202,6 +214,7 @@ public class CrosshairController : MonoBehaviour
                 popupImage.sprite = popupIcons[1];
                 handshape = 3;
                 popupText.text = "Open";
+                seperatingLine.SetActive(true);
                 return;
             }
         }
@@ -214,9 +227,11 @@ public class CrosshairController : MonoBehaviour
         }
 
         handshape = 0;
-        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(18f, -180);
+        seperatingLine.SetActive(false);
+        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 13f);
         popupImage.sprite = popupIcons[0];
         popupText.text = "";
+        
     }
 
     void InitialisePopupUI()
