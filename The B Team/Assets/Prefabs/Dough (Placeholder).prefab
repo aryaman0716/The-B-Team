@@ -198,6 +198,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1280076951194856589}
     m_Modifications:
+    - target: {fileID: 1499883997324207296, guid: 354a7585c9974094496ab4de20175e06, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2555459560189317009, guid: 354a7585c9974094496ab4de20175e06, type: 3}
       propertyPath: m_Name
       value: PlacementTrigger

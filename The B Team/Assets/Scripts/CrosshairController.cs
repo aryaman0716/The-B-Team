@@ -228,7 +228,7 @@ public class CrosshairController : MonoBehaviour
 
         handshape = 0;
         seperatingLine.SetActive(false);
-        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 13f);
+        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 10f);
         popupImage.sprite = popupIcons[0];
         popupText.text = "";
         
