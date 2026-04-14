@@ -99,7 +99,7 @@ public class RoombaBehaviour : MonoBehaviour
         if(col.gameObject.tag == "Puree" && !isShortCircuited)
         {
             var distance = Vector3.Distance(transform.position, col.transform.position);
-            if(distance > 0.5f) { return; }
+            if(distance > 1) { return; }
             ShortCircuit();
         }
     }

@@ -30,7 +30,6 @@ public class CrosshairController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(KeypadButtonScript.mousingB);
         cursorImage.sprite = cursorSprites[handshape];
         bool overUI = IsPointerOverUI();
 
@@ -159,6 +158,14 @@ public class CrosshairController : MonoBehaviour
             if (obj == null || obj.enabled == false) { return; }
             if (obj.Filled)
             {
+                var sinkMix = obj.transform.GetComponent<SinkMixSystem>();
+                if(sinkMix != null && sinkMix.FlourAdded)
+                {
+                    handshape = 3;
+                    popupText.text = "Knead";
+                    popupImage.sprite = popupIcons[1];
+                    return;
+                }
                 handshape = 0;
                 popupText.text = "";
                 popupImage.sprite = popupIcons[0];

@@ -55,6 +55,13 @@ public class BlenderPuree : MonoBehaviour
             pickup.enabled = true;
         }
     }
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("TomatoProjectile") && !isFilled)
+        {
+            FillBlender();
+        }
+    }
     public void SetHeld(bool state)
     {
         isHeld = state;

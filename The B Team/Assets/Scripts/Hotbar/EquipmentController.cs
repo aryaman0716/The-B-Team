@@ -40,12 +40,12 @@ public class EquipmentController : MonoBehaviour
             // validity check for current tool
             if (currentIndex >= 0 && currentIndex < tools.Length && tools[currentIndex] != null)
             {
-                // we check if the current tool is a TomatoTool before trying to call UseBlender
-                var tomato = tools[currentIndex] as TomatoTool;
-                if (tomato != null)
-                {
-                    tomato.UseBlender(propsHolder);
-                }
+                //// we check if the current tool is a TomatoTool before trying to call UseBlender
+                //var tomato = tools[currentIndex] as TomatoTool;
+                //if (tomato != null)
+                //{
+                //    tomato.UseBlender(propsHolder);
+                //}
             }
         }
     }

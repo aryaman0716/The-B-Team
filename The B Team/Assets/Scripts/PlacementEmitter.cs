@@ -15,6 +15,7 @@ public class PlacementEmitter : MonoBehaviour
 
     private bool isPlaced = false;
     public bool IsPlaced => isPlaced;
+    private bool inRange = false;
 
 
     void Start()
@@ -41,7 +42,7 @@ public class PlacementEmitter : MonoBehaviour
     {
         if (!isActive || isPlaced || pickup == null) { return; }
 
-        if (pickup.IsHolding)
+        if (pickup.IsHolding && !inRange)
         {
             EnablePreviewHighlight(true);
         }
@@ -62,7 +63,6 @@ public class PlacementEmitter : MonoBehaviour
     void PlaceObject()
     {
         if (currentListener == null) { return; }
-
         isPlaced = true;
 
         //Set position + rotation
@@ -117,6 +117,7 @@ public class PlacementEmitter : MonoBehaviour
     public void TriggerEnter(Collider col)//called from placementTrigger child
     {
         if (isPlaced || !isActive) { return; }
+        inRange = true;
         Debug.Log("Emitter entering listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
 
@@ -125,16 +126,19 @@ public class PlacementEmitter : MonoBehaviour
 
         currentListener = listener;
         EnablePreviewMeshes(true);
+        EnablePreviewHighlight(false);
     }
 
     public void TriggerExit(Collider col)//also called from placementTrigger child
     {
         if (isPlaced || !isActive) { return; }
+        inRange = false;
         Debug.Log("Emitter exiting listener");
         PlacementListener listener = col.GetComponent<PlacementListener>();
         if (listener == null || listener.placementID != placementID) { return; }
 
         if (currentListener == listener) { currentListener = null; }
         EnablePreviewMeshes(false);
+        EnablePreviewHighlight(true);
     }
 }

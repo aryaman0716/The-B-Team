@@ -27,18 +27,18 @@ public class TomatoTool : ToolData
             rb.AddForce(origin.forward * throwForce, ForceMode.VelocityChange);
         }
     }
-    public void UseBlender(Transform origin)
-    {
-        Ray ray = new Ray(origin.position, origin.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactionRange))
-        {
-            BlenderPuree blender = hit.collider.GetComponent<BlenderPuree>();
-            if (blender != null)
-            {
-                blender.FillBlender();
-                Debug.Log("Blender filled!");
-            }
-        }
-    }
+    //public void UseBlender(Transform origin)
+    //{
+    //    Ray ray = new Ray(origin.position, origin.forward);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(ray, out hit, interactionRange))
+    //    {
+    //        BlenderPuree blender = hit.collider.GetComponent<BlenderPuree>();
+    //        if (blender != null)
+    //        {
+    //            blender.FillBlender();
+    //            Debug.Log("Blender filled!");
+    //        }
+    //    }
+    //}
 }

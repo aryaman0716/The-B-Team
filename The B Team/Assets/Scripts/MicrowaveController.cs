@@ -14,7 +14,7 @@ public class MicrowaveController : MonoBehaviour
     private bool isOpen = false;
     public bool open => isOpen;
     private bool keyInside = false;
-    private GameObject currentKey;
+    private GameObject currentKey = null;
     private bool keyCooked;
     public bool KeyCooked => keyCooked;
     private Quaternion closedRotation;
@@ -43,6 +43,11 @@ public class MicrowaveController : MonoBehaviour
             return;
         }
 
+        currentKey = GameObject.FindGameObjectWithTag("MouldedKey");
+        if (currentKey != null && currentKey.GetComponent<PlacementEmitter>().IsPlaced && isOpen == false)
+        {
+            CookKey();
+        }
         if (keyCooked && isOpen && doorPivot.localRotation == openRotation)
         {
             GetComponent<MicrowaveController>().enabled = false;
@@ -88,12 +93,7 @@ public class MicrowaveController : MonoBehaviour
         {
             CookKey();
         }
-        //var fText = GetComponentInChildren<TMP_Text>();
-        //if (fText != null)
-        //{
-        //    fText.text = isOpen ? "Microwave\nOpen" : "Microwave\nClosed";
-        //}
-        Debug.Log(isOpen ? "Microwave opened" : "Microwave closed");
+
     }
     void CookKey()
     {
@@ -113,15 +113,7 @@ public class MicrowaveController : MonoBehaviour
         keyInside = false;
         currentKey = null;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("MouldedKey") && isOpen)
-        {
-            keyInside = true;
-            currentKey = other.gameObject;
-            Debug.Log("Moulded key placed inside microwave.");
-        }
-    }
+    
     private float PlayerDistance()
     {
         float distance = Vector3.Distance(Player.transform.position, transform.position);

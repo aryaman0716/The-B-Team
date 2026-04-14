@@ -16,12 +16,12 @@ public class SpatulaTool : ToolData
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 4f))
         {
-            SinkMixSystem sink = hit.collider.GetComponent<SinkMixSystem>();
-            if (sink != null)
-            {
-                sink.MixWithSpatula();
-                return;
-            }
+            //SinkMixSystem sink = hit.collider.GetComponent<SinkMixSystem>();
+            //if (sink != null)
+            //{
+            //    sink.MixWithSpatula();
+            //    return;
+            //}
             Room1ExitDoor door = (hit.collider.GetComponent<Room1ExitDoor>());
             if (door != null)
             {

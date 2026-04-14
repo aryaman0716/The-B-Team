@@ -115,7 +115,8 @@ MonoBehaviour:
   isActive: 1
   placementTrigger: {fileID: 0}
   previewHighlight: {fileID: 0}
-  previewMeshes: []
+  previewMeshes:
+  - {fileID: 0}
   meshesToHide:
   - {fileID: 7430968752466223670}
 --- !u!1001 &881898138617221091

@@ -47,8 +47,8 @@ public class PadlockTransform : MonoBehaviour
             Quaternion spawnRot = (spawnPoint != null) ? spawnPoint.rotation : Quaternion.identity;
 
             GameObject newKey = Instantiate(keyPrefab, spawnPos, spawnRot);
-            //newKey.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
-            //newKey.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
+            newKey.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("mouldedKeyPreviewHighlight").GetComponent<MeshRenderer>();
+            newKey.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("mouldedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
             Rigidbody rb = newKey.GetComponent<Rigidbody>();
             if (rb != null)
             {

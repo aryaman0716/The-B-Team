@@ -19,6 +19,15 @@ public class SinkMixSystem : MonoBehaviour
         flour_obj.SetActive(false);
     }
 
+    void Update()
+    {
+        if (!flourAdded) { return; }
+        var distanceToPlayer = Vector3.Distance(transform.position, GameObject.Find("ChefPlayer").transform.position);
+        if(distanceToPlayer < 4 && Input.GetMouseButtonDown(0))
+        {
+            KneadDough();
+        }
+    }
     public void AddFlour()
     {
         if (!sinkInteractable.Filled)
@@ -41,7 +50,7 @@ public class SinkMixSystem : MonoBehaviour
         //    fText.text = "Sink + Flour";
         //}
     }
-    public void MixWithSpatula()
+    public void KneadDough()
     {
         if (!flourAdded)
         {
