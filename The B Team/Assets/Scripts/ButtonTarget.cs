@@ -14,6 +14,8 @@ public class ButtonTarget : MonoBehaviour
                 ventToActivate.ActivateVent();
                 relatedWire.ActivateWire();
             }
+            ObjectiveManager.Instance.CompleteObjective("Find a way to power on the ventilation system.");
+            ObjectiveManager.Instance.SetObjective("Find a way to reveal lasers.");
         }
     }
 }

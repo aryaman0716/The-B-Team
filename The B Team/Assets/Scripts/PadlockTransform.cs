@@ -71,7 +71,8 @@ public class PadlockTransform : MonoBehaviour
         //        pickup.Drop();
         //    }
         //}
-
+        ObjectiveManager.Instance.CompleteObjective("Find a way to unlock the shutter.");
+        ObjectiveManager.Instance.SetObjective("Find the key for the manager's office.");
         if (equipment == null)
             equipment = FindFirstObjectByType<EquipmentController>();
 

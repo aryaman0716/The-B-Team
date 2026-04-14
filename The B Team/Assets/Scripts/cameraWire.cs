@@ -18,5 +18,8 @@ public class cameraWire : MonoBehaviour
     {
         cameraView.SetActive(false);
         gameObject.SetActive(false);
+
+        ObjectiveManager.Instance.CompleteObjective("Find a way to turn off the security camera.");
+        ObjectiveManager.Instance.SetObjective("Find a keycard to unlock the staff elevator.");
     }
 }

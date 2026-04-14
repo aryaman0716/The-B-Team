@@ -32,6 +32,7 @@ public class VaultDoor : MonoBehaviour
     private IEnumerator ExplodeDoor()
     {
         yield return new WaitForSeconds(1.5f);
+        ObjectiveManager.Instance.CompleteObjective("Find a way to blast through the vault door.");
         animator.SetTrigger("ExplodeDoor");
 
     }
