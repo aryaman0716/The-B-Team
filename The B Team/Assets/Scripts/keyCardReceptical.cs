@@ -21,7 +21,6 @@ public class keyCardReceptical : MonoBehaviour
             button.needsKey = false;
             collision.gameObject.SetActive(false);
         }
-        ObjectiveManager.Instance.CompleteObjective("Find a keycard to unlock the staff elevator.");
-        ObjectiveManager.Instance.SetObjective("Find a way to blast through the vault door.");
+        ObjectiveManager.Instance.CompleteObjective("Find a keycard to unlock the staff elevator.", "Find a way to blast through the vault door.");
     }
 }

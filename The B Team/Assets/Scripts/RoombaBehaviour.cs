@@ -109,8 +109,7 @@ public class RoombaBehaviour : MonoBehaviour
         isShortCircuited = true;
         Debug.Log("Roomba short-circuited! Dropping key...");
 
-        ObjectiveManager.Instance.CompleteObjective("Find the key for the manager's office.");
-        ObjectiveManager.Instance.SetObjective("Find a way to turn off the security camera.");
+        ObjectiveManager.Instance.CompleteObjective("Find the key for the manager's office.", "Find a way to turn off the security camera.");
 
         if (managerKeyPrefab != null)
         {

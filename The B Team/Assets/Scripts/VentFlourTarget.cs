@@ -9,8 +9,7 @@ public class VentFlourTarget : MonoBehaviour
         foreach (Renderer r in lasersParent.GetComponentsInChildren<Renderer>())
         {
             r.enabled = true; // Show the lasers
-            ObjectiveManager.Instance.CompleteObjective("Find a way to reveal lasers.");
-            ObjectiveManager.Instance.SetObjective("Find something to oil the door.");
+            ObjectiveManager.Instance.CompleteObjective("Find a way to reveal lasers.", "Find something to oil the door.");
         }
         if (GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>() != null) { GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>().Play(); }
     }
