@@ -23,7 +23,7 @@ public class SinkMixSystem : MonoBehaviour
     {
         if (!flourAdded) { return; }
         var distanceToPlayer = Vector3.Distance(transform.position, GameObject.Find("ChefPlayer").transform.position);
-        if(distanceToPlayer < 4 && Input.GetMouseButtonDown(0))
+        if(distanceToPlayer < 4 && Input.GetMouseButtonDown(0) && SinkInteractable.mousingS)
         {
             KneadDough();
         }
@@ -44,11 +44,7 @@ public class SinkMixSystem : MonoBehaviour
         flourAdded = true;
         flour_obj.SetActive(true);
         Debug.Log("Flour added to water!");
-        //TMP_Text fText = GetComponentInChildren<TMP_Text>();
-        //if (fText != null) 
-        //{
-        //    fText.text = "Sink + Flour";
-        //}
+
     }
     public void KneadDough()
     {

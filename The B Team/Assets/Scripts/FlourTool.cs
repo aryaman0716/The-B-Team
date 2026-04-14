@@ -28,7 +28,7 @@ public class FlourTool : ToolData
         }
 
         Debug.Log("Flour used!");
-        Vector3 spawnPos = origin.position + origin.forward * 0.8f;
+        Vector3 spawnPos = origin.position + origin.forward * 1f;
         Instantiate(flourDustPrefab, spawnPos, origin.rotation);
     }
     private void SpawnParticle(RaycastHit hit)
