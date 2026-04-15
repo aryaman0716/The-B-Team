@@ -22,7 +22,7 @@ public class ObjectiveManager : MonoBehaviour
         currentObjective = text;
         objectiveText.text = text;
         objectiveText.alpha = 1f;
-        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -270);
+        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -125);
     }
 
     public void CompleteObjective(string objectiveToCheck, string nextObjective)
