@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class CrosshairController : MonoBehaviour
 {
     private Image cursorImage;
     [SerializeField]private GameObject seperatingLine;
     [SerializeField] private Sprite[] cursorSprites;
+    [SerializeField] private Vector2[] cursorSizes;
     [SerializeField] private Sprite[] popupIcons;
     public static int handshape = 0;
     public static bool anyFocus = false;
@@ -18,6 +20,7 @@ public class CrosshairController : MonoBehaviour
     private Image popupImage;
     private TMP_Text popupText;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,35 +29,23 @@ public class CrosshairController : MonoBehaviour
         canvas = GetComponentInParent<Canvas>();
 
         InitialisePopupUI();
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        cursorImage.sprite = cursorSprites[handshape];
+        HandleUI();
+        if (cursorImage.sprite != cursorSprites[handshape])
+        {
+            cursorImage.sprite = cursorSprites[handshape];
+            rectTransform.sizeDelta = cursorSizes[handshape];
+        }
         bool overUI = IsPointerOverUI();
 
-        //if (Pickup.carrying)
-        //{
-        //    handshape = 3;
-        //}
-        //else if (Pickup.mousing || (UIController.Paused && !overUI))
-        //{
-        //    handshape = 1;
-        //}
-        //else if (KeypadButtonScript.mousingB || 
-        //        MicrowaveController.mousingM || 
-        //        SinkInteractable.mousingS || 
-        //        (UIController.Paused && overUI))
-        //{
-        //    handshape = 2;
-        //}
-        //else
-        //{
-        //    handshape = 0;
-        //}
-        HandleUI();
-        if (anyFocus || UIController.Paused)
+
+        
+        if (anyFocus || UIController.Paused || SceneManager.GetActiveScene().name == "MainMenu")
         {
             FollowMouse();
         }
@@ -99,7 +90,7 @@ public class CrosshairController : MonoBehaviour
 
     void HandleUI()
     {
-        if(UIController.Paused && IsPointerOverUI())
+        if((UIController.Paused || SceneManager.GetActiveScene().name == "MainMenu") && IsPointerOverUI())
         {
             handshape = 2;
             popupText.text = "";

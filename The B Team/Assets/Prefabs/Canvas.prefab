@@ -565,13 +565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787889964b564b44680b076769fd216e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  image: {fileID: 0}
-  sprites:
-  - {fileID: 21300000, guid: 1942943b408901a4ead208e2ef7e02c7, type: 3}
-  - {fileID: 21300000, guid: a34eafc6667c99843bab6bda85557f76, type: 3}
-  - {fileID: 21300000, guid: fcec8c4c1efb4eb47bcdd17269f39da4, type: 3}
-  - {fileID: 21300000, guid: 803215778f2193d42b13b6caa2509ced, type: 3}
-  pausedOffset: {x: 20, y: -20}
+  seperatingLine: {fileID: 0}
+  cursorSprites: []
+  popupIcons: []
+  pausedOffset: {x: 0, y: 0}
   normalOffset: {x: 0, y: 0}
 --- !u!1 &7181757523718693993
 GameObject:
