@@ -12,6 +12,7 @@ public class VentSystem : MonoBehaviour
     public void ActivateVent()
     {
         isActivated = true;
+        GetComponentInChildren<Animator>().SetTrigger("VentSystemOn");
         Debug.Log("Vent activated!");
     }
     public void ScrewRemoved()

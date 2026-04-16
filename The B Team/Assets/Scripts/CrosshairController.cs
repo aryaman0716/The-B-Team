@@ -194,6 +194,11 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("Push", (int)cursor_img.point, (int)ui_img.mouse_left);
             return;
         }
+        if (ScrewInteractable.mousing)
+        {
+            EnablePopupUI("Unscrew", (int)cursor_img.point, (int)ui_img.mouse_left);
+            return;
+        }
 
         DisablePopupUI();
         

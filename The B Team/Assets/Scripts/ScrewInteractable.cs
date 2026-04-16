@@ -11,6 +11,8 @@ public class ScrewInteractable : MonoBehaviour
     private AudioSource audioSource;
     private Collider myCollider;
 
+    public static bool mousing = false;
+
     private void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -22,7 +24,7 @@ public class ScrewInteractable : MonoBehaviour
     void Update()
     {
         if (isRemoved) return;  // Prevent interaction if already removed
-        if (!ventSystem || !ventSystem.isActivated) return;
+        //if (!ventSystem || !ventSystem.isActivated) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,7 +61,10 @@ public class ScrewInteractable : MonoBehaviour
 
     void RemoveScrew()
     {
+        
         isRemoved = true;
+        GetComponent<Outline>().enabled = false;
+        mousing = false;
         Collider col = myCollider ?? GetComponent<Collider>();
         if (col != null)
         {
@@ -75,6 +80,27 @@ public class ScrewInteractable : MonoBehaviour
         rb.useGravity = true;
 
         ventSystem.ScrewRemoved();
+    }
+
+    void OnMouseOver()
+    {
+        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex)
+        {
+            mousing = false;
+            GetComponent<Outline>().enabled = false;
+        }
+        else
+        {
+            mousing = true;
+            GetComponent<Outline>().enabled = true;
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
+        mousing = false;
+        GetComponent<Outline>().enabled = false;
     }
 
     void OnCollisionEnter(Collision collision)
