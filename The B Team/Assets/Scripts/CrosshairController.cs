@@ -20,6 +20,23 @@ public class CrosshairController : MonoBehaviour
     private Image popupImage;
     private TMP_Text popupText;
 
+    public enum cursor_img : int
+    {
+        none,
+        open_hand,
+        point,
+        grab,
+        disabled,
+
+    }
+
+    public enum ui_img : int
+    {
+        none,
+        mouse_left,
+        mouse_right
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,24 +109,17 @@ public class CrosshairController : MonoBehaviour
     {
         if((UIController.Paused || SceneManager.GetActiveScene().name == "MainMenu") && IsPointerOverUI())
         {
-            handshape = 2;
-            popupText.text = "";
+            EnablePopupUI("", (int)cursor_img.point, (int)ui_img.none);
             return;
         }
         if (Pickup.carrying)
         {
-            handshape = 3;
-            popupImage.sprite = popupIcons[2];
-            popupText.text = "Throw";
-            seperatingLine.SetActive(true);
+            EnablePopupUI("Throw", (int)cursor_img.grab, (int)ui_img.mouse_left);
             return;
         }
         if (Pickup.mousing)
         {
-            popupImage.sprite = popupIcons[1];
-            handshape = 1;
-            popupText.text = "Grab";
-            seperatingLine.SetActive(true);
+            EnablePopupUI("Grab", (int)cursor_img.grab, (int)ui_img.mouse_left);
             return;
         }
         if (GeneralDoor.currentDoor != null)
@@ -117,36 +127,22 @@ public class CrosshairController : MonoBehaviour
             
             if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor && GeneralDoor.currentDoor.locked)
             {
-                popupImage.sprite = popupIcons[0];
-                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(436f, 13f);
-                handshape = 4;
-                popupText.text = "Jammed...";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Jammed...", (int)cursor_img.disabled, (int)ui_img.none, 436f, 13f);
                 return;
             }
             if (GeneralDoor.currentDoor.locked == true)
             {
-                popupImage.sprite = popupIcons[0];
-                popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(436f, 13f);
-                handshape = 4;
-                popupText.text = "It's locked...";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("It's locked...", (int)cursor_img.disabled, (int)ui_img.none, 436f, 13f);
                 return;
             }
             if (GeneralDoor.currentDoor.opened)
             {
-                popupImage.sprite = popupIcons[1];
-                handshape = 1;
-                popupText.text = "Close";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Turn On", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
                 return;
             }
             else
             {
-                popupImage.sprite = popupIcons[1];
-                handshape = 1;
-                popupText.text = "Open";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Open", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
                 return;
             }
         }
@@ -159,31 +155,21 @@ public class CrosshairController : MonoBehaviour
                 var sinkMix = obj.transform.GetComponent<SinkMixSystem>();
                 if(sinkMix != null && sinkMix.FlourAdded)
                 {
-                    handshape = 3;
-                    popupText.text = "Knead";
-                    popupImage.sprite = popupIcons[1];
-                    seperatingLine.SetActive(true);
+                    EnablePopupUI("Knead", (int)cursor_img.grab, (int)ui_img.mouse_left);
                     return;
                 }
-                handshape = 0;
-                popupText.text = "";
-                popupImage.sprite = popupIcons[0];
 
+                DisablePopupUI();
                 return;
             }
-            handshape = 2;
             if (obj.IsOn)
             {
-                popupImage.sprite = popupIcons[1];
-                popupText.text = ("Turn Off");
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Turn On", (int)cursor_img.point, (int)ui_img.mouse_left);
                 return;
             }
             else
             {
-                popupImage.sprite = popupIcons[1];
-                popupText.text = ("Turn On");
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Turn On", (int)cursor_img.point, (int)ui_img.mouse_left);
                 return;
             }
         }
@@ -194,43 +180,60 @@ public class CrosshairController : MonoBehaviour
             
             if (obj.open)
             {
-                popupImage.sprite = popupIcons[1];
-                handshape = 1;
-                popupText.text = "Close";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Close", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
                 return;
             }
             else
             {
-                popupImage.sprite = popupIcons[1];
-                handshape = 3;
-                popupText.text = "Open";
-                seperatingLine.SetActive(true);
+                EnablePopupUI("Open", (int)cursor_img.grab, (int)ui_img.mouse_left);
                 return;
             }
         }
         if (KeypadButtonScript.mousingB)
         {
-            popupImage.sprite = popupIcons[1];
-            handshape = 2;
-            popupText.text = "Push";
+            EnablePopupUI("Push", (int)cursor_img.point, (int)ui_img.mouse_left);
             return;
         }
 
-        handshape = 0;
-        seperatingLine.SetActive(false);
-        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 10f);
-        popupImage.sprite = popupIcons[0];
-        popupText.text = "";
+        DisablePopupUI();
         
     }
 
     void InitialisePopupUI()
     {
         popupText = GameObject.Find("popupText").GetComponent<TMP_Text>();
-        popupImage = GameObject.Find("popupImage").GetComponent<Image>();
+        popupImage = GameObject.Find("popupImage").GetComponent<Image>();   
+    }
+
+    void EnablePopupUI(string text, int cursorIndex, int imgIndex)
+    {
+        popupText.text = text;
+        popupImage.sprite = popupIcons[imgIndex];
+        handshape = cursorIndex;
+        seperatingLine.SetActive(true);
+
+    }
+    void EnablePopupUI(string text, int cursorIndex, int imgIndex, float posX, float posY)
+    {
+        popupText.text = text;
+        popupImage.sprite = popupIcons[imgIndex];
+        handshape = cursorIndex;
+        seperatingLine.SetActive(true);
+
+        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(posX, posY);
+    }
+
+    void DisablePopupUI()
+    {
+        popupText.text = "";
+        popupImage.sprite = popupIcons[(int)ui_img.none];
+        handshape = (int)cursor_img.none;
+        seperatingLine.SetActive(false);
+        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 10f);
         
     }
 
-    
+
+
+
 }
