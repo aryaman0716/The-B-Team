@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
+    [SerializeField] float holdDistance = 1.5f;
 
     float distance;
     PropHolder propHolder;
@@ -79,7 +80,7 @@ public class Pickup : MonoBehaviour
                 rb.detectCollisions = true;
                 carrying = true;
 
-                this.transform.SetParent(propHolder.transform);
+                //this.transform.SetParent(propHolder.transform);
 
                 // Disable equipping while holding this object and hide equipped tool
                 if (equipmentController != null)
@@ -122,9 +123,19 @@ public class Pickup : MonoBehaviour
     }
     private void Hold()
     {
-        
+        if (propHolder == null) return;
 
-        distance = Vector3.Distance(this.transform.position, propHolder.transform.position);
+        Vector3 targetPos = propHolder.transform.position + propHolder.transform.forward * holdDistance + Vector3.down * 0.2f;
+        Vector3 direction = targetPos - transform.position;
+        float distance = direction.magnitude;
+        
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 0.5f, direction.normalized, out hit, distance))
+        {
+            targetPos = hit.point - direction.normalized * 0.2f;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 10f);
 
         if (distance >= maxDistance)
         {
@@ -165,13 +176,17 @@ public class Pickup : MonoBehaviour
         if (isHolding)
         {
             isHolding = false;
-            objectPos = this.transform.position;
 
-            this.transform.position = objectPos;
-            this.transform.SetParent(null);
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f))
+            {
+                transform.position = hit.point + Vector3.up * 0.3f;
+            }
+
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.useGravity = true;
+            rb.detectCollisions = true;
 
             // Re-enable equipping and restore equipped tool visibility when dropped
             if (equipmentController != null)
