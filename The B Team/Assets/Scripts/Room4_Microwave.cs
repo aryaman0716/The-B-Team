@@ -14,8 +14,11 @@ public class Room4_Microwave : MonoBehaviour
     [SerializeField] private bool primed = false;
     public bool Primed => primed;
     private bool openable = false;
+    public bool Openable => openable;
     [SerializeField] private EquipmentController equipment;
     [SerializeField] private GameObject cutleryObj;
+
+    public static bool mousing;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,7 +52,7 @@ public class Room4_Microwave : MonoBehaviour
     void OnMouseOver()
     {
         if (!openable) {  return; }
-
+        if(mousing == false) mousing = true; 
         if (Input.GetMouseButtonDown(0))
         {
             if (equipment != null && equipment.GetCurrentIndex() != equipment.TotalTools())
@@ -69,6 +72,15 @@ public class Room4_Microwave : MonoBehaviour
                 return;
             }
         }
+    }
+
+    void OnMouseEnter()
+    {
+        mousing = true;
+    }
+    void OnMouseExit()
+    {
+        mousing = false;
     }
     public void ToggleDoor(bool val)
     {

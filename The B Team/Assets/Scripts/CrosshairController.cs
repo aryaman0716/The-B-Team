@@ -112,6 +112,22 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("", (int)cursor_img.point, (int)ui_img.none);
             return;
         }
+        if (Room4_Microwave.mousing)
+        {
+            var obj = GameObject.Find("Room4_Microwave").GetComponent<Room4_Microwave>();
+            
+            if (obj != null && obj.Openable && !obj.DoorOpened)
+            {
+                EnablePopupUI("Open", (int)cursor_img.grab, (int)ui_img.mouse_left);
+                return;
+            }
+            else if (obj != null && obj.Openable && obj.DoorOpened)
+            {
+                EnablePopupUI("Close", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
+                return;
+            }
+
+        }
         if (Pickup.carrying)
         {
             EnablePopupUI("Throw", (int)cursor_img.grab, (int)ui_img.mouse_left);
@@ -119,7 +135,7 @@ public class CrosshairController : MonoBehaviour
         }
         if (Pickup.mousing)
         {
-            EnablePopupUI("Grab", (int)cursor_img.grab, (int)ui_img.mouse_left);
+            EnablePopupUI("Grab", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
             return;
         }
         if (GeneralDoor.currentDoor != null)
@@ -199,6 +215,7 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("Unscrew", (int)cursor_img.point, (int)ui_img.mouse_left);
             return;
         }
+        
 
         DisablePopupUI();
         
