@@ -8,7 +8,6 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
-    [SerializeField] float holdDistance = 1.5f;
 
     float distance;
     PropHolder propHolder;
@@ -20,16 +19,20 @@ public class Pickup : MonoBehaviour
     public static bool carrying = false;
     public static bool mousing = false;
 
+    private int holdLayer;
+    private Rigidbody heldObjRb;
+    private GameObject player;
 
     void Start()
     {
-        
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             equipmentController = player.GetComponent<EquipmentController>();
+
+        holdLayer = LayerMask.NameToLayer("holdLayer");
     }
     void Update()
     {
@@ -75,12 +78,22 @@ public class Pickup : MonoBehaviour
             if (distance <= maxDistance)
             {
                 isHolding = true;
-
+                heldObject = gameObject;
+                heldObjRb = rb;
                 rb.useGravity = false;
-                rb.detectCollisions = true;
-                carrying = true;
+                rb.isKinematic = true;
 
-                //this.transform.SetParent(propHolder.transform);
+                transform.SetParent(propHolder.transform);
+
+                gameObject.layer = holdLayer;
+
+                Collider objCol = GetComponent<Collider>();
+                Collider playerCol = player.GetComponent<Collider>();
+                if (objCol && playerCol)
+                {
+                    Physics.IgnoreCollision(objCol, playerCol, true);
+                }
+                carrying = true;
 
                 // Disable equipping while holding this object and hide equipped tool
                 if (equipmentController != null)
@@ -101,7 +114,7 @@ public class Pickup : MonoBehaviour
         }
     }
 
-     
+
     private void OnMouseUp()
     {
         Drop();
@@ -123,28 +136,20 @@ public class Pickup : MonoBehaviour
     }
     private void Hold()
     {
-        if (propHolder == null) return;
+        if (!isHolding) return;
 
-        Vector3 targetPos = propHolder.transform.position + propHolder.transform.forward * holdDistance + Vector3.down * 0.2f;
-        Vector3 direction = targetPos - transform.position;
-        float distance = direction.magnitude;
-        
-        RaycastHit hit;
-        if (Physics.SphereCast(transform.position, 0.5f, direction.normalized, out hit, distance))
-        {
-            targetPos = hit.point - direction.normalized * 0.2f;
-        }
+        float holdDistance = 2.0f;
+        transform.position = propHolder.transform.position + propHolder.transform.forward * holdDistance + Vector3.down * 0.2f;
 
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 10f);
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
+        distance = Vector3.Distance(transform.position, propHolder.transform.position);
         if (distance >= maxDistance)
         {
             Drop();
             return;
         }
-
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
 
         //if (Input.GetMouseButton(1))
         //{
@@ -154,10 +159,10 @@ public class Pickup : MonoBehaviour
         //}
         if (Input.GetMouseButton(1))
         {
-            
+
             ManagerKey isManagerKey = GetComponent<ManagerKey>();
 
-            
+
             if (isManagerKey == null)
             {
                 rb.AddForce(propHolder.transform.forward * throwForce);
@@ -170,23 +175,57 @@ public class Pickup : MonoBehaviour
             }
         }
     }
+    void StopClipping()
+    {
+        // Check if the object is clipping into the camera and adjust its position if necessary
+        float clipRange = Vector3.Distance(propHolder.transform.position, Camera.main.transform.position);
+        RaycastHit[] hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, clipRange);
+        if (hits.Length > 1)
+        {
+            transform.position = Camera.main.transform.position + new Vector3(0, -0.5f, 0);  // moving the object downwards to prevent clipping into the camera
+        }
+    }
+    void ThrowObject()
+    {
+        Collider objCol = GetComponent<Collider>();
+        Collider playerCol = player.GetComponent<Collider>();
+
+        if (objCol && playerCol)
+            Physics.IgnoreCollision(objCol, playerCol, false);
+
+        gameObject.layer = 0;
+
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
+        transform.SetParent(null);
+
+        rb.AddForce(Camera.main.transform.forward * throwForce);
+
+        heldObject = null;
+        isHolding = false;
+    }
     public void Drop()
     {
         carrying = false;
         if (isHolding)
         {
             isHolding = false;
+            StopClipping();
+            Collider objCol = GetComponent<Collider>();
+            Collider playerCol = player.GetComponent<Collider>();
 
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f))
+            if (objCol && playerCol)
             {
-                transform.position = hit.point + Vector3.up * 0.3f;
+                Physics.IgnoreCollision(objCol, playerCol, false);
             }
 
+            gameObject.layer = 0;
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            transform.SetParent(null);
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            rb.useGravity = true;
-            rb.detectCollisions = true;
 
             // Re-enable equipping and restore equipped tool visibility when dropped
             if (equipmentController != null)
@@ -197,6 +236,8 @@ public class Pickup : MonoBehaviour
             var blender = GetComponent<BlenderPuree>();
             if (blender != null)
                 blender.SetHeld(false);
+
+            heldObject = null;
         }
         if (CursorManager.Instance != null)
         {
