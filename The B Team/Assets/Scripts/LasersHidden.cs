@@ -5,7 +5,8 @@ public class LasersHidden : MonoBehaviour
     {
         foreach (Renderer r in GetComponentsInChildren<Renderer>())
         {
-            r.enabled = false; // Hide the lasers
+            var colour = r.material.color;
+            r.material.SetColor("_BaseColor", new Color(colour.r, colour.g, colour.b, 0));
         }
         GameObject.Find("FlourFog").GetComponentInChildren<ParticleSystem>().Stop();
     }
