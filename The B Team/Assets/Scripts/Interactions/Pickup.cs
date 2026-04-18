@@ -18,7 +18,10 @@ public class Pickup : MonoBehaviour
     private EquipmentController equipmentController;
     public static bool carrying = false;
     public static bool mousing = false;
-
+    private Vector3 holdOffset;
+    private Quaternion holdRotationOffset;
+    [SerializeField] float followForce = 600f;
+    [SerializeField] float damping = 20f;
 
     void Start()
     {
@@ -29,11 +32,17 @@ public class Pickup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             equipmentController = player.GetComponent<EquipmentController>();
+
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
     }
-    void Update()
+    void FixedUpdate()
     {
         if (isHolding)
         {
+            moveToDesire();
+
             Hold();
         }
     }
@@ -59,6 +68,9 @@ public class Pickup : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameObject.layer = LayerMask.NameToLayer("pickUp");
+        holdOffset = propHolder.transform.InverseTransformPoint(transform.position);
+        holdRotationOffset = Quaternion.Inverse(propHolder.transform.rotation) * transform.rotation;
         if (EquipmentController.publicIndex < 4)
         {
             return;
@@ -74,12 +86,12 @@ public class Pickup : MonoBehaviour
             if (distance <= maxDistance)
             {
                 isHolding = true;
-
+                
                 rb.useGravity = false;
                 rb.detectCollisions = true;
                 carrying = true;
 
-                this.transform.SetParent(propHolder.transform);
+                //this.transform.SetParent(propHolder.transform);
 
                 // Disable equipping while holding this object and hide equipped tool
                 if (equipmentController != null)
@@ -132,8 +144,8 @@ public class Pickup : MonoBehaviour
             return;
         }
 
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity *= 0.9f;
+        rb.angularVelocity *= 0.9f;
 
         //if (Input.GetMouseButton(1))
         //{
@@ -159,8 +171,27 @@ public class Pickup : MonoBehaviour
             }
         }
     }
+
+    void moveToDesire()
+    {
+        Vector3 targetPos = propHolder.transform.TransformPoint(holdOffset);
+        Vector3 toTarget = targetPos - rb.position;
+        Vector3 force = toTarget * followForce - rb.linearVelocity * damping;
+        rb.AddForce(force, ForceMode.Acceleration);
+        //creates force from location to desired location then moves it
+
+
+        Quaternion targetRot = propHolder.transform.rotation * holdRotationOffset;
+        Quaternion rotDiff = targetRot * Quaternion.Inverse(rb.rotation);
+        rotDiff.ToAngleAxis(out float angle, out Vector3 axis);
+        if (angle > 180f) angle -= 360f;
+        Vector3 torque = axis * angle * Mathf.Deg2Rad * followForce - rb.angularVelocity * damping;
+        rb.AddTorque(torque, ForceMode.Acceleration);
+        //same thing with location ((((i got the specific method for this from a video))))
+    }
     public void Drop()
     {
+        gameObject.layer = LayerMask.NameToLayer("Default");
         carrying = false;
         if (isHolding)
         {
