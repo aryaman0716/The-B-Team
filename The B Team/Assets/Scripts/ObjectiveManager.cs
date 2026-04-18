@@ -14,6 +14,22 @@ public class ObjectiveManager : MonoBehaviour
     {
         Instance = this;
     }
+    void Start()
+    {
+        // set this initial objective only for the first room, i.e, when the game progress is saved and loaded again, it should continue from the last objective , not reset to this one
+        if (PlayerPrefs.GetInt("CheckpointIndex", 0) == 0)
+        {
+            SetObjective("Find a way to power on the ventilation system.");
+        }
+        else if (PlayerPrefs.GetInt("CheckpointIndex", 0) >= 1) 
+        {
+            SetObjective("Find a way to unlock the shutter.");
+        }
+        else if (PlayerPrefs.GetInt("CheckpointIndex", 0) >= 2)
+        {
+            SetObjective("Find a way to turn off the security camera.");
+        }
+    }
 
     public void SetObjective(string text)
     {

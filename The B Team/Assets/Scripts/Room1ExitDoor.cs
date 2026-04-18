@@ -16,7 +16,6 @@ public class Room1ExitDoor : MonoBehaviour
         //{
         //    fText.text = "Oiled Door";
         //}
-        ObjectiveManager.Instance.CompleteObjective("Find something to oil the door.", "The door needs a little bash...");
     }
     private void Awake()
     {
@@ -35,10 +34,10 @@ public class Room1ExitDoor : MonoBehaviour
         if (!oiled) return;
         if (opened) return;
         opened = true;
+        ObjectiveManager.Instance.CompleteObjective("Find something to oil the door.", "Find a way to unlock the shutter.");
         if (animator != null)
         {
             animator.SetTrigger("Open");
         }
-        ObjectiveManager.Instance.CompleteObjective("The door needs a little bash...", "");
     }
 }
