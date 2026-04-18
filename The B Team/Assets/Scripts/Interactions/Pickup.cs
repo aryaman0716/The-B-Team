@@ -205,7 +205,7 @@ public class Pickup : MonoBehaviour
         {
             isHolding = false;
             objectPos = this.transform.position;
-
+            if(outline != null && outline.enabled) { outline.enabled = false; }
             this.transform.position = objectPos;
             this.transform.SetParent(null);
             rb.linearVelocity = Vector3.zero;
