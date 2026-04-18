@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4391344211412253418}
   - component: {fileID: 4096911279415334167}
   - component: {fileID: -1368495560104573845}
+  - component: {fileID: 399722021392735246}
   m_Layer: 0
   m_Name: Dough (Placeholder)
   m_TagString: Dough
@@ -131,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
   throwForce: 500
   maxDistance: 5
+  followForce: 600
+  damping: 20
 --- !u!114 &4391344211412253418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +193,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4768625fd61b4144ab241130f08fa637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &399722021392735246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083169828153621308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &6791710354877928698
 PrefabInstance:
   m_ObjectHideFlags: 0

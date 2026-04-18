@@ -47,6 +47,7 @@ public class GeneralDoor : MonoBehaviour
     {
         var dist = Vector3.Distance(playerTransform.position, transform.position);
         if (dist > interactRange) { mouseOver = false; return;}
+        if (Pickup.HeldObject != null) { return; }
         currentDoor = this;
         mouseOver = true;
         if (locked) { Debug.Log("Door locked."); return;  }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6571822242180466462}
   - component: {fileID: 8611147549517300349}
   - component: {fileID: 417346632719520810}
+  - component: {fileID: 9086391042791719394}
   m_Layer: 0
   m_Name: ManagerKey
   m_TagString: CookedKey
@@ -100,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pickup
   throwForce: 500
   maxDistance: 3
+  followForce: 600
+  damping: 20
 --- !u!114 &8611147549517300349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +137,24 @@ MonoBehaviour:
   - {fileID: 0}
   meshesToHide:
   - {fileID: 7166379564712631520}
+--- !u!114 &9086391042791719394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674638422547531139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &443913494517814491
 PrefabInstance:
   m_ObjectHideFlags: 0

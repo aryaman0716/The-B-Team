@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5481203032353199306}
   - component: {fileID: 2538175695756290344}
   - component: {fileID: 3920835929313942274}
-  - component: {fileID: 9062160923217045985}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -334,28 +333,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021229027547049769}
   m_Mesh: {fileID: 0}
---- !u!64 &9062160923217045985
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021229027547049769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &3733361306918964016
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +346,7 @@ GameObject:
   - component: {fileID: 526991208425035245}
   - component: {fileID: 6602610956330332061}
   - component: {fileID: 4936180357867205217}
+  - component: {fileID: 3733868146292442130}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -1723,6 +1701,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3733361306918964016}
   m_Mesh: {fileID: 0}
+--- !u!65 &3733868146292442130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3733361306918964016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 3, z: 0.09870434}
+  m_Center: {x: 0.99684143, y: 1.3749998, z: -0.049352646}
 --- !u!1 &3958261555042665262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1769,6 @@ GameObject:
   - component: {fileID: 5897323988469626718}
   - component: {fileID: 223992133041905129}
   - component: {fileID: 8056092744415871691}
-  - component: {fileID: 6483252121132802871}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2091,28 +2089,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4648692430831530381}
   m_Mesh: {fileID: 0}
---- !u!64 &6483252121132802871
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4648692430831530381}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &4950047351354462077
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Outline
   outlineMode: 1
-  outlineColor: {r: 1, g: 0.88550174, b: 0, a: 1}
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 10
   precomputeOutline: 0
   bakeKeys: []
@@ -2223,7 +2199,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.6602538, y: 3, z: 2.0382452}
   m_Center: {x: 0.32696834, y: -0.120000005, z: 0.9204178}

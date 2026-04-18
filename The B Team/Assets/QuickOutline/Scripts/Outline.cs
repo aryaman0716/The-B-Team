@@ -100,6 +100,8 @@ public class Outline : MonoBehaviour {
   }
 
   void OnEnable() {
+
+    outlineColor = new Color(outlineColor.r, outlineColor.g, outlineColor.b, 0);
     foreach (var renderer in renderers) {
 
       // Append outline shaders
@@ -134,6 +136,12 @@ public class Outline : MonoBehaviour {
       needsUpdate = false;
 
       UpdateMaterialProperties();
+    }
+
+    if(outlineColor.a < 1)
+    {
+            outlineColor.a = Mathf.Clamp(outlineColor.a += 0.005f, 0, 1);
+            UpdateMaterialProperties();
     }
   }
 

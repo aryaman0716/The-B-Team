@@ -153,7 +153,7 @@ public class CrosshairController : MonoBehaviour
             }
             if (GeneralDoor.currentDoor.opened)
             {
-                EnablePopupUI("Turn On", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
+                EnablePopupUI("Close", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
                 return;
             }
             else

@@ -4,13 +4,14 @@ public class Pickup : MonoBehaviour
     bool isHolding = false;
 
     private static GameObject heldObject;
-    public GameObject HeldObject => heldObject;
+    public static GameObject HeldObject => heldObject;
 
     [SerializeField] float throwForce = 500f;
     [SerializeField] float maxDistance = 3f;
 
     float distance;
     PropHolder propHolder;
+    Outline outline;
     Rigidbody rb;
 
     Vector3 objectPos;
@@ -28,7 +29,7 @@ public class Pickup : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
-
+        outline = GetComponent<Outline>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             equipmentController = player.GetComponent<EquipmentController>();
@@ -60,6 +61,12 @@ public class Pickup : MonoBehaviour
             if (distance <= maxDistance)
             {
                 mousing = true;
+                if (outline != null) { outline.enabled = true; }
+            }
+            else
+            {
+                mousing = false;
+                if (outline != null) { outline.enabled = false; }
             }
         }
 
@@ -131,6 +138,7 @@ public class Pickup : MonoBehaviour
         {
             CursorManager.Instance.SetNormal();
         }
+        if (!isHolding && outline != null) { outline.enabled = false; }
     }
     private void Hold()
     {
@@ -143,7 +151,7 @@ public class Pickup : MonoBehaviour
             Drop();
             return;
         }
-
+        outline.enabled = true;
         rb.linearVelocity *= 0.9f;
         rb.angularVelocity *= 0.9f;
 
