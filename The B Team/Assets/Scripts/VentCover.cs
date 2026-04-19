@@ -6,6 +6,9 @@ public class VentCover : MonoBehaviour
     public DialogueTrigger Dialoguetrigger;
     private GameObject Player;
 
+    private bool onGround = false;
+    public AudioClip[] hitGroundSound;
+
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -20,9 +23,16 @@ public class VentCover : MonoBehaviour
             Dialoguetrigger.TriggerDialogue();
             return;
         }
-        if (Input.GetMouseButtonDown(1))
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Ground")
         {
-            focusController.EnterFocusMode();
+            Debug.Log("Vent hit floor");
+            onGround = true;
+            GetComponent<AudioSource>().volume = (0.5f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
+            GetComponent<AudioSource>().PlayOneShot(hitGroundSound[Random.Range(0, hitGroundSound.Length)]);
         }
     }
 }

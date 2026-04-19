@@ -3,11 +3,13 @@ using System.Collections;
 public class ScrewInteractable : MonoBehaviour
 {
     public VentSystem ventSystem;
-    public AudioSource unscrewSound;
+    public AudioClip[] unscrewSound;
+    public AudioClip[] hitGroundSound;
     public EquipmentController equipment;
     public int knifeIndex = 0;
 
     private bool isRemoved = false;
+    private bool onGround = false;
     private AudioSource audioSource;
     private Collider myCollider;
 
@@ -15,7 +17,7 @@ public class ScrewInteractable : MonoBehaviour
 
     private void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         myCollider = GetComponent<Collider>();
         if (myCollider == null)
             Debug.Log("ScrewInteractable on " + gameObject.name + " has no Collider component. Please add one for proper interaction.");
@@ -61,21 +63,19 @@ public class ScrewInteractable : MonoBehaviour
 
     void RemoveScrew()
     {
-        
+        if (isRemoved) { return; }
         isRemoved = true;
+        audioSource.volume = (0.5f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
+        audioSource.PlayOneShot(unscrewSound[Random.Range(0, unscrewSound.Length)]);
         GetComponent<Outline>().enabled = false;
         mousing = false;
         Collider col = myCollider ?? GetComponent<Collider>();
-        if (col != null)
-        {
-            col.enabled = false; // Disable collider to prevent further interactions
-        }
+        //if (col != null)
+        //{
+        //    col.enabled = false; // Disable collider to prevent further interactions
+        //}
 
         Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody>();
-        }
         rb.isKinematic = false;
         rb.useGravity = true;
 
@@ -84,6 +84,7 @@ public class ScrewInteractable : MonoBehaviour
 
     void OnMouseOver()
     {
+        if(isRemoved) { return; }
         if (equipment == null || equipment.GetCurrentIndex() != knifeIndex)
         {
             mousing = false;
@@ -98,17 +99,19 @@ public class ScrewInteractable : MonoBehaviour
 
     void OnMouseExit()
     {
+        if (isRemoved) { return; }
         if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
         mousing = false;
         GetComponent<Outline>().enabled = false;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        if (unscrewSound != null && isRemoved)
+        if (other.gameObject.tag == "Ground" && !onGround   )
         {
+            onGround = true;
             audioSource.volume = (0.5f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
-            audioSource.PlayOneShot(unscrewSound.clip);
+            audioSource.PlayOneShot(hitGroundSound[Random.Range(0, hitGroundSound.Length)]);
         }
     }
 }

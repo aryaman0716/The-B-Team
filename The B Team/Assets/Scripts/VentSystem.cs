@@ -33,6 +33,7 @@ public class VentSystem : MonoBehaviour
                 rb = ventCover.AddComponent<Rigidbody>();
             }
             rb.isKinematic = false;
+            rb.AddForce(new Vector3(0, 0, 0.2f), ForceMode.Impulse);
             rb.useGravity = true;
         }
         ventOpened = true;
