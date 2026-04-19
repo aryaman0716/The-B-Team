@@ -4,7 +4,7 @@ using UnityEngine;
 public class Headbob : MonoBehaviour
 {
     public bool Enabled = true;
-    [SerializeField, Range(0, 0.1f)] private float Amplitude = 0.015f;
+    [SerializeField, Range(0, 0.1f)] private float Amplitude = 0.0045f;
     [SerializeField, Range(0, 30.0f)] private float Frequency = 10f;
     public Transform Camera;
     public Transform CameraHolder;
@@ -16,6 +16,12 @@ public class Headbob : MonoBehaviour
 
     public GameObject ToolHolder;
     public static bool canBob = true;
+
+    private float stepCycle;
+    [SerializeField] private float stepInterval = 0.5f;
+    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioClip[] footstepClips;
+    public float stepVolume = 0.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -47,11 +53,16 @@ public class Headbob : MonoBehaviour
     {
         float speed = new Vector3(Controller.velocity.x, 0, Controller.velocity.z).magnitude;
         ResetPosition();
-        if (speed < ToggleSpeed) return;
-        if (!Controller.isGrounded) return;
+        if (speed < ToggleSpeed || !Controller.isGrounded) return;
+        stepCycle += speed * Time.deltaTime;
+
+        if (stepCycle > stepInterval)
+        {
+            stepCycle = 0f;
+            PlayFootstep();
+        }
 
         PlayMotion(FootStepMotion());
-
     }
     private void PlayMotion(Vector3 motion)
     {
@@ -78,5 +89,13 @@ public class Headbob : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + CameraHolder.localPosition.y, transform.position.z);
         pos += CameraHolder.forward * 15.0f;
         return pos;
+    }
+    public void PlayFootstep()
+    {
+        if (footstepClips.Length == 0) return;
+
+        footstepSource.volume = stepVolume * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume;
+        footstepSource.pitch = Random.Range(0.9f, 1.1f);
+        footstepSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
     }
 }
