@@ -12,6 +12,8 @@ public class VentSystem : MonoBehaviour
     public void ActivateVent()
     {
         isActivated = true;
+        GetComponent<AudioSource>().volume = (0.5f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
+        GetComponent<AudioSource>().Play();
         GetComponentInChildren<Animator>().SetTrigger("VentSystemOn");
         Debug.Log("Vent activated!");
     }

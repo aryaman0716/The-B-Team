@@ -5,6 +5,7 @@ public class VentFlourTarget : MonoBehaviour
 {
     public GameObject lasersParent;
     public VentSystem vent;
+    public AudioSource ventAudioSource;
     private bool lasersFading;
     public void RevealLasers()
     {
@@ -18,8 +19,11 @@ public class VentFlourTarget : MonoBehaviour
     private IEnumerator FadeLasers()
     {
         if (!lasersFading) { lasersFading = true; }
+        ventAudioSource.volume = (0.9f * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume);
+        ventAudioSource.loop = false;
+        
+        yield return new WaitForSeconds(1.5f);
         var alpha = 0f;
-        yield return new WaitForSeconds(0.5f);
         while (true)
         {
             
@@ -30,8 +34,9 @@ public class VentFlourTarget : MonoBehaviour
 
             }
             Debug.Log(alpha);
-            alpha += 0.01f;
-            if(alpha >= 1f)
+            alpha += + 0.005f;
+            
+            if (alpha >= 0.75f)
             {
                 StopAllCoroutines();
             }

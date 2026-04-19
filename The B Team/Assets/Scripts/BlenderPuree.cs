@@ -47,7 +47,12 @@ public class BlenderPuree : MonoBehaviour
     {
         if (isFilled) return;
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponentInChildren<TMP_Text>().text = "Filled Blender";
+
+        if (GetComponentInChildren<TMP_Text>() == null)
+        {
+            GetComponentInChildren<TMP_Text>().text = "Filled Blender";
+        }
+        
         isFilled = true;
         Debug.Log("Blender filled with tomato puree!");
         if (pickup != null)
