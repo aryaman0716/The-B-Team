@@ -27,6 +27,10 @@ public class CrosshairController : MonoBehaviour
         point,
         grab,
         disabled,
+        knife,
+        spatula,
+        tomato,
+        flour
 
     }
 
@@ -212,7 +216,7 @@ public class CrosshairController : MonoBehaviour
         }
         if (ScrewInteractable.mousing)
         {
-            EnablePopupUI("Unscrew", (int)cursor_img.point, (int)ui_img.mouse_left);
+            EnablePopupUI("Unscrew", (int)cursor_img.knife, (int)ui_img.mouse_left);
             return;
         }
         
