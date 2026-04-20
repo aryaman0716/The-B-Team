@@ -34,9 +34,9 @@ public class VentFlourTarget : MonoBehaviour
 
             }
             Debug.Log(alpha);
-            alpha += + 0.005f;
+            alpha += 0.005f;
             
-            if (alpha >= 0.75f)
+            if (alpha >= 1f)
             {
                 StopAllCoroutines();
             }

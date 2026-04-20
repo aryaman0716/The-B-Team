@@ -48,7 +48,7 @@ public class BlenderPuree : MonoBehaviour
         if (isFilled) return;
         GetComponent<Rigidbody>().isKinematic = false;
 
-        if (GetComponentInChildren<TMP_Text>() == null)
+        if (GetComponentInChildren<TMP_Text>() != null)
         {
             GetComponentInChildren<TMP_Text>().text = "Filled Blender";
         }

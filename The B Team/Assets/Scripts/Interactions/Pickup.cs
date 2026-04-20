@@ -30,6 +30,7 @@ public class Pickup : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
         outline = GetComponent<Outline>();
+        if (outline == null) GetComponentInChildren<Outline>();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
             equipmentController = player.GetComponent<EquipmentController>();
@@ -151,7 +152,7 @@ public class Pickup : MonoBehaviour
             Drop();
             return;
         }
-        outline.enabled = true;
+        if (outline != null) { outline.enabled = true; }
         rb.linearVelocity *= 0.9f;
         rb.angularVelocity *= 0.9f;
 

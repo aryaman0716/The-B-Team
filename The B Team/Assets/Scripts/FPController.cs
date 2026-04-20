@@ -86,7 +86,7 @@ public class FPController : MonoBehaviour
         moveDirection = (forward * moveZ) + (right * moveX);
         moveDirection = moveDirection * currentSpeed;
 
-        if (Input.GetButton("Jump") && characterController.isGrounded)
+        if (Input.GetButtonDown("Jump") && characterController.isGrounded)
         {
             moveDirection.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }

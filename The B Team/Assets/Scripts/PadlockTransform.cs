@@ -58,10 +58,9 @@ public class PadlockTransform : MonoBehaviour
             //listener.placementID = "cookedKey";
         }
     }
-    public void UnlockPadlock(GameObject cookedKey)
+    public void UnlockPadlock()
     {
-        Debug.Log("Cooked key used! Shutter is now opening...");
-        Destroy(cookedKey);
+        
         // if the player is holding the cooked key, they drop it
         //if (cookedKey != null)
         //{

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class MicrowaveController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MicrowaveController : MonoBehaviour
     private bool keyInside = false;
     private GameObject currentKey = null;
     private bool keyCooked;
+    private bool keyCooking;
     public bool KeyCooked => keyCooked;
     private Quaternion closedRotation;
     private Quaternion openRotation;
@@ -33,9 +35,10 @@ public class MicrowaveController : MonoBehaviour
     }
     void Update()
     {
-        CheckInteraction();
         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
         doorPivot.localRotation = Quaternion.Slerp(doorPivot.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
+        if (keyCooking) { return; }
+        CheckInteraction();
 
         if (Input.GetMouseButtonDown(0) && mousingM) 
         {
@@ -46,7 +49,7 @@ public class MicrowaveController : MonoBehaviour
         currentKey = GameObject.FindGameObjectWithTag("MouldedKey");
         if (currentKey != null && currentKey.GetComponent<PlacementEmitter>().IsPlaced && isOpen == false)
         {
-            CookKey();
+            StartCoroutine(CookKey());
         }
         if (keyCooked && isOpen && doorPivot.localRotation == openRotation)
         {
@@ -83,35 +86,53 @@ public class MicrowaveController : MonoBehaviour
     }
     public void ToggleDoor()
     {
-        if(keyCooked && !isOpen)
-        {
-            isOpen = true;
-            return;
-        }
         isOpen = !isOpen;
-        if (!isOpen && keyInside)
-        {
-            CookKey();
-        }
 
     }
-    void CookKey()
+    //void CookKey()
+    //{
+    //    Debug.Log("Cooking the key...");
+    //    if (currentKey != null)
+    //    {
+    //        Destroy(currentKey);
+    //    }
+    //    if (cookedKeyPrefab != null)
+    //    {
+    //        var obj = Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
+    //        obj.GetComponentInChildren<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
+    //        obj.GetComponentInChildren<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
+    //        keyCooked = true;
+    //        GetComponent<BoxCollider>().enabled = false;
+    //    }
+    //    keyInside = false;
+    //    currentKey = null;
+    //}
+
+    IEnumerator CookKey()
     {
-        Debug.Log("Cooking the key...");
-        if (currentKey != null)
-        {
-            Destroy(currentKey);
-        }
-        if (cookedKeyPrefab != null)
-        {
-            var obj = Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
-            obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
-            obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
-            keyCooked = true;
-            GetComponent<BoxCollider>().enabled = false;
-        }
-        keyInside = false;
-        currentKey = null;
+        if(keyCooking || keyCooked) { yield return null; }
+        isOpen = false;
+        keyCooking = true;
+        
+        yield return new WaitUntil(() => doorPivot.localRotation == closedRotation);
+        
+        Destroy(currentKey);
+        
+        yield return new WaitForSeconds(1.5f);
+
+        var obj = Instantiate(cookedKeyPrefab, spawnPoint.position, spawnPoint.rotation);
+        obj.GetComponentInChildren<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
+        obj.GetComponentInChildren<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
+        
+        GetComponent<BoxCollider>().enabled = false;
+        isOpen = true;
+        
+        yield return new WaitForSeconds(1f);
+        
+        keyCooked = true;
+        
+        yield return null;
+
     }
     
     private float PlayerDistance()

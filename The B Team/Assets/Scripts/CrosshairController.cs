@@ -130,7 +130,7 @@ public class CrosshairController : MonoBehaviour
         }
         if (Pickup.carrying)
         {
-            EnablePopupUI("Throw", (int)cursor_img.grab, (int)ui_img.mouse_left);
+            EnablePopupUI("Throw", (int)cursor_img.grab, (int)ui_img.mouse_right);
             return;
         }
         if (Pickup.mousing)

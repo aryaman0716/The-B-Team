@@ -10,18 +10,24 @@ public class CookedKey : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        emitter = GetComponent<PlacementEmitter>();
+        emitter = GetComponentInChildren<PlacementEmitter>();
         padlock = GameObject.Find("ShutterPadlock").GetComponent<PadlockTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (emitter.IsPlaced && !unlocking)
+        if (!unlocking)
         {
+            if (!emitter.IsPlaced) { return; }
             unlocking = true;
             Debug.Log("Unlock padlock");
-            padlock.UnlockPadlock(gameObject);
+            padlock.UnlockPadlock();
+            foreach(Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            Destroy(gameObject);
         }
     }
 }
