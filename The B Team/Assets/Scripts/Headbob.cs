@@ -21,6 +21,7 @@ public class Headbob : MonoBehaviour
     [SerializeField] private float stepInterval = 0.5f;
     [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private AudioClip[] footstepClipsVinyl;
     public float stepVolume = 0.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -92,10 +93,34 @@ public class Headbob : MonoBehaviour
     }
     public void PlayFootstep()
     {
-        if (footstepClips.Length == 0) return;
-
         footstepSource.volume = stepVolume * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume;
         footstepSource.pitch = Random.Range(0.9f, 1.1f);
-        footstepSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
+
+        string surface = GetSurfaceTag();
+
+        if (surface == "Metal")
+        {
+            footstepSource.PlayOneShot(
+                footstepClips[Random.Range(0, footstepClips.Length)]
+            );
+        }
+        else
+        {
+            footstepSource.PlayOneShot(
+                footstepClipsVinyl[Random.Range(0, footstepClipsVinyl.Length)]
+            );
+        }
+
+    }
+
+    private string GetSurfaceTag()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Controller.transform.position, Vector3.down, out hit, 2f))
+        {
+            return hit.collider.tag;
+        }
+
+        return "Untagged";
     }
 }
