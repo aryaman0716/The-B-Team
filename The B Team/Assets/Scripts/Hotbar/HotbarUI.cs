@@ -4,8 +4,11 @@ using UnityEngine.UI;
 public class HotbarUI : MonoBehaviour
 {
     public Sprite[] selectedTools;
+    public Sprite[] notSelectedKeyboardUI;
+    public Sprite[] selectedKeyboardUI;
     public EquipmentController equipment;
     public Image image;
+    public Image[] numberKeys;
     public AudioSource audioSource;
     public AudioClip clip;
 
@@ -38,7 +41,16 @@ public class HotbarUI : MonoBehaviour
             image.sprite = selectedTools[selected];
             audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.PlayOneShot(clip);
-
+            var i = 0;
+            foreach(var item in numberKeys)
+            {
+                if (item.sprite == selectedTools[i]) { continue; }
+                item.sprite = notSelectedKeyboardUI[i];
+                numberKeys[i].transform.GetComponent<RectTransform>().localScale = new Vector3(0.52f, 0.5f, 0.5f);
+                i++;
+            }
+            numberKeys[selected].sprite = selectedKeyboardUI[selected];
+            numberKeys[selected].transform.GetComponent<RectTransform>().localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
         
         
