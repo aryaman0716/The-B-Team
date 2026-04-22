@@ -25,6 +25,7 @@ public class ScrewInteractable : MonoBehaviour
 
     void Update()
     {
+
         if (isRemoved) return;  // Prevent interaction if already removed
         //if (!ventSystem || !ventSystem.isActivated) return;
 
@@ -33,7 +34,7 @@ public class ScrewInteractable : MonoBehaviour
             if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            const float maxDistance = 5f;
+            const float maxDistance = 4f;
 
             // Ignore Player layer; also ignore trigger colliders
             int mask = ~LayerMask.GetMask("Player");
@@ -58,6 +59,7 @@ public class ScrewInteractable : MonoBehaviour
                     return;
                 }
             }
+
         }
     }
 
@@ -89,20 +91,33 @@ public class ScrewInteractable : MonoBehaviour
         {
             mousing = false;
             GetComponent<Outline>().enabled = false;
+            return;
+        }
+        if (EquipmentController.DistanceToPlayer(transform) > 4f)
+        {
+            mousing = false;
+            GetComponent<Outline>().enabled = false;
+            return;
         }
         else
         {
-            mousing = true;
             GetComponent<Outline>().enabled = true;
+            mousing = true;
         }
     }
 
     void OnMouseExit()
     {
         if (isRemoved) { return; }
-        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
-        mousing = false;
+        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) { mousing = false; return; }
+        if (EquipmentController.DistanceToPlayer(transform) > 4f)
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return;
+        }
         GetComponent<Outline>().enabled = false;
+        mousing = false;
     }
 
     void OnCollisionEnter(Collision other)

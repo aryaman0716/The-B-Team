@@ -219,7 +219,11 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("Unscrew", (int)cursor_img.knife, (int)ui_img.mouse_left);
             return;
         }
-        
+        if (VentFlourTarget.mousing)
+        {
+            EnablePopupUI("Splash", (int)cursor_img.flour, (int)ui_img.mouse_left);
+            return;
+        }
 
         DisablePopupUI();
         

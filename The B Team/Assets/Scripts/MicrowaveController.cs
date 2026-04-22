@@ -65,7 +65,7 @@ public class MicrowaveController : MonoBehaviour
         }
         if (Player != null)
         {
-            if (PlayerDistance() > 3f) return ;
+            if (EquipmentController.DistanceToPlayer(transform) > 3f) return ;
         }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -135,9 +135,5 @@ public class MicrowaveController : MonoBehaviour
 
     }
     
-    private float PlayerDistance()
-    {
-        float distance = Vector3.Distance(Player.transform.position, transform.position);
-        return distance;
-    }
+    
 }

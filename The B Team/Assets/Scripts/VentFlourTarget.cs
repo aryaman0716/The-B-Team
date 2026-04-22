@@ -7,6 +7,46 @@ public class VentFlourTarget : MonoBehaviour
     public VentSystem vent;
     public AudioSource ventAudioSource;
     private bool lasersFading;
+
+    public static bool mousing;
+
+    void OnMouseOver()
+    {
+        if (!vent.ventOpened || !vent.isActivated || lasersFading) 
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return;
+        }
+        if (EquipmentController.DistanceToPlayer(transform) > 5f) 
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return; 
+        }
+        if (EquipmentController.publicIndex != 3)
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+        }
+        else
+        {
+            GetComponent<Outline>().enabled = true;
+            mousing = true;
+        }
+    }
+    void OnMouseExit()
+    {
+        if (!vent.ventOpened || !vent.isActivated || lasersFading) { return; }
+        if (EquipmentController.DistanceToPlayer(transform) > 5f)
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return;
+        }
+        GetComponent<Outline>().enabled = false;
+        mousing = false;
+    }
     public void RevealLasers()
     {
         if (!vent.ventOpened || !vent.isActivated || lasersFading) return;
@@ -33,7 +73,7 @@ public class VentFlourTarget : MonoBehaviour
                 r.material.SetColor("_BaseColor", new Color(c.r, c.g, c.b, alpha));
 
             }
-            Debug.Log(alpha);
+
             alpha += 0.005f;
             
             if (alpha >= 1f)

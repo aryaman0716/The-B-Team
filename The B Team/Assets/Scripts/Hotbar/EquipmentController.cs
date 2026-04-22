@@ -191,4 +191,11 @@ public class EquipmentController : MonoBehaviour
     {
         return tools != null ? tools.Length : 0;  // Return the number of tools defined in the array
     }
+    public static float DistanceToPlayer(Transform other)
+    {
+        var obj = GameObject.Find("ChefPlayer");
+        if(obj == null) { Debug.Log("Player not found"); return 0f; }
+        float distance = Vector3.Distance(obj.transform.position, other.position);
+        return distance;
+    }
 }
