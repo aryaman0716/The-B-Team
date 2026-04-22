@@ -24,6 +24,7 @@ public class EquipmentController : MonoBehaviour
     public AudioClip[] flourSounds;
     void Update()
     {
+        if (UIController.Paused) {  return; }
         publicIndex =  currentIndex;
         if (canEquip)
         {

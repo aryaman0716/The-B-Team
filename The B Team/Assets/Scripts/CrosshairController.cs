@@ -240,7 +240,7 @@ public class CrosshairController : MonoBehaviour
         popupText.text = text;
         popupImage.sprite = popupIcons[imgIndex];
         handshape = cursorIndex;
-        seperatingLine.SetActive(true);
+        //seperatingLine.SetActive(true);
 
     }
     void EnablePopupUI(string text, int cursorIndex, int imgIndex, float posX, float posY)
@@ -248,7 +248,7 @@ public class CrosshairController : MonoBehaviour
         popupText.text = text;
         popupImage.sprite = popupIcons[imgIndex];
         handshape = cursorIndex;
-        seperatingLine.SetActive(true);
+        //seperatingLine.SetActive(true);
 
         popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(posX, posY);
     }
