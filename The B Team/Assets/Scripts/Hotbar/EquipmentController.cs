@@ -60,15 +60,15 @@ public class EquipmentController : MonoBehaviour
     void HandleKeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            EquipTool(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            EquipTool(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            EquipTool(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            EquipTool(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
             UnequipTool();
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            EquipTool(0);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            EquipTool(1);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            EquipTool(2);
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            EquipTool(3);
     }
     private void UseCurrentTool()
     {

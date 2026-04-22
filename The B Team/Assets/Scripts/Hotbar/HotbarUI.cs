@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI;
 public class HotbarUI : MonoBehaviour
 {
-    [Header("References")]
+    public Sprite[] selectedTools;
     public EquipmentController equipment;
-    public Transform leftPanel;
-    public Transform rightPanel;
-    public GameObject slotPrefab;
+    public Image image;
+    public AudioSource audioSource;
+    public AudioClip clip;
 
-    private Image[] slotBackgrounds;
 
     void Start()
     {
-        // Create 4 slots (2 on each panel)
+        /*// Create 4 slots (2 on each panel)
         int slotCount = 4;
         slotBackgrounds = new Image[slotCount];
 
@@ -24,15 +24,24 @@ public class HotbarUI : MonoBehaviour
             Image icon = slot.transform.GetChild(0).GetComponent<Image>();
             icon.enabled = true;
             icon.sprite = equipment.GetToolIcon(i);
+        
         }
+        */
     }
     void Update()
     {
         int selected = equipment.GetCurrentIndex();
-        for (int i = 0; i < slotBackgrounds.Length; i++)
+        if (selected == 4) selected = -1;
+        selected += 1;
+        if (image.sprite != selectedTools[selected])
         {
-            slotBackgrounds[i].color = (i == selected) ? Color.yellow : Color.white;
+            image.sprite = selectedTools[selected];
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(clip);
+
         }
+        
+        
     }
 }
 
