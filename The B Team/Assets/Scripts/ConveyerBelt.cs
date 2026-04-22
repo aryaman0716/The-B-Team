@@ -7,7 +7,7 @@ public class ConveyerBelt : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class ConveyerBelt : MonoBehaviour
         {
             child.gameObject.tag = "Untagged";
         }
+        GetComponent<AudioSource>().Stop();
     }
 
 
