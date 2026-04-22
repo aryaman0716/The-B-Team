@@ -824,7 +824,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1124560628, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b830962503541af4991268c47b0ba3c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -944,69 +944,69 @@ MonoBehaviour:
     dialogueSets:
     - entries:
       - speaker: Maurice
-        portrait: {fileID: -1124560628, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: b830962503541af4991268c47b0ba3c4, type: 3}
         sentence: ...                    ...                    ...
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 61f5cdb39cb9c9746ab3495fda996c4b, type: 3}
         sentence: 'Took your time Maurice, you got the dough? '
       - speaker: Maurice
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 61f5cdb39cb9c9746ab3495fda996c4b, type: 3}
         sentence: Non descript mumbles
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 61f5cdb39cb9c9746ab3495fda996c4b, type: 3}
         sentence: Good, first time you did something right. Had us worried when the
           comms cut out, thought you somehow screwed up.
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 61f5cdb39cb9c9746ab3495fda996c4b, type: 3}
         sentence: Okay Vick, get us moving.
       - speaker: Vick
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 61f5cdb39cb9c9746ab3495fda996c4b, type: 3}
         sentence: Yes boss.
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Oh by the way, Maurice.
       - speaker: Maurice
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: (non descript mumbles)
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: "Relax relax, just wanted to say good job today. You finally did
           something to make the family proud for once. That\u2019s worth congratulating."
       - speaker: Maurice
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: (non descript mumbles)
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: "Yes yes, you\u2019re off the hook now. You can go back to your
           restaurant, just don\u2019t get our guys sick again alright?"
       - speaker: Vick
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: (short mumble)
       - speaker: Vick
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: "Alright boss, we\u2019re here."
       - speaker: Mobster 1
-        portrait: {fileID: -76490963, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Good. Alright Maurice, you can get out now. Just leave the bags
           in the back.
       - speaker: Mobster 1
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Oh and Maurice, before you go.
       - speaker: Maurice
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: (short non descript mumble)
       - speaker: Mobster 1
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Just wanted to say next time you think you got the recipe, try
           your cooking yourself for once. Leave the boys out of it.
       - speaker: Maurice
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: (short mumble)
       - speaker: Mobster 1
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Alright take care now, Vick get us outta here.
       - speaker: Vick
-        portrait: {fileID: 347029324, guid: 16cde913cc0339647b397338d22e88b1, type: 3}
+        portrait: {fileID: 21300000, guid: 03842fb2a527971489697559ea90cb2d, type: 3}
         sentence: Yes Boss, See ya Maurice.
     - entries:
       - speaker: Mobster 1
@@ -1154,7 +1154,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!114 &5544356313752889188
 MonoBehaviour:
   m_ObjectHideFlags: 0

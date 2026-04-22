@@ -237,6 +237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6815297774726945793, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+    - {fileID: 6589017310575663205, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4508829667116975291, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
     - {fileID: 670588299471185155, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
@@ -824,7 +825,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78abe227fd6cbce4a87ba44f02b7f2f9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -944,78 +945,78 @@ MonoBehaviour:
     dialogueSets:
     - entries:
       - speaker: Mobster 1
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 78abe227fd6cbce4a87ba44f02b7f2f9, type: 3}
         sentence: "What do you mean you\u2019re sick? There ain\u2019t no sick in
           this business, Tony!"
       - speaker: Phone
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 78abe227fd6cbce4a87ba44f02b7f2f9, type: 3}
         sentence: Mumble... Mumble >:(
       - speaker: Mobster 1
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 78abe227fd6cbce4a87ba44f02b7f2f9, type: 3}
         sentence: "Hey. Look, alright. We\u2019ll figure this out, yeah? Surely the
           other guys\u2019ll be around to-"
       - speaker: Phone
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 78abe227fd6cbce4a87ba44f02b7f2f9, type: 3}
         sentence: MUMBLE! >:(
       - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "YOU\u2019RE JOKING? YOU\u2019RE ALL SICK? HOW WE S\u2019POSED
           TO ROB A BANK WITHOUT YOU NITWITS? "
       - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "HOW WE S\u2019POSED TO GET THE CHEDDAR WITH NO COWS? HOW WE S\u2019POSED
           TO MAKE SOME GOD DAMN DOUGH WITHOUT THE FLOUR? YOU PEOPLE- "
       - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: Boss!
       - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "WHAT? CAN\u2019T YOU SEE I\u2019M ON THE PHONE RIGHT NOW? COME
           ONNNN!"
       - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "God damnit, get that look off your face, Vick. I know you\u2019re
           a stand-up guy. I didn\u2019t mean to go off at you. What is it?"
       - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "They was at uh\u2026 Maurices\u2019 pizza place last night to
           celebrate before the big day\u2026 surely if they\u2019re all sick\u2026"
       - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: "Course they was at Maurices\u2019\u2026 Come on, gotta go pay
           \u2018im another visit. Not his first slip up, I reckon it's about time
           we make him pay his dues. Get the van ready, Vick."
       - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 2d1a2a4ca9ad1a34d80d7d0372c109a6, type: 3}
         sentence: Yes boss!
       - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 546d57d90d5bdd04f909e57cea3a7ab8, type: 3}
         sentence: Hey Maurice, word on the street is our boys ate here last night.
       - speaker: Maurice
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 546d57d90d5bdd04f909e57cea3a7ab8, type: 3}
         sentence: ... ... ... (murmur)
       - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 546d57d90d5bdd04f909e57cea3a7ab8, type: 3}
         sentence: Well, Maurice, they got sick. So, not only did you fail at recreating
           the family recipe, again, but you also screwed up this job we had, again.
       - speaker: Maurice
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 546d57d90d5bdd04f909e57cea3a7ab8, type: 3}
         sentence: "Oh-\u2026"
       - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: 546d57d90d5bdd04f909e57cea3a7ab8, type: 3}
         sentence: "Save it, I\u2019m not interested in your half baked excuses. You\u2019re
           going to do the job for us. Vick can give you the run down. I expect you
           to be out in 10, if not I\u2019ll drag you out myself."
       - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
         sentence: "Sorry about him Maurice\u2026 you uh, you know what he\u2019s
           like with this stuff. "
       - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
         sentence: "I should give you the run down of the job. Planned this big heist
           on the Russos\u2019 Dough Production Facility."
       - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
         sentence: "Their place is under construction which means lighter security.
           Gave us the perfect opportunity for the job before, well y\u2019know. Which
           is why we need you to do it, not much time left on this opportunity."
@@ -1165,7 +1166,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!114 &5544356313752889188
 MonoBehaviour:
   m_ObjectHideFlags: 0
