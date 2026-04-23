@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     public string nextScene;
     public float dialogueSpeedMod = 2f;
 
+    public static Dialogue lastDialogue = null;
+
     void Start()
     {
         sentences = new Queue<DialogueEntry>();
@@ -35,6 +37,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        lastDialogue = dialogue;
         animator.SetBool("Open", true);
         //Time.timeScale = 0f;
 

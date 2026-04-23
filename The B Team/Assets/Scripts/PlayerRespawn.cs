@@ -51,19 +51,18 @@ public class PlayerRespawn : MonoBehaviour
     }
     private IEnumerator RespawnRoutine()
     {
-        yield return new WaitForSeconds(0.2f);
-        controller.SetCanMove(false);
-        yield return new WaitForSeconds(0.5f);
+        
         yield return screenFade.FadeOut();  
         
         characterController.enabled = false; 
         transform.position = spawnPoint.position;  // Move the player to the respawn point.
         characterController.enabled = true;
         controller.ResetPlayerState();
-
-        yield return new WaitForSeconds(0.1f);
+        GameObject.Find("DialogueBox").GetComponent<DialogueManager>().EndDialogue();
+        yield return new WaitForSeconds(1f);
         yield return screenFade.FadeIn();
         controller.SetCanMove(true);
         controller.enabled = true;
+        GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.lastDialogue);
     }
 }

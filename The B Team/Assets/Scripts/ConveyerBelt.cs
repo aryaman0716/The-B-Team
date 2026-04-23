@@ -24,6 +24,7 @@ public class ConveyerBelt : MonoBehaviour
             child.gameObject.tag = "Untagged";
         }
         GetComponent<AudioSource>().Stop();
+        GetComponent<ScrollMaterial>().scroll = false;
     }
 
 
