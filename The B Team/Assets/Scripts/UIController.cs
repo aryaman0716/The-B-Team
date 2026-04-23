@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
 
     public GameObject[] PauseHide;
     public GameObject[] PauseShow;
+    public Animator pauseAnimator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,13 +38,15 @@ public class UIController : MonoBehaviour
         Paused = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0.0f;
+        pauseAnimator.SetTrigger("Open");
         foreach (GameObject thisObject in PauseHide)
         {
             thisObject.SetActive(false);
         }
         foreach (GameObject thisObject in PauseShow) 
         {
-            thisObject.SetActive(true);
+            
+            //thisObject.SetActive(true);
         }
 
     }
@@ -54,9 +57,11 @@ public class UIController : MonoBehaviour
         Paused = false;
         Time.timeScale = 1.0f;
         Cursor.lockState = CursorLockMode.Locked;
+        pauseAnimator.SetTrigger("Close");
         foreach (GameObject thisObject in PauseShow)
         {
-            thisObject.SetActive(false);
+            
+            //thisObject.SetActive(false);
         }
         foreach (GameObject thisObject in PauseHide)
         {

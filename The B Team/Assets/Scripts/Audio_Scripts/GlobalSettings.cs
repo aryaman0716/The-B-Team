@@ -26,7 +26,7 @@ public class GlobalSettings : MonoBehaviour
     void Start()
     {
         updateObjectLabels(debugObjectLabels);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     private void Awake()
