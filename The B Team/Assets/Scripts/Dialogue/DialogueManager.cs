@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour
     public string nextScene;
     public float dialogueSpeedMod = 2f;
 
+    public static Dialogue currentDialogue;
+    public static Dialogue lastDialogue;
+
     void Start()
     {
         sentences = new Queue<DialogueEntry>();
@@ -35,6 +38,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        currentDialogue = dialogue;
+        talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
         animator.SetBool("Open", true);
         //Time.timeScale = 0f;
 
@@ -107,6 +112,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
+        if (currentDialogue != null) { lastDialogue = currentDialogue; }
+        talkSounds.volume = 0f;
         animator.SetBool("Open", false);
         Time.timeScale = 1f;
         if (cutScene)
