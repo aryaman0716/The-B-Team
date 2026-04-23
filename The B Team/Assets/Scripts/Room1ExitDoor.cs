@@ -34,7 +34,6 @@ public class Room1ExitDoor : MonoBehaviour
         if (!oiled) return;
         if (opened) return;
         opened = true;
-        ObjectiveManager.Instance.CompleteObjective("Find something to oil the door.", "Find a way to unlock the shutter.");
         if (animator != null)
         {
             animator.SetTrigger("Open");

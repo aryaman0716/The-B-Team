@@ -27,6 +27,12 @@ public class PlayerRespawn : MonoBehaviour
             transform.position = spawnPoint.position;  // move the player to the respective checkpoint position 
             characterController.enabled = true;
         }
+
+        ObjectiveManager objManager = FindFirstObjectByType<ObjectiveManager>();
+        if (objManager != null)
+        {
+            objManager.SetObjectiveFromCheckpoint(checkpointIndex);
+        }
     }
     public void SetCheckpoint(Transform checkpoint)
     {
