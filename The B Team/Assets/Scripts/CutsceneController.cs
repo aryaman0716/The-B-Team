@@ -1,19 +1,17 @@
-using System;
-using UnityEngine;
-using UnityEngine.UI;
-
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CutsceneController : MonoBehaviour
 {
-    public Array[] arrays;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public string gameSceneName; 
+    public void EndCutscene()
     {
-
+        Debug.Log("Cutscene ended → Loading game scene");
+        SceneManager.LoadScene(gameSceneName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SkipCutscene()
     {
-        
+        Debug.Log("Cutscene skipped → Loading game scene");
+        SceneManager.LoadScene(gameSceneName);
     }
 }
