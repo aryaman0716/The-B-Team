@@ -16,6 +16,7 @@ public class OliveOil : MonoBehaviour
     {
         door.SetDoorLocked(false);
         gameObject.SetActive(false);
+        ObjectiveManager.Instance.CompleteObjective("Find something to oil the door.", "Find a way to unlock the shutter.");
     }
 
     

@@ -14,43 +14,47 @@ public class ObjectiveManager : MonoBehaviour
     {
         Instance = this;
     }
-    void Start()
+
+    public void SetObjectiveFromCheckpoint(int checkpointIndex)
     {
-        // set this initial objective only for the first room, i.e, when the game progress is saved and loaded again, it should continue from the last objective , not reset to this one
-        if (PlayerPrefs.GetInt("CheckpointIndex", 0) == 0)
+        switch (checkpointIndex)
         {
-            SetObjective("Find a way to power on the ventilation system.");
-        }
-        else if (PlayerPrefs.GetInt("CheckpointIndex", 0) >= 1) 
-        {
-            SetObjective("Find a way to unlock the shutter.");
-        }
-        else if (PlayerPrefs.GetInt("CheckpointIndex", 0) >= 2)
-        {
-            SetObjective("Find a way to turn off the security camera.");
+            case 0:
+                SetObjective("Find a way to power on the ventilation system.");
+                break;
+
+            case 1:
+                SetObjective("Find a way to unlock the shutter.");
+                break;
+
+            case 2:
+                SetObjective("Find a way to turn off the security camera.");
+                break;
         }
     }
 
     public void SetObjective(string text)
     {
-        if (isAnimating) return;
+        if (isAnimating)
+        {
+            StopAllCoroutines();
+        }
 
         currentObjective = text;
         objectiveText.text = text;
         objectiveText.alpha = 1f;
-        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -125);
+        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -270);
+        isAnimating = false;
     }
 
     public void CompleteObjective(string objectiveToCheck, string nextObjective)
     {
-        if (isAnimating) return;
-
         if (currentObjective != objectiveToCheck)
         {
             Debug.Log("Wrong objective attempted: " + objectiveToCheck);
             return;
         }
-
+        StopAllCoroutines();
         StartCoroutine(CompleteRoutine(nextObjective));
     }
 
