@@ -38,10 +38,10 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+
         currentDialogue = dialogue;
         talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
         animator.SetBool("Open", true);
-        //Time.timeScale = 0f;
 
         Debug.Log("Starting conversation");
 
