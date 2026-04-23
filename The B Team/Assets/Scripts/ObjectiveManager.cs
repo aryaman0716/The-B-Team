@@ -43,7 +43,7 @@ public class ObjectiveManager : MonoBehaviour
         currentObjective = text;
         objectiveText.text = text;
         objectiveText.alpha = 1f;
-        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -270);
+        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -125);
         isAnimating = false;
     }
 
@@ -79,7 +79,7 @@ public class ObjectiveManager : MonoBehaviour
         }
         objectiveText.text = "";
         objectiveText.alpha = 1f;
-        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -270);
+        objectiveText.rectTransform.anchoredPosition = new Vector2(50, -125);
 
         if (!string.IsNullOrEmpty(nextObjective))
         {
