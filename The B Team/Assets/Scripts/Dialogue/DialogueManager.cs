@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<DialogueEntry>();
+
     }
     private void Update()
     {
@@ -54,10 +55,11 @@ public class DialogueManager : MonoBehaviour
          sentences.Enqueue(entry);
        }
        if (animator == null)
-        {
+       {
             DisplayNextSentence();
-        }
-        
+       }
+       if (cutScene)
+            AttemptNext();
     }
 
     public void DisplayNextSentence()

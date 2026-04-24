@@ -15,4 +15,10 @@ public class SFXVolume : MonoBehaviour
     {
         audio.volume = baseVolume * GlobalSettings.SFXVolume * GlobalSettings.MasterVolume;
     }
+
+
+    public void playSound()
+    {
+        audio.Play();
+    }
 }
