@@ -2,6 +2,8 @@ using UnityEngine;
 public class Killbox : MonoBehaviour
 {
     public Transform checkpoint;
+    public string id;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -14,8 +16,8 @@ public class Killbox : MonoBehaviour
                 {
                     respawn.SetCheckpoint(checkpoint);
                 }
-
-                respawn.Respawn();
+                
+                respawn.Respawn(id);
             }
         }
     }
