@@ -25,6 +25,7 @@ TagManager:
   - Flour
   - Ground
   - Metal
+  - VentCover
   layers:
   - Default
   - TransparentFX

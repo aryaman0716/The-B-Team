@@ -50,7 +50,7 @@ public class GeneralDoor : MonoBehaviour
         if (Pickup.HeldObject != null) { return; }
         currentDoor = this;
         mouseOver = true;
-        if (locked) { Debug.Log("Door locked."); return;  }
+        //if (locked) { Debug.Log("Door locked."); return;  }
         
     }
 
@@ -63,8 +63,8 @@ public class GeneralDoor : MonoBehaviour
     public void SetDoorLocked(bool val)
     {
         locked = val;
-        Debug.Log("Door should be " + val);
-        Debug.Log("Door is now " + locked);
+        //Debug.Log("Door should be " + val);
+        //Debug.Log("Door is now " + locked);
 
         foreach(Renderer r in GetComponentsInChildren<Renderer>())
         {

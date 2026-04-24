@@ -2,7 +2,7 @@ using UnityEngine;
 public class VentSystem : MonoBehaviour
 {
     public GameObject vent;
-    public GameObject ventCover;
+    //public Rigidbody ventCover;
     public VentFocusController focusController;
     public bool isActivated = false;
     public bool ventOpened = false;
@@ -27,17 +27,10 @@ public class VentSystem : MonoBehaviour
     }
     void RemoveVentCover()
     {
-        if (ventCover != null)
-        {
-            Rigidbody rb = ventCover.GetComponent<Rigidbody>();
-            if (rb == null)
-            {
-                rb = ventCover.AddComponent<Rigidbody>();
-            }
-            rb.isKinematic = false;
-            rb.AddForce(new Vector3(0, 0, 0.2f), ForceMode.Impulse);
-            rb.useGravity = true;
-        }
+        var ventCover = GameObject.FindWithTag("VentCover").GetComponent<Rigidbody>();
+        ventCover.isKinematic = false;
+        ventCover.AddForce(new Vector3(0, 0, 0.2f), ForceMode.Impulse);
+        ventCover.useGravity = true;
         ventOpened = true;
         if (focusController != null)
         {
