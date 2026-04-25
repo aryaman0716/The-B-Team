@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     public static Dialogue currentDialogue;
     public static Dialogue lastDialogue;
+    public Animator boxAnimator;
 
     void Start()
     {
@@ -128,5 +129,6 @@ public class DialogueManager : MonoBehaviour
     {
         DisplayNextSentence();
         sentenceDone = false;
+        if (boxAnimator != null) boxAnimator.SetTrigger("Wobble");
     }
 }

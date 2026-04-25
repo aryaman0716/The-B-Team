@@ -251,8 +251,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5744196350134003481, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1064502581}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3710545154802725514, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2123379335}
   m_SourcePrefab: {fileID: 100100000, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+--- !u!1 &8299579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3710545154802725514, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+  m_PrefabInstance: {fileID: 8299578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &509498602
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1001,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5744196350134003481, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
   m_PrefabInstance: {fileID: 8299578}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2123379335
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73b514e925545b544ad73871167025ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1168611340427944166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1124,7 @@ MonoBehaviour:
   sentenceDone: 0
   nextScene: Room1Blockout
   dialogueSpeedMod: 2
+  boxAnimator: {fileID: 2123379335}
 --- !u!114 &3048350925559666560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1528,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3532fbd4fb12bd540b2a446e6981f01f, type: 3}
-    m_FontSize: 42
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
