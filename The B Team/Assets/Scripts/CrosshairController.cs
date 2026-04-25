@@ -57,7 +57,11 @@ public class CrosshairController : MonoBehaviour
     void Update()
     {
         HandleUI();
-        if (cursorImage.sprite != cursorSprites[handshape])
+        if (SceneManager.GetActiveScene().name == "Cutscene" || SceneManager.GetActiveScene().name == "CutsceneEnd")
+        {
+            return;
+        }
+        if (cursorSprites[0] != null && cursorImage.sprite != cursorSprites[handshape])
         {
             cursorImage.sprite = cursorSprites[handshape];
             rectTransform.sizeDelta = cursorSizes[handshape];
@@ -66,7 +70,7 @@ public class CrosshairController : MonoBehaviour
 
 
         
-        if (anyFocus || UIController.Paused || SceneManager.GetActiveScene().name == "MainMenu")
+        if (anyFocus || UIController.Paused || SceneManager.GetActiveScene().name != "Room1Blockout")
         {
             FollowMouse();
         }
@@ -111,7 +115,7 @@ public class CrosshairController : MonoBehaviour
 
     void HandleUI()
     {
-        if((UIController.Paused || SceneManager.GetActiveScene().name == "MainMenu") && IsPointerOverUI())
+        if((UIController.Paused || SceneManager.GetActiveScene().name != "Room1Blockout") && IsPointerOverUI())
         {
             EnablePopupUI("", (int)cursor_img.point, (int)ui_img.none);
             return;
@@ -231,36 +235,45 @@ public class CrosshairController : MonoBehaviour
 
     void InitialisePopupUI()
     {
+        if(SceneManager.GetActiveScene().name != "Room1Blockout") { return; }
         popupText = GameObject.Find("popupText").GetComponent<TMP_Text>();
         popupImage = GameObject.Find("popupImage").GetComponent<Image>();   
     }
 
     void EnablePopupUI(string text, int cursorIndex, int imgIndex)
     {
-        popupText.text = text;
-        popupImage.sprite = popupIcons[imgIndex];
+        if (popupText != null)
+        {
+            popupText.text = text;
+            popupImage.sprite = popupIcons[imgIndex];
+        }
         handshape = cursorIndex;
         //seperatingLine.SetActive(true);
-
     }
     void EnablePopupUI(string text, int cursorIndex, int imgIndex, float posX, float posY)
     {
-        popupText.text = text;
-        popupImage.sprite = popupIcons[imgIndex];
+        if (popupText != null) 
+        {
+            popupText.text = text;
+            popupImage.sprite = popupIcons[imgIndex];
+            popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(posX, posY);
+        }
         handshape = cursorIndex;
         //seperatingLine.SetActive(true);
-
-        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(posX, posY);
+        
     }
 
     void DisablePopupUI()
     {
-        popupText.text = "";
-        popupImage.sprite = popupIcons[(int)ui_img.none];
+
+        if (popupText != null) 
+        { 
+            popupText.text = ""; 
+            popupImage.sprite = popupIcons[(int)ui_img.none]; 
+            popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 10f); 
+        }
         handshape = (int)cursor_img.none;
-        seperatingLine.SetActive(false);
-        popupText.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(538f, 10f);
-        
+        //seperatingLine.SetActive(false);
     }
 
 
