@@ -82,8 +82,8 @@ public class PlayerRespawn : MonoBehaviour
     }
     private IEnumerator RespawnRoutine(string id, float storedVolume)
     {
-        GameObject.Find("DialogueBox").GetComponent<DialogueManager>().EndDialogue();
-        
+        DialogueManager diabox = GameObject.Find("DialogueBox").GetComponent<DialogueManager>();
+        if (diabox != null && DialogueManager.dialoguePlaying) {diabox.EndDialogue(); }
         yield return screenFade.FadeOut();
         yield return new WaitForSeconds(0.1f);
         
@@ -108,7 +108,7 @@ public class PlayerRespawn : MonoBehaviour
         yield return screenFade.FadeIn();
 
         if(DialogueManager.lastDialogue != null) { GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.lastDialogue); }
-        else { GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.currentDialogue); }
+        else {GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.currentDialogue); }
 
         characterController.enabled = true;
         controller.enabled = true;
