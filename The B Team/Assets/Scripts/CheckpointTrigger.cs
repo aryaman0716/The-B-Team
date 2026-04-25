@@ -4,7 +4,7 @@ public class CheckpointTrigger : MonoBehaviour
     public int checkpointIndex; 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player")) return;
 
         int currentCheckpoint = PlayerPrefs.GetInt("CheckpointIndex", 0);
         if (checkpointIndex > currentCheckpoint)
