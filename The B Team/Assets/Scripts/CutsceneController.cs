@@ -10,11 +10,19 @@ public class CutsceneController : MonoBehaviour
     private float holdTimer = 0f;
     private bool isSkipping = false;
 
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GameObject.Find("SkipMask").GetComponent<Animator>();
+        if (anim != null) { anim.speed = 1 / holdDuration; }
+    }
     void Update()
     {
         // Left Control HOLD?
         if (Input.GetKey(KeyCode.LeftControl))
         {
+            if (anim != null) { anim.SetBool("skipping", true); }
             holdTimer += Time.deltaTime;
 
             // Log Debug
@@ -33,6 +41,7 @@ public class CutsceneController : MonoBehaviour
         else
         {
             // No Hold
+            if (anim != null) { anim.SetBool("skipping", false); }
             holdTimer = 0f;
         }
     }

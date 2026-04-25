@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+
 public class cutoutMask : Image
 {
-
     public override Material materialForRendering
-    {
+    {       
         get {
         
             Material material = new Material(base.materialForRendering);
