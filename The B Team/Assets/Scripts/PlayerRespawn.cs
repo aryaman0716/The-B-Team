@@ -9,7 +9,9 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform[] checkpoints;
     [SerializeField] private ScreenFade screenFade;
-    [SerializeField] private TMP_Text deathText;
+    [SerializeField] private GameObject deathTextObj;
+    private TMP_Text deathText;
+    private bool respawning;
 
     private FPController controller;
     private CharacterController characterController;
@@ -19,7 +21,7 @@ public class PlayerRespawn : MonoBehaviour
     private void initialiseDeathTextList()
     {
         deathTextList.Add("laser", "Caution tape means,'take caution'!");
-        deathTextList.Add("pit", "Nothing down there!");
+        deathTextList.Add("pit", "Going the long way down is not recommended!");
         deathTextList.Add("sauce", "You burned up!");
         deathTextList.Add("camera", "Cameras are your number one enemy if you're stealing stuff..!");
         deathTextList.Add("chute", "You're not product? Why are you going down there!?");
@@ -32,9 +34,8 @@ public class PlayerRespawn : MonoBehaviour
         defaultSpawnPoint = spawnPoint;
         initialiseDeathTextList();
         screenFade = GameObject.FindAnyObjectByType(typeof(ScreenFade)) as ScreenFade;
-        deathText = GameObject.Find("deathText").GetComponent<TMP_Text>();
-        deathText.gameObject.SetActive(false);
-
+        deathText = deathTextObj.GetComponent<TMP_Text>();
+        deathTextObj.SetActive(false);
         int checkpointIndex = PlayerPrefs.GetInt("CheckpointIndex", 0);
         if (checkpointIndex < checkpoints.Length)
         {
@@ -67,11 +68,19 @@ public class PlayerRespawn : MonoBehaviour
     }
     public void Respawn(string id)
     {
-        StartCoroutine(RespawnRoutine(id));
+        if (respawning) { return; }
+        var storedVolume = GlobalSettings.SFXVolume;
+        GlobalSettings.SFXVolume = 0f;
+        respawning = true;
+        StartCoroutine(RespawnRoutine(id, storedVolume));
         Animator animator = GameObject.FindGameObjectWithTag("UIDeath").GetComponent<Animator>();
+        deathText.text = "";
+        deathTextObj.SetActive(true);
+        Animator animator2 = deathTextObj.GetComponent<Animator>();
         animator.SetTrigger("Play");
+        animator2.SetTrigger("wiggleText");
     }
-    private IEnumerator RespawnRoutine(string id)
+    private IEnumerator RespawnRoutine(string id, float storedVolume)
     {
         GameObject.Find("DialogueBox").GetComponent<DialogueManager>().EndDialogue();
         
@@ -87,8 +96,6 @@ public class PlayerRespawn : MonoBehaviour
         string val;
         if (deathTextList.TryGetValue(id, out val)) { deathText.text = val; }
         else { deathText.text = ""; }
-        if (deathText.text != "") { deathText.gameObject.SetActive(true); }
-        else { deathText.gameObject.SetActive(false); }
         
         yield return new WaitForSeconds(0.8f);
 
@@ -107,6 +114,8 @@ public class PlayerRespawn : MonoBehaviour
         controller.enabled = true;
         controller.ResetPlayerState();
         controller.SetCanMove(true);
+        GlobalSettings.SFXVolume = storedVolume;
+        respawning = false;
     }
 }
 
