@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     public string nextScene;
     public float dialogueSpeedMod = 2f;
 
+    public static bool dialoguePlaying;
     public static Dialogue currentDialogue;
     public static Dialogue lastDialogue;
     public Animator boxAnimator;
@@ -44,7 +45,7 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
         animator.SetBool("Open", true);
-
+        dialoguePlaying = true;
         Debug.Log("Starting conversation");
 
         sentences.Clear();
@@ -118,6 +119,7 @@ public class DialogueManager : MonoBehaviour
         if (currentDialogue != null) { lastDialogue = currentDialogue; }
         talkSounds.volume = 0f;
         animator.SetBool("Open", false);
+        dialoguePlaying = false;
         Time.timeScale = 1f;
         if (cutScene)
         {
