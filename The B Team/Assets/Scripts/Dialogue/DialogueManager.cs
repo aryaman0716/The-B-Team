@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     public float dialogueSpeedMod = 2f;
 
     public static bool dialoguePlaying;
+    public DialogueEntry[] onReplayDialogue;
     public static Dialogue currentDialogue;
     public static Dialogue lastDialogue;
     public Animator boxAnimator;
@@ -41,11 +42,12 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-
+        
         currentDialogue = dialogue;
         talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
         animator.SetBool("Open", true);
         dialoguePlaying = true;
+        Debug.Log(dialoguePlaying + " dialogue playing");
         Debug.Log("Starting conversation");
 
         sentences.Clear();
@@ -62,6 +64,33 @@ public class DialogueManager : MonoBehaviour
        }
        if (cutScene)
             AttemptNext();
+    }
+    public void ReplayDialogue()
+    {
+        if (lastDialogue == null) { return; }
+        if (lastDialogue.dialogueSets == null || lastDialogue.dialogueSets.Length == 0) { return; }
+        
+        DialogueSet lastSet = lastDialogue.dialogueSets[0];
+
+        if (lastSet.entries == null) { return; }
+
+        DialogueEntry[] lastEntries = lastSet.entries;
+        DialogueEntry[] newEntries = new DialogueEntry[lastEntries.Length + 1];
+
+        newEntries[0] = onReplayDialogue[Random.Range(0, onReplayDialogue.Length)];
+
+        for(int i = 0; i < lastEntries.Length; i++)
+        {
+            newEntries[i + 1] = lastEntries[i];
+        }
+
+        Dialogue dialogue = new Dialogue();
+        DialogueSet dialogueSet = new DialogueSet();
+
+        dialogueSet.entries = newEntries;
+        dialogue.dialogueSets = new DialogueSet[] { dialogueSet };
+        StartDialogue(dialogue);
+
     }
 
     public void DisplayNextSentence()
@@ -116,15 +145,31 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        if (currentDialogue != null) { lastDialogue = currentDialogue; }
+        bool notReplayDialogue = false;
+        for (int i = 0; i < onReplayDialogue.Length; i++)
+        {
+            if (currentDialogue.dialogueSets[0].entries[0] == onReplayDialogue[i])
+            {
+                notReplayDialogue = false;
+                break;
+            }
+            else
+            {
+                notReplayDialogue = true;
+            }
+        }
+        if (notReplayDialogue) { lastDialogue = currentDialogue; }
+        currentDialogue = null;
         talkSounds.volume = 0f;
         animator.SetBool("Open", false);
-        dialoguePlaying = false;
+        
         Time.timeScale = 1f;
         if (cutScene)
         {
             SceneManager.LoadScene(nextScene);
         }
+        dialoguePlaying = false;
+        Debug.Log(dialoguePlaying + " dialogue playing");
     }
 
     public void AttemptNext()

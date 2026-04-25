@@ -1,17 +1,26 @@
 using UnityEngine;
+using System.Collections;
 
 public class ObjUIController : MonoBehaviour
 {
     private Animator anim;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public DialogueManager dm;
+
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         anim.SetBool("dialoguePlaying", DialogueManager.dialoguePlaying);
+        if (!DialogueManager.dialoguePlaying && Input.GetKeyDown(KeyCode.R))
+        {
+            if(dm != null)
+            {
+                dm.ReplayDialogue();
+            }
+            
+        }
     }
 }
