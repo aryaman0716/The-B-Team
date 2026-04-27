@@ -58,7 +58,7 @@ public class CutsceneController : MonoBehaviour
         Debug.Log("Cutscene skipped (Hold Key) → Loading game scene");
         StartCoroutine(PlayAnimationAndLoad());
     }
-    private IEnumerator PlayAnimationAndLoad()
+    public IEnumerator PlayAnimationAndLoad()
     {
         Animator animator = GameObject.FindGameObjectWithTag("UIDeath")?.GetComponent<Animator>();
         if (animator != null)
@@ -76,5 +76,9 @@ public class CutsceneController : MonoBehaviour
         }
 
         SceneManager.LoadScene(gameSceneName);
+    }
+    public void EndCutScene()
+    {
+        StartCoroutine(PlayAnimationAndLoad());
     }
 }
