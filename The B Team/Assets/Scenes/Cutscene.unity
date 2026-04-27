@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2157482200098733930, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2260628678483337888, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: leftPanel
       value: 
