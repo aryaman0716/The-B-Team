@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 using UnityEngine.UI; // สำหรับใช้จัดการ UI Image ถ้าต้องการแสดงแถบ Progress
 
 public class CutsceneController : MonoBehaviour
@@ -49,12 +50,29 @@ public class CutsceneController : MonoBehaviour
     public void EndCutscene()
     {
         Debug.Log("Cutscene ended → Loading game scene");
-        SceneManager.LoadScene(gameSceneName);
+        StartCoroutine(PlayAnimationAndLoad());
     }
 
     public void SkipCutscene()
     {
         Debug.Log("Cutscene skipped (Hold Key) → Loading game scene");
+        StartCoroutine(PlayAnimationAndLoad());
+    }
+    private IEnumerator PlayAnimationAndLoad()
+    {
+        Animator animator = GameObject.FindGameObjectWithTag("UIDeath")?.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("Play");
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        ScreenFade fade = FindFirstObjectByType<ScreenFade>();
+        if (fade != null)
+        {
+            yield return fade.FadeOut();
+        }
         SceneManager.LoadScene(gameSceneName);
     }
 }
