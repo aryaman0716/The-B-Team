@@ -147,6 +147,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5231217355788647046, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231217355788647046, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231217355788647046, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231217355788647046, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231217355788647046, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5744196350134003481, guid: 899efdc48e75c9844be1d0feeb66f56f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1428,6 +1448,7 @@ MonoBehaviour:
   nextScene: Room1Blockout
   dialogueSpeedMod: 2
   onReplayDialogue: []
+  replayingDialogue: 0
   boxAnimator: {fileID: 2123379338}
 --- !u!114 &3048350925559666560
 MonoBehaviour:
