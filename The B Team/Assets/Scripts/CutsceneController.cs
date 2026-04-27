@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI; // สำหรับใช้จัดการ UI Image ถ้าต้องการแสดงแถบ Progress
+using UnityEngine.UI; 
 
 public class CutsceneController : MonoBehaviour
 {
     public string gameSceneName;
-    public float holdDuration = 2.0f; // ตั้งค่าเวลาที่ต้องกดค้าง (วินาที)
+    public float holdDuration = 2.0f; 
 
     private float holdTimer = 0f;
     private bool isSkipping = false;
@@ -66,13 +66,15 @@ public class CutsceneController : MonoBehaviour
             animator.SetTrigger("Play");
         }
 
-        yield return new WaitForSeconds(0.2f);
+        
+        yield return new WaitForSeconds(1.5f);
 
         ScreenFade fade = FindFirstObjectByType<ScreenFade>();
         if (fade != null)
         {
-            yield return fade.FadeOut();
+            yield return fade.FadeOut(); 
         }
+
         SceneManager.LoadScene(gameSceneName);
     }
 }
