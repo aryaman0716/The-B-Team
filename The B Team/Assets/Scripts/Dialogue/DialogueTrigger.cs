@@ -19,6 +19,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (!done)
         {
+            FindFirstObjectByType<DialogueManager>().replayingDialogue = false;
             FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
             done = true;
         }

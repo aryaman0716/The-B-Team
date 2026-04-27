@@ -20,16 +20,18 @@ public class DialogueManager : MonoBehaviour
     public string nextScene;
     public float dialogueSpeedMod = 2f;
 
-    public static bool dialoguePlaying;
+    public static bool dialoguePlaying = false;
     public DialogueEntry[] onReplayDialogue;
+    public bool replayingDialogue = false;
     public static Dialogue currentDialogue;
     public static Dialogue lastDialogue;
     public Animator boxAnimator;
 
-    void Start()
+    void Awake()
     {
         sentences = new Queue<DialogueEntry>();
-
+        dialoguePlaying = false;
+        replayingDialogue = false;
     }
     private void Update()
     {
@@ -38,59 +40,77 @@ public class DialogueManager : MonoBehaviour
             if (cutScene)
                 AttemptNext();
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            dialogueSpeedMod = 8f;
+        }
+        else
+        {
+            dialogueSpeedMod = 2f;
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        
+        if (dialogue == null) { Debug.LogWarning("Dialogue not input"); return; }
+        sentences.Clear();
         currentDialogue = dialogue;
         talkSounds.volume = (0.5f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume);
         animator.SetBool("Open", true);
         dialoguePlaying = true;
-        Debug.Log(dialoguePlaying + " dialogue playing");
+
         Debug.Log("Starting conversation");
 
-        sentences.Clear();
+        int setIndex = 0;
 
-      int setIndex = 0;
-        
-       foreach (DialogueEntry entry in dialogue.dialogueSets[setIndex].entries)
-       {
-         sentences.Enqueue(entry);
-       }
-       if (animator == null)
-       {
+        if (!replayingDialogue)
+        {
+            foreach (DialogueEntry entry in dialogue.dialogueSets[setIndex].entries)
+            {
+                sentences.Enqueue(entry);
+            }
+        }
+        else
+        {
+            DialogueSet replaySet = AppendDialogueToStart(onReplayDialogue[0], dialogue.dialogueSets[setIndex]);
+            if(replaySet == null) { Debug.Log("Replay set is null. Exiting function."); return; }
+            foreach(DialogueEntry entry in replaySet.entries)
+            {
+                sentences.Enqueue(entry);
+            }
+        }
+
+        if (animator == null)
+        {
             DisplayNextSentence();
-       }
-       if (cutScene)
+        }
+        if (cutScene)
             AttemptNext();
     }
     public void ReplayDialogue()
     {
-        if (lastDialogue == null) { return; }
-        if (lastDialogue.dialogueSets == null || lastDialogue.dialogueSets.Length == 0) { return; }
+        if (replayingDialogue) { Debug.Log("Already replaying dialogue"); return; }
+        Debug.Log("Attempting to replay dialogue");
+        if(lastDialogue == null) { Debug.Log("Last dialogue not found"); return; }
+        replayingDialogue = true;
+        StartDialogue(lastDialogue);
+    }
+
+    public DialogueSet AppendDialogueToStart(DialogueEntry entry, DialogueSet set)
+    {
+        if(set.entries == null) { Debug.Log("No entries in dialogue set"); return null; }
+
+        DialogueEntry[] setEntries = set.entries;
+        DialogueEntry[] newEntries = new DialogueEntry[setEntries.Length + 1];
+
+        newEntries[0] = entry;
         
-        DialogueSet lastSet = lastDialogue.dialogueSets[0];
-
-        if (lastSet.entries == null) { return; }
-
-        DialogueEntry[] lastEntries = lastSet.entries;
-        DialogueEntry[] newEntries = new DialogueEntry[lastEntries.Length + 1];
-
-        newEntries[0] = onReplayDialogue[Random.Range(0, onReplayDialogue.Length)];
-
-        for(int i = 0; i < lastEntries.Length; i++)
+        for(int i = 0; i < setEntries.Length; i++)
         {
-            newEntries[i + 1] = lastEntries[i];
+            newEntries[i + 1] = setEntries[i];
         }
 
-        Dialogue dialogue = new Dialogue();
-        DialogueSet dialogueSet = new DialogueSet();
-
-        dialogueSet.entries = newEntries;
-        dialogue.dialogueSets = new DialogueSet[] { dialogueSet };
-        StartDialogue(dialogue);
-
+        return new DialogueSet { entries = newEntries };
     }
 
     public void DisplayNextSentence()
@@ -145,21 +165,10 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        bool notReplayDialogue = false;
-        for (int i = 0; i < onReplayDialogue.Length; i++)
-        {
-            if (currentDialogue.dialogueSets[0].entries[0] == onReplayDialogue[i])
-            {
-                notReplayDialogue = false;
-                break;
-            }
-            else
-            {
-                notReplayDialogue = true;
-            }
-        }
-        if (notReplayDialogue) { lastDialogue = currentDialogue; }
+        if (!replayingDialogue) { lastDialogue = currentDialogue; }
+        else { Debug.Log("Replay dialogue is playing. Current dialogue = null"); }
         currentDialogue = null;
+        replayingDialogue = false;
         talkSounds.volume = 0f;
         animator.SetBool("Open", false);
         
@@ -169,7 +178,6 @@ public class DialogueManager : MonoBehaviour
             SceneManager.LoadScene(nextScene);
         }
         dialoguePlaying = false;
-        Debug.Log(dialoguePlaying + " dialogue playing");
     }
 
     public void AttemptNext()
