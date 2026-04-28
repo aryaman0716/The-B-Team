@@ -16,16 +16,15 @@ Material:
   - _OVERLAYMODE1_NONE
   - _OVERLAYMODE_HAFTONE
   - _RIMSPLITCOLOR_NOSPLIT
+  - _USEADAPTIVESCREENUVS_ON
   - _USEADDITIONALLIGHTSDIFFUSE_ON
   - _USEBACKLIGHT_ON
   - _USEHATCHINGCONSTANTSCALE_ON
   - _USELIGHTRAMP_DIFFUSERAMP
   - _USEPURESKETCH_ON
-  - _USERIMLIGHT_ON
   m_InvalidKeywords:
   - _OVERLAYMODE_HALFTONE
   - _USELIGHTRAMPON
-  - _USESHADOWS_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -57,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HalftoneTexture:
-        m_Texture: {fileID: 2800000, guid: 879239ce2e89a8c4699bb8337fdcce9e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 945af7454c2fee0408158909b57221e5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Hatch1:
@@ -123,8 +122,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _AdaptiveThicnkess: 0
-    - _AdditionalLightsAmount: 0.779
-    - _AdditionalLightsFaloff: 0.014
+    - _AdditionalLightsAmount: 0
+    - _AdditionalLightsFaloff: 0.108
     - _AdditionalLightsIntesity: 1
     - _AdditionalLightsSmoothnessMultiplier: 1
     - _AlphaClip: 0
@@ -136,7 +135,7 @@ Material:
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.562
+    - _Cutoff: 0.725
     - _Darken: 0.02
     - _DiffusePosterizeOffset: 0
     - _DiffusePosterizePower: 1
@@ -152,15 +151,15 @@ Material:
     - _HairSpecularMaskScale: 1
     - _HairSpecularMaskStrength: 1
     - _HairSpecularShadowMask: 0
-    - _HalftoneEdgeOffset: -0.41
-    - _HalftoneSmoothness: 0.88
-    - _HalftoneThreshold: 0.0741
-    - _HalftoneToonAffect: 0.772
+    - _HalftoneEdgeOffset: -0.46
+    - _HalftoneSmoothness: 1.57
+    - _HalftoneThreshold: 0.15
+    - _HalftoneToonAffect: 1
     - _HaltonePatternSize: 0
     - _IndirectLightAffectOnHatch: 0.42
     - _IndirectLightStrength: 0
     - _InverseMask: 0
-    - _LightRampOffset: 0.43
+    - _LightRampOffset: 0.47
     - _Lighten: -0.34
     - _LocalShift: 0
     - _LocalShiftStrength: 1
@@ -176,8 +175,8 @@ Material:
     - _OutlineType: 0
     - _OverlayMode: 1
     - _OverlayMode1: 0
-    - _OverlayRotation: 129
-    - _OverlayUVTilling: 0.4
+    - _OverlayRotation: 0
+    - _OverlayUVTilling: 182.69
     - _PaperTilling: 2.07
     - _PrimaryIntensity: 1
     - _PrimaryPower: 0.46
@@ -186,8 +185,8 @@ Material:
     - _QueueOffset: 0
     - _RampDiffuseTextureLoaded: 1
     - _ReceiveShadows: 1
-    - _RimPower: 12
-    - _RimSmoothness: 0.171
+    - _RimPower: 2.87
+    - _RimSmoothness: 0.463
     - _RimSplitColor: 0
     - _RimThickness: 3
     - _Rotation: 0
@@ -195,7 +194,7 @@ Material:
     - _SecondaryIntensity: 1
     - _SecondaryPower: 1
     - _SecondarySmoothness: 0.5
-    - _ShapeSmoothness: 0.336
+    - _ShapeSmoothness: 0.558
     - _SideShineAmount: 0.2717647
     - _SideShineHardness: 0
     - _SideShineIntensity: 1.63
@@ -219,13 +218,13 @@ Material:
     - _UVAnimationSpeed: 0.84
     - _UVAnimationSpeedSpec: 2
     - _UVAnimationSpeedWarp: 2
-    - _UVScrollSpeed: 0.0185
+    - _UVScrollSpeed: 0
     - _UVScrollSpeedSpec: 0
     - _UVScrollSpeedWarp: 0
-    - _UVSrcrollAngle: 177
+    - _UVSrcrollAngle: 0
     - _UVSrcrollAngleSpec: 0
     - _UVSrcrollAngleWarp: 0
-    - _UseAdaptiveScreenUvs: 0
+    - _UseAdaptiveScreenUvs: 1
     - _UseAdaptiveScreenUvsWarp: 0
     - _UseAdaptiveUvsSpecular: 0
     - _UseAdditionalLightsDiffuse: 1
@@ -241,11 +240,11 @@ Material:
     - _UseLightRamp: 1
     - _UseOutline: 0
     - _UsePureSketch: 1
-    - _UseRimLight: 1
+    - _UseRimLight: 0
     - _UseScreenUvs: 0
     - _UseScreenUvsSpecular: 0
     - _UseScreenUvsWarp: 0
-    - _UseShadows: 1
+    - _UseShadows: 0
     - _UseSpecular: 0
     - _UseSpecularMask: 0
     - _UvsAnimationSpeed: 2.3
@@ -257,9 +256,9 @@ Material:
     - __dirty: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+    - _Color: {r: 0.4339623, g: 0.41963333, b: 0.41963333, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HalftoneColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+    - _HalftoneColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
     - _HatchingColor: {r: 0.14337842, g: 0.15078348, b: 0.16981131, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _PrimaryColor: {r: 1, g: 1, b: 1, a: 0}
