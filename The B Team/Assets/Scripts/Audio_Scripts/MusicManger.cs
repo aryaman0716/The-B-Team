@@ -32,6 +32,7 @@ public class MusicManger : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "Room1Blockout":
+            case "Cutscene End":
                 {
                     if (!phase2)
                     {
@@ -74,15 +75,7 @@ public class MusicManger : MonoBehaviour
                     }
                     break;
                 }
-            case "Cutscene End":
-                {
-                    if (Source.clip != Music[1])
-                    {
-                        Source.clip = Music[1];
-                        Source.Play();
-                    }
-                    break;
-                }
+            
         }
     }
     public IEnumerator LoadTrack()
