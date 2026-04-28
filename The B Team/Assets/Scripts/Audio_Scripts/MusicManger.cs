@@ -87,7 +87,7 @@ public class MusicManger : MonoBehaviour
     }
     public IEnumerator LoadTrack()
     {
-        yield return new WaitForSeconds(27.5f);
+        yield return new WaitForSeconds(28f);
         Source.clip = Music[0];
         Source.Play();
     }
