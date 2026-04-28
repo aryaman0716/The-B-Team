@@ -25,6 +25,7 @@ public class KnifeTool : ToolData
             if (wire != null)
             {
                  wire.Cut();
+                wire = null;
             }
         }
     }

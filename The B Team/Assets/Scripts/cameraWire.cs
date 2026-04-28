@@ -3,10 +3,14 @@ using UnityEngine;
 public class cameraWire : MonoBehaviour
 {
     public GameObject cameraView;
+    public static bool mousing = false;
+
+    public EquipmentController equipment;
+    private int knifeIndex = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        equipment = FindFirstObjectByType<EquipmentController>();
     }
 
     // Update is called once per frame
@@ -14,8 +18,33 @@ public class cameraWire : MonoBehaviour
     {
         
     }
+
+    void OnMouseOver()
+    {
+        if (!gameObject.activeSelf) { return; }
+        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) { GetComponent<Outline>().enabled = false; mousing = false; return; }
+        if (EquipmentController.DistanceToPlayer(transform) > 3f)
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return;
+        }
+        GetComponent<Outline>().enabled = true;
+        mousing = true;
+    }
+
+    void OnMouseExit()
+    {
+        if (!gameObject.activeSelf) { return; }
+        GetComponent<Outline>().enabled = false; 
+        mousing = false;
+        
+    }
+
     public void Cut()
     {
+        mousing = false;
+        GetComponent<Outline>().enabled = false;
         cameraView.SetActive(false);
         gameObject.SetActive(false);
 

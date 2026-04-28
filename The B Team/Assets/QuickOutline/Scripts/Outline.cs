@@ -140,7 +140,7 @@ public class Outline : MonoBehaviour {
 
     if(outlineColor.a < 1)
     {
-            outlineColor.a = Mathf.Clamp(outlineColor.a += 0.005f, 0, 1);
+            outlineColor.a = Mathf.Clamp(outlineColor.a += 0.01f, 0, 1);
             UpdateMaterialProperties();
     }
   }

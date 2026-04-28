@@ -228,6 +228,11 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("Splash", (int)cursor_img.flour, (int)ui_img.mouse_left);
             return;
         }
+        if (cameraWire.mousing)
+        {
+            EnablePopupUI("Slash", (int)cursor_img.knife, (int)ui_img.mouse_left);
+            return;
+        }
 
         DisablePopupUI();
         
