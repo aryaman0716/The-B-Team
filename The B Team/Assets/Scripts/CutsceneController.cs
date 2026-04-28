@@ -12,6 +12,7 @@ public class CutsceneController : MonoBehaviour
     private bool isSkipping = false;
 
     private Animator anim;
+    public GameObject scenetransition;
 
     void Start()
     {
@@ -60,22 +61,12 @@ public class CutsceneController : MonoBehaviour
     }
     public IEnumerator PlayAnimationAndLoad()
     {
-        Animator animator = GameObject.FindGameObjectWithTag("UIDeath")?.GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.SetTrigger("Play");
-        }
-
         
+        Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition(gameSceneName);
+
         yield return new WaitForSeconds(1.5f);
 
-        ScreenFade fade = FindFirstObjectByType<ScreenFade>();
-        if (fade != null)
-        {
-            yield return fade.FadeOut(); 
-        }
-
-        SceneManager.LoadScene(gameSceneName);
+       
     }
     public void EndCutScene()
     {
