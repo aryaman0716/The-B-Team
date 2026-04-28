@@ -6,7 +6,11 @@ public class CashStack : MonoBehaviour
     public GameObject scenetransition;
     void OnTriggerEnter(Collider col)
     {
-        StartEndingCutscene();
+        if (col.CompareTag("Player"))
+        {
+            StartEndingCutscene();
+        }
+        
     }
     
     void StartEndingCutscene()
