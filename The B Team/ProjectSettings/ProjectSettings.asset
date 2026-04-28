@@ -914,7 +914,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -936,11 +942,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 3f29b7ba-fa25-4bf3-8f0b-3a252638a3bc
+  cloudProjectId: 7d2a579a-5169-467e-bfee-38fdc5cde3dc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: The B Team 2026-01-24_17-53-09
-  organizationId: aryamanmukherjee2003
+  projectName: Gettin' The Dough
+  organizationId: albertoof
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
