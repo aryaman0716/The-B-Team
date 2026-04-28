@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public string gameStartName;
     public string gameContinueName;
+    public GameObject scenetransition;
     //write the file name of the scene you want the button to load into, i think it has to be enabled in the build settings too.
 
     void Start()
@@ -23,15 +24,15 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         PlayerPrefs.DeleteKey("CheckpointIndex"); // start fresh without any checkpoint progress
-        SceneManager.LoadScene(gameStartName);
+        LoadScene(gameStartName);
     }
     public void ContinueGame()
     {
-        SceneManager.LoadScene(gameContinueName);
+        LoadScene(gameContinueName);
     }
     public void LoadScene(string SceneName)
     {
-        SceneManager.LoadScene(SceneName);
+        Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition(SceneName);
     }
 
     public void QuitGame()

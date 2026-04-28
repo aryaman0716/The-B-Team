@@ -33,7 +33,6 @@ public class PlayerRespawn : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         defaultSpawnPoint = spawnPoint;
         initialiseDeathTextList();
-        screenFade = GameObject.FindAnyObjectByType(typeof(ScreenFade)) as ScreenFade;
         deathText = deathTextObj.GetComponent<TMP_Text>();
         deathTextObj.SetActive(false);
         int checkpointIndex = PlayerPrefs.GetInt("CheckpointIndex", 0);

@@ -33,6 +33,7 @@ public class ManagerRoomButton : MonoBehaviour
             wireToActivate.ActivateWire();
             outline.enabled = false;
             pressed = true;
+            MusicManger.phase2 = true;
         }
 
     }

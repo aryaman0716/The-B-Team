@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     public GameObject[] PauseHide;
     public GameObject[] PauseShow;
     public Animator pauseAnimator;
+    public GameObject scenetransition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,7 +74,7 @@ public class UIController : MonoBehaviour
     {
         Paused = false;
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene("MainMenu");
+        Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition("MainMenu");
     }
 
 }

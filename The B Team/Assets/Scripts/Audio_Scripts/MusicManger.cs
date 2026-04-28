@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class MusicManger : MonoBehaviour
     public AudioSource Source;
     public AudioClip[] Music;
     public float baseVolume = 0.5f;
+    public static bool phase2 = false;
 
 
     void Awake()
@@ -31,12 +33,28 @@ public class MusicManger : MonoBehaviour
         {
             case "Room1Blockout":
                 {
-                    if (Source.clip != Music[0])
+                    if (!phase2)
                     {
-                        Source.clip = Music[0];
-                        Source.Play();
+                        if (Source.clip != Music[3])
+                        {
+                            Source.clip = Music[3];
+                            Source.Play();
+                        }
+                        break;
                     }
-                    break;
+                    else
+                    {
+                        if (Source.clip != Music[2] && Source.clip != Music[0])
+                        {
+                            Source.clip = Music[2];
+                            Source.Play();
+                            StartCoroutine(LoadTrack());
+                        }
+                        break;
+                    }
+
+                    
+                    
                 }
             case "Cutscene":
                 {
@@ -66,5 +84,11 @@ public class MusicManger : MonoBehaviour
                     break;
                 }
         }
+    }
+    public IEnumerator LoadTrack()
+    {
+        yield return new WaitForSeconds(28f);
+        Source.clip = Music[0];
+        Source.Play();
     }
 }

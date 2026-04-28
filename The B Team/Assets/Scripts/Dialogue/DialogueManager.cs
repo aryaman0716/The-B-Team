@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     public static Dialogue currentDialogue;
     public static Dialogue lastDialogue;
     public Animator boxAnimator;
+    public CutsceneController cSController;
 
     void Awake()
     {
@@ -175,8 +176,16 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 1f;
         if (cutScene)
         {
-            SceneManager.LoadScene(nextScene);
-        }
+            if (cSController != null)
+            {
+                cSController.EndCutscene();
+            }
+            else
+            {
+                SceneManager.LoadScene(nextScene);
+            }
+
+            }
         dialoguePlaying = false;
     }
 

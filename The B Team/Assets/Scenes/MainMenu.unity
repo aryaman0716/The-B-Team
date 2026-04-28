@@ -10727,6 +10727,8 @@ MonoBehaviour:
   Music:
   - {fileID: 8300000, guid: 2256b5a92571e4d49b47eff65c67db54, type: 3}
   - {fileID: 8300000, guid: ea85d1449b121814496886d82a199f57, type: 3}
+  - {fileID: 8300000, guid: fa3a2225f92c96c4d8df6c29eb0059e8, type: 3}
+  - {fileID: 8300000, guid: 61c4b37f0646f46479803777fefe0743, type: 3}
   baseVolume: 0.5
 --- !u!4 &1197413925
 Transform:
@@ -10914,6 +10916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   gameStartName: Cutscene
   gameContinueName: Room1Blockout
+  scenetransition: {fileID: 4080316201551287747, guid: 49488f08c2fa8de4b9da26bd900ac7a7, type: 3}
 --- !u!1 &1341657570
 GameObject:
   m_ObjectHideFlags: 0

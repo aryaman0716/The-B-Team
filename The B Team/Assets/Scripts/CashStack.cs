@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class CashStack : MonoBehaviour
 {
+    public GameObject scenetransition;
     void OnTriggerEnter(Collider col)
     {
         StartEndingCutscene();
@@ -10,6 +11,6 @@ public class CashStack : MonoBehaviour
     
     void StartEndingCutscene()
     {
-        SceneManager.LoadScene("Cutscene End");
+        Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition("Cutscene End");
     }
 }

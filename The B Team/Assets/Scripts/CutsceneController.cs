@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI; // สำหรับใช้จัดการ UI Image ถ้าต้องการแสดงแถบ Progress
+using UnityEngine.UI; 
 
 public class CutsceneController : MonoBehaviour
 {
     public string gameSceneName;
-    public float holdDuration = 2.0f; // ตั้งค่าเวลาที่ต้องกดค้าง (วินาที)
+    public float holdDuration = 2.0f; 
 
     private float holdTimer = 0f;
     private bool isSkipping = false;
 
     private Animator anim;
+    public GameObject scenetransition;
 
     void Start()
     {
@@ -58,21 +59,17 @@ public class CutsceneController : MonoBehaviour
         Debug.Log("Cutscene skipped (Hold Key) → Loading game scene");
         StartCoroutine(PlayAnimationAndLoad());
     }
-    private IEnumerator PlayAnimationAndLoad()
+    public IEnumerator PlayAnimationAndLoad()
     {
-        Animator animator = GameObject.FindGameObjectWithTag("UIDeath")?.GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.SetTrigger("Play");
-        }
+        
+        Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition(gameSceneName);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1.5f);
 
-        ScreenFade fade = FindFirstObjectByType<ScreenFade>();
-        if (fade != null)
-        {
-            yield return fade.FadeOut();
-        }
-        SceneManager.LoadScene(gameSceneName);
+       
+    }
+    public void EndCutScene()
+    {
+        StartCoroutine(PlayAnimationAndLoad());
     }
 }
