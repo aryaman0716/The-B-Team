@@ -8,8 +8,10 @@ public class ManagerRoomButton : MonoBehaviour
     private Transform playerTransform;
     public float interactRange;
 
-    public bool mouseOver;
+    public static bool mouseOver;
     public bool pressed;
+
+    public AudioClip buttonPressSFX;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +33,8 @@ public class ManagerRoomButton : MonoBehaviour
         {
             doorToUnlock.SetDoorLocked(false);
             wireToActivate.ActivateWire();
+            GetComponent<Animator>().SetTrigger("pressed");
+            GetComponent<AudioSource>().PlayOneShot(buttonPressSFX, GlobalSettings.SFXVolume * GetComponent<AudioSource>().volume);
             outline.enabled = false;
             pressed = true;
             MusicManger.phase2 = true;
@@ -41,7 +45,7 @@ public class ManagerRoomButton : MonoBehaviour
     void OnMouseOver()
     {
         var dist = Vector3.Distance(playerTransform.position, transform.position);
-        if (dist > interactRange) { mouseOver = false; return; }
+        if (dist > interactRange || pressed) { mouseOver = false; return; }
         mouseOver = true;
     }
 

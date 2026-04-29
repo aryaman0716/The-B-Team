@@ -233,6 +233,11 @@ public class CrosshairController : MonoBehaviour
             EnablePopupUI("Slash", (int)cursor_img.knife, (int)ui_img.mouse_left);
             return;
         }
+        if (ManagerRoomButton.mouseOver)
+        {
+            EnablePopupUI("Press", (int)cursor_img.point, (int)ui_img.mouse_left);
+            return;
+        }
 
         DisablePopupUI();
         
