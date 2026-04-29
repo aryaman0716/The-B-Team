@@ -235,7 +235,12 @@ public class CrosshairController : MonoBehaviour
         }
         if (ManagerRoomButton.mouseOver)
         {
-            EnablePopupUI("Press", (int)cursor_img.point, (int)ui_img.mouse_left);
+            EnablePopupUI("Unlock Factory Door", (int)cursor_img.point, (int)ui_img.mouse_left);
+            return;
+        }
+        if (FridgeDoor.mousing)
+        {
+            EnablePopupUI("Pry Open", (int)cursor_img.spatula, (int)ui_img.mouse_left); 
             return;
         }
 

@@ -4,6 +4,8 @@ public class FridgeDoor : MonoBehaviour
 {
     public Animator animator;
     private bool opened = false;
+
+    public static bool mousing = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +15,7 @@ public class FridgeDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GetComponent<Outline>().enabled = mousing;
     }
     public void Pry()
     {
@@ -23,5 +25,16 @@ public class FridgeDoor : MonoBehaviour
         {
             animator.SetTrigger("Open");
         }
+    }
+
+    void OnMouseOver()
+    {
+        if (opened) { mousing = false; return; }
+        if (EquipmentController.DistanceToPlayer(transform) > 3f) { mousing = false; return; }
+        mousing = true;
+    }
+    void OnMouseExit()
+    {
+        mousing = false;
     }
 }
