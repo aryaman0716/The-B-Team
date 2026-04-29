@@ -34,7 +34,7 @@ public class GlobalSettings : MonoBehaviour
         if (selectedRes == 0)
         {
             Debug.Log("nullres");
-            selectedRes = resolutions.Count - 1;
+            selectedRes = resolutions.Count - 2;
         }
         MasterSlider.value = MasterVolume;
         MusicSlider.value = MusicVolume;
