@@ -30,7 +30,7 @@ public class FridgeDoor : MonoBehaviour
     void OnMouseOver()
     {
         if (opened) { mousing = false; return; }
-        if (EquipmentController.DistanceToPlayer(transform) > 3f) { mousing = false; return; }
+        if (EquipmentController.DistanceToPlayer(transform) > 4f) { mousing = false; return; }
         mousing = true;
     }
     void OnMouseExit()
