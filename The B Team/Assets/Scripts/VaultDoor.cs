@@ -7,12 +7,16 @@ public class VaultDoor : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] ParticleSystem ps;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] AudioClip[] clips;
+
     private bool explosionStarted = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,9 +35,14 @@ public class VaultDoor : MonoBehaviour
 
     private IEnumerator ExplodeDoor()
     {
-        yield return new WaitForSeconds(1.5f);
+        //play sound 1
+        audioSource.PlayOneShot(clips[0], audioSource.volume * GlobalSettings.SFXVolume);
+        yield return new WaitForSeconds(4.1f);
+        audioSource.PlayOneShot(clips[1], audioSource.volume * GlobalSettings.SFXVolume);
+        yield return new WaitForSeconds(0.9f);
         ObjectiveManager.Instance.CompleteObjective("Find a way to blast through the vault door.", "Finish the job...");
         animator.SetTrigger("ExplodeDoor");
+        RemoveMicrowaveAndCutlery();
 
     }
     public void RemoveMicrowaveAndCutlery()
