@@ -66,10 +66,10 @@ public class GeneralDoor : MonoBehaviour
         //Debug.Log("Door should be " + val);
         //Debug.Log("Door is now " + locked);
 
-        foreach(Renderer r in GetComponentsInChildren<Renderer>())
-        {
-            if(val == true) { r.material.SetColor("_BaseColor", Color.red); }
-            else { r.material.SetColor("_BaseColor", Color.green); }
-        }
+        //foreach(Renderer r in GetComponentsInChildren<Renderer>())
+        //{
+        //    if(val == true) { r.material.SetColor("_BaseColor", Color.red); }
+        //    else { r.material.SetColor("_BaseColor", Color.green); }
+        //}
     }
 }
