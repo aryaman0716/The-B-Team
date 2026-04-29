@@ -1,7 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System;
+using System.Drawing;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class UIController : MonoBehaviour
     public GameObject[] PauseShow;
     public Animator pauseAnimator;
     public GameObject scenetransition;
+    public Animator animatorFade;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +39,7 @@ public class UIController : MonoBehaviour
     public void PauseGame()
     {
         //Cursor.visible = true;
+        animatorFade.SetBool("Faded", true);
         Paused = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0.0f;
@@ -49,10 +53,10 @@ public class UIController : MonoBehaviour
             
             //thisObject.SetActive(true);
         }
-
     }
     public void UnPauseGame()
     {
+        animatorFade.SetBool("Faded", false);
         Debug.Log("unpause");
         Cursor.visible=false;
         Paused = false;
