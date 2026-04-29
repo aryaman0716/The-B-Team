@@ -164,20 +164,20 @@ public class Pickup : MonoBehaviour
         //}
         if (Input.GetMouseButton(1))
         {
+            rb.AddForce(propHolder.transform.forward * throwForce);
+            Drop();
+            //ManagerKey isManagerKey = GetComponent<ManagerKey>();
 
-            ManagerKey isManagerKey = GetComponent<ManagerKey>();
 
-
-            if (isManagerKey == null)
-            {
-                rb.AddForce(propHolder.transform.forward * throwForce);
-                Drop();
-                Debug.Log("Object thrown!");
-            }
-            else
-            {
-                Debug.Log("Manager Key detected: Throwing disabled.");
-            }
+            //if (isManagerKey == null)
+            //{
+                
+            //    Debug.Log("Object thrown!");
+            //}
+            //else
+            //{
+            //    Debug.Log("Manager Key detected: Throwing disabled.");
+            //}
         }
     }
 
