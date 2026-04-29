@@ -288,7 +288,7 @@ MonoBehaviour:
   onReplayDialogue: []
   replayingDialogue: 0
   boxAnimator: {fileID: 898782886}
-  cSController: {fileID: 0}
+  cSController: {fileID: 1526995881}
 --- !u!95 &387986196
 Animator:
   serializedVersion: 7
