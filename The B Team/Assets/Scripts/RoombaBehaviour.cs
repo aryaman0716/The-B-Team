@@ -21,7 +21,11 @@ public class RoombaBehaviour : MonoBehaviour
     public float puddleCheckDistance = 0.5f;
     public LayerMask pureeLayer;
 
+    public Material[] roomba_materials;
+    public MeshRenderer roomba_meshRenderer;
+
     private bool isShortCircuited = false;
+    public bool isScared = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,11 +58,13 @@ public class RoombaBehaviour : MonoBehaviour
 
         if (directionChangeTimer > 0)
         {
+            isScared = true;
             speed = sprintSpeed;
             directionChangeTimer = Mathf.Clamp(directionChangeTimer - Time.deltaTime, 0, directionChangeBuffer);
         }
         else
         {
+            isScared = false;
             speed = baseSpeed;
         }
 
@@ -118,6 +124,13 @@ public class RoombaBehaviour : MonoBehaviour
             obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("managerKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
             obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("managerKeyPreviewHighlight").GetComponent<MeshRenderer>();
         }
+    }
+
+    public int GetCurrentState()
+    {
+        if (isShortCircuited) { return 2; }
+        if (isScared) { return 1; }
+        return 0;
     }
 
     private void OnDrawGizmosSelected()

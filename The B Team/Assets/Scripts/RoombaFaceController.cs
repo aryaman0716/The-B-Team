@@ -1,0 +1,41 @@
+using UnityEngine;
+
+public class RoombaFaceController : MonoBehaviour
+{
+    public MeshRenderer roombaMeshRenderer;
+    public Material[] roombaMaterials;
+
+    private RoombaBehaviour roombaBehaviour;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        roombaBehaviour = GetComponent<RoombaBehaviour>();    
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        switch (roombaBehaviour.GetCurrentState())
+        {
+            case 0:
+                SetMaterial(0);
+                break;
+            case 1:
+                SetMaterial(1);
+                break;
+            case 2:
+                SetMaterial(2);
+                break;
+        }
+    }
+
+    void SetMaterial(int val)
+    {
+        var materials = roombaMeshRenderer.materials;
+
+        materials[1] = roombaMaterials[val];
+
+        roombaMeshRenderer.materials = materials;
+    }
+}
