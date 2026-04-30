@@ -178,7 +178,7 @@ public class CrosshairController : MonoBehaviour
                 var sinkMix = FindFirstObjectByType<SinkMixSystem>();
                 if (sinkMix.FlourAdded)
                 {
-                    if (EquipmentController.publicIndex != 0)
+                    if (EquipmentController.publicIndex != 4)
                     {
                         EnablePopupUI("Knead", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
                         return;

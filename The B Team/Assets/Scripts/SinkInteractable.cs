@@ -12,6 +12,8 @@ public class SinkInteractable : MonoBehaviour
     public static bool mousingS = false;
     public static bool anyfocus = false;
     private GameObject water_obj;
+    public Outline outline;
+
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -22,19 +24,21 @@ public class SinkInteractable : MonoBehaviour
     }
     void OnMouseOver()
     {
-        if (EquipmentController.publicIndex < 4)
-        {
-            return;
-        }
         if (Player != null)
         {
             if (PlayerDistance() > 3f) return;
         }
         mousingS = true;
+        outline.enabled = true;
         if (Input.GetMouseButtonDown(0) && !filled)
         {
             ToggleSink(!isOn);
         }
+    }
+    void OnMouseExit()
+    {
+        mousingS = false;
+        outline.enabled = false;
     }
     void Update()
     {
