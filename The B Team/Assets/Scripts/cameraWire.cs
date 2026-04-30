@@ -22,7 +22,6 @@ public class cameraWire : MonoBehaviour
     void OnMouseOver()
     {
         if (!gameObject.activeSelf) { return; }
-        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) { GetComponent<Outline>().enabled = false; mousing = false; return; }
         if (EquipmentController.DistanceToPlayer(transform) > 3f)
         {
             GetComponent<Outline>().enabled = false;
