@@ -21,9 +21,10 @@ public class PlayerRespawn : MonoBehaviour
     private void initialiseDeathTextList()
     {
         deathTextList.Add("laser", "Caution tape means,'take caution'!");
-        deathTextList.Add("pit", "Going the long way down is not recommended!");
-        deathTextList.Add("sauce", "You burned up!");
-        deathTextList.Add("camera", "Cameras are your number one enemy if you're stealing stuff..!");
+        deathTextList.Add("pit", "Your ankles <i>are</i> infact needed for the heist, unfortunately!");
+        deathTextList.Add("sauce", "You got lost in the sauce!");
+        deathTextList.Add("camera", "Bet you didn't C<s>(CTV)</s> that coming..?");
+        deathTextList.Add("elevator", "You're gettin' Soft... Lock in!");
         deathTextList.Add("chute", "You're not product? Why are you going down there!?");
     }
 
