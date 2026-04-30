@@ -15,9 +15,29 @@ public class KeypadButtonScript : MonoBehaviour
     public AudioClip buttonSound;
     public bool needsKey = false;
     public static bool mousingB = false;
+    private Outline outline;
+
+    private KeypadButtonScript currentButton;
+
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        outline = GetComponent<Outline>();
+    }
+    void Update()
+    {
+        if (outline != null && mousingB) 
+        { 
+            if(currentButton == this)
+            {
+                outline.enabled = true;
+            }
+            else
+            {
+                outline.enabled = false;
+            }
+            
+        }
     }
     public void PressButton()
     {
@@ -50,6 +70,7 @@ public class KeypadButtonScript : MonoBehaviour
             if (PlayerDistance() < 3f)
             {
                 mousingB = true;
+                currentButton = this;
             }
         }
 
@@ -74,6 +95,12 @@ public class KeypadButtonScript : MonoBehaviour
         {
             PressButton();
         }
+    }
+    void OnMouseExit()
+    {
+        mousingB = false;
+        if (outline != null) { outline.enabled = false; }
+        if (currentButton == this) { currentButton = null; }
     }
 
     private float PlayerDistance()
