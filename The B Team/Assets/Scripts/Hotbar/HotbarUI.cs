@@ -15,6 +15,7 @@ public class HotbarUI : MonoBehaviour
 
     void Start()
     {
+        image.sprite = selectedTools[4];
         /*// Create 4 slots (2 on each panel)
         int slotCount = 4;
         slotBackgrounds = new Image[slotCount];
