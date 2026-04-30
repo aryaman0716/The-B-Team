@@ -87,12 +87,6 @@ public class ScrewInteractable : MonoBehaviour
     void OnMouseOver()
     {
         if(isRemoved) { return; }
-        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex)
-        {
-            mousing = false;
-            GetComponent<Outline>().enabled = false;
-            return;
-        }
         if (EquipmentController.DistanceToPlayer(transform) > 4f)
         {
             mousing = false;
