@@ -23,7 +23,7 @@ public class SinkMixSystem : MonoBehaviour
     {
         if (!flourAdded) { return; }
         var distanceToPlayer = Vector3.Distance(transform.position, GameObject.Find("ChefPlayer").transform.position);
-        if(distanceToPlayer < 4 && Input.GetMouseButtonDown(0) && SinkInteractable.mousingS)
+        if(distanceToPlayer < 4 && Input.GetMouseButtonDown(0) && SinkInteractable.mousingS && EquipmentController.publicIndex == 4)
         {
             KneadDough();
         }
