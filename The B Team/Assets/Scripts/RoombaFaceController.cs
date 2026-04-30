@@ -4,6 +4,7 @@ public class RoombaFaceController : MonoBehaviour
 {
     public MeshRenderer roombaMeshRenderer;
     public Material[] roombaMaterials;
+    public Light screenLight;
 
     private RoombaBehaviour roombaBehaviour;
 
@@ -20,12 +21,15 @@ public class RoombaFaceController : MonoBehaviour
         {
             case 0:
                 SetMaterial(0);
+                screenLight.color = Color.green;
                 break;
             case 1:
                 SetMaterial(1);
+                screenLight.color = Color.orange;
                 break;
             case 2:
                 SetMaterial(2);
+                screenLight.color = Color.red;
                 break;
         }
     }

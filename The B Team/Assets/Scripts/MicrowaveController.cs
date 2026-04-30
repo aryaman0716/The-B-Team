@@ -124,7 +124,6 @@ public class MicrowaveController : MonoBehaviour
         obj.GetComponentInChildren<PlacementEmitter>().previewMeshes[0] = GameObject.Find("cookedKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
         obj.GetComponentInChildren<PlacementEmitter>().previewHighlight = GameObject.Find("cookedKeyPreviewHighlight").GetComponent<MeshRenderer>();
         
-        GetComponent<BoxCollider>().enabled = false;
         isOpen = true;
         
         yield return new WaitForSeconds(1f);
