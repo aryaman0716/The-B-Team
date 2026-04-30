@@ -11,6 +11,7 @@ public class BlenderPuree : MonoBehaviour
     private bool isHeld = false;
     private float timer; 
     private Pickup pickup;
+    public GameObject sauce;
     private void Start()
     {
         pickup = GetComponent<Pickup>();
@@ -46,6 +47,7 @@ public class BlenderPuree : MonoBehaviour
     public void FillBlender()
     {
         if (isFilled) return;
+        sauce.SetActive(true);
         GetComponent<Rigidbody>().isKinematic = false;
 
         if (GetComponentInChildren<TMP_Text>() != null)

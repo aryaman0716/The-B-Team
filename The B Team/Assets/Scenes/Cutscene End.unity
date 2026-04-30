@@ -2024,7 +2024,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2256b5a92571e4d49b47eff65c67db54, type: 3}
   - {fileID: 8300000, guid: ea85d1449b121814496886d82a199f57, type: 3}
   - {fileID: 8300000, guid: fa3a2225f92c96c4d8df6c29eb0059e8, type: 3}
-  - {fileID: 8300000, guid: 61c4b37f0646f46479803777fefe0743, type: 3}
+  - {fileID: 8300000, guid: 80ee1d77461fae14181efc66d7ec8f31, type: 3}
   baseVolume: 0.5
 --- !u!1001 &2054493272
 PrefabInstance:
