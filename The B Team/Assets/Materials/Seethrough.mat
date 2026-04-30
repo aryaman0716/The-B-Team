@@ -49,7 +49,7 @@ Material:
     - _BlendModePreserveSpecular: 0
     - _Cutoff: 0.277
     - _DstBlendAlpha: 1
-    - _Metallic: 0
+    - _Metallic: 0.084
     - _ReceiveShadows: 0
     - _Smoothness: 0.8
     - _SrcBlend: 2
