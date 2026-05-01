@@ -267,13 +267,19 @@ public class CrosshairController : MonoBehaviour
         }
         if (VentFlourTarget.mousing)
         {
-            if (EquipmentController.publicIndex != 3)
+            var obj = FindFirstObjectByType<VentSystem>();
+            var obj2 = FindFirstObjectByType <VentFlourTarget>();
+            if (obj != null && obj.isActivated && obj.ventOpened && !obj2.LasersFading)
             {
-                EnablePopupUI("Splash", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
+                if (EquipmentController.publicIndex != 3)
+                {
+                    EnablePopupUI("Splash", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
+                    return;
+                }
+                EnablePopupUI("Splash", (int)cursor_img.flour, (int)ui_img.mouse_left);
                 return;
             }
-            EnablePopupUI("Splash", (int)cursor_img.flour, (int)ui_img.mouse_left);
-            return;
+            
         }
         if (cameraWire.mousing)
         {

@@ -7,27 +7,20 @@ public class VentFlourTarget : MonoBehaviour
     public VentSystem vent;
     public AudioSource ventAudioSource;
     private bool lasersFading;
+    public bool LasersFading => lasersFading;
 
     public static bool mousing;
-
+    void Update()
+    {
+        GetComponent<Outline>().enabled = false;
+    }
     void OnMouseOver()
     {
-        if (!vent.ventOpened || !vent.isActivated || lasersFading) 
-        {
-            GetComponent<Outline>().enabled = false;
-            mousing = false;
-            return;
-        }
         if (EquipmentController.DistanceToPlayer(transform) > 5f) 
         {
             GetComponent<Outline>().enabled = false;
             mousing = false;
             return; 
-        }
-        if (EquipmentController.publicIndex != 3)
-        {
-            GetComponent<Outline>().enabled = false;
-            mousing = false;
         }
         else
         {
@@ -37,7 +30,7 @@ public class VentFlourTarget : MonoBehaviour
     }
     void OnMouseExit()
     {
-        if (!vent.ventOpened || !vent.isActivated || lasersFading) { return; }
+        mousing = false;
         if (EquipmentController.DistanceToPlayer(transform) > 5f)
         {
             GetComponent<Outline>().enabled = false;
