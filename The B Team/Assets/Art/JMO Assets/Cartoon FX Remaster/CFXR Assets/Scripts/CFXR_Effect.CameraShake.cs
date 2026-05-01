@@ -49,7 +49,7 @@ namespace CartoonFX
 			static bool s_CallbackRegistered;
 			static List<CameraShake> s_CameraShakes = new List<CameraShake>();
 
-#if UNITY_2019_1_OR_NEWER
+
 			static void OnPreRenderCamera_Static_URP(ScriptableRenderContext context, Camera cam)
 			{
 				OnPreRenderCamera_Static(cam);
@@ -58,7 +58,7 @@ namespace CartoonFX
 			{
 				OnPostRenderCamera_Static(cam);
 			}
-#endif
+
 
 			static void OnPreRenderCamera_Static(Camera cam)
 			{
@@ -104,8 +104,8 @@ namespace CartoonFX
 						RenderPipelineManager.endCameraRendering += OnPostRenderCamera_Static_URP;
 					}
 #else
-						Camera.onPreRender += OnPreRenderCamera_Static;
-						Camera.onPostRender += OnPostRenderCamera_Static;
+						Camera.onPreRender += OnPreRenderCamera_Static_URP;
+						Camera.onPostRender += OnPostRenderCamera_Static_URP;
 #endif
 
 					s_CallbackRegistered = true;

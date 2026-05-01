@@ -5,7 +5,8 @@ public class VaultDoor : MonoBehaviour
 {
     [SerializeField] Room4_Microwave microwaveScript;
     [SerializeField] Animator animator;
-    [SerializeField] ParticleSystem ps;
+    [SerializeField] GameObject explosionParticles;
+    public Transform spawnPoint;
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] AudioClip[] clips;
@@ -36,6 +37,7 @@ public class VaultDoor : MonoBehaviour
     private IEnumerator ExplodeDoor()
     {
         //play sound 1
+        yield return new WaitForSeconds(1f);
         audioSource.PlayOneShot(clips[0], audioSource.volume * GlobalSettings.SFXVolume);
         yield return new WaitForSeconds(4.1f);
         audioSource.PlayOneShot(clips[1], audioSource.volume * GlobalSettings.SFXVolume);
@@ -49,7 +51,7 @@ public class VaultDoor : MonoBehaviour
     {
         Destroy(GameObject.Find("Room4_Microwave"));
         Destroy(GameObject.Find("Cutlery"));
-        ps.Play();
+        var ps = Instantiate(explosionParticles, spawnPoint.position, Quaternion.identity);
         GetComponent<VaultDoor>().enabled = false;
     }
 }
