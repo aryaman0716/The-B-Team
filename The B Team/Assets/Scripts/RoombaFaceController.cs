@@ -25,12 +25,12 @@ public class RoombaFaceController : MonoBehaviour
         {
             case 0:
                 SetMaterial(0);
-                if (soundPlayed) { soundPlayed = false; }
+                
                 screenLight.color = Color.green;
                 break;
             case 1:
                 SetMaterial(1);
-                if (!soundPlayed) { audioSource.PlayOneShot(alarmedSound, GlobalSettings.SFXVolume * 0.5f); soundPlayed = true; }
+                
                 screenLight.color = Color.orange;
                 break;
             case 2:
