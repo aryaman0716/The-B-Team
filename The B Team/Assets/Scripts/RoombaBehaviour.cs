@@ -111,7 +111,7 @@ public class RoombaBehaviour : MonoBehaviour
         increaseTargetInt();
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag == "Player" && directionChangeTimer == 0)
         {
