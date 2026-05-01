@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         PlayerPrefs.DeleteKey("CheckpointIndex"); // start fresh without any checkpoint progress
+        MusicManger.phase2 = false;
         LoadScene(gameStartName);
     }
     public void ContinueGame()
