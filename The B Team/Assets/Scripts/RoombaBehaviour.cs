@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class RoombaBehaviour : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class RoombaBehaviour : MonoBehaviour
 
     public Material[] roomba_materials;
     public MeshRenderer roomba_meshRenderer;
+    public AudioClip[] roomba_ClipsScared;
+    public AudioClip roomba_ClipDie;
+    public GameObject deathParticles;
+    public GameObject sparkParticles;
+    public Animator roomba_Animator;
+    public AudioSource roomba_AudioSource;
+
+    private bool soundPlayed;
 
     private bool isShortCircuited = false;
     public bool isScared = false;
@@ -58,12 +67,18 @@ public class RoombaBehaviour : MonoBehaviour
 
         if (directionChangeTimer > 0)
         {
+            if (!soundPlayed) 
+            {
+                soundPlayed = true;
+                roomba_AudioSource.PlayOneShot(roomba_ClipsScared[Random.Range(0, roomba_ClipsScared.Length)], GlobalSettings.SFXVolume * roomba_AudioSource.volume);
+            }
             isScared = true;
             speed = sprintSpeed;
             directionChangeTimer = Mathf.Clamp(directionChangeTimer - Time.deltaTime, 0, directionChangeBuffer);
         }
         else
         {
+            soundPlayed = false;
             isScared = false;
             speed = baseSpeed;
         }
@@ -106,13 +121,20 @@ public class RoombaBehaviour : MonoBehaviour
         {
             var distance = Vector3.Distance(transform.position, col.transform.position);
             if(distance > 1) { return; }
-            ShortCircuit();
+            StartCoroutine(ShortCircuit());
         }
     }
-    void ShortCircuit()
+    public IEnumerator ShortCircuit()
     {
-        if (isShortCircuited) return; 
+        if (isShortCircuited) yield break;
         isShortCircuited = true;
+        Instantiate(sparkParticles, transform.position, Quaternion.identity);
+        roomba_AudioSource.Stop();
+        roomba_AudioSource.PlayOneShot(roomba_ClipDie, GlobalSettings.SFXVolume * roomba_AudioSource.volume);
+        roomba_Animator.SetTrigger("die");
+        yield return new WaitForSeconds(1f);
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+
         Debug.Log("Roomba short-circuited! Dropping key...");
 
         ObjectiveManager.Instance.CompleteObjective("Find the key for the manager's office.", "Find a way to turn off the security camera.");
@@ -124,6 +146,7 @@ public class RoombaBehaviour : MonoBehaviour
             obj.GetComponent<PlacementEmitter>().previewMeshes[0] = GameObject.Find("managerKeyPreviewMeshSolid").GetComponent<MeshRenderer>();
             obj.GetComponent<PlacementEmitter>().previewHighlight = GameObject.Find("managerKeyPreviewHighlight").GetComponent<MeshRenderer>();
         }
+        yield return null;
     }
 
     public int GetCurrentState()
@@ -135,10 +158,12 @@ public class RoombaBehaviour : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (patrolPoints[0] == null) { return; }
         Gizmos.color = Color.blue;
 
         for(int i = 0; i < patrolPoints.Length-1; i++)
         {
+
             Gizmos.DrawLine(patrolPoints[i].position, patrolPoints[i + 1].position);
         }
 
