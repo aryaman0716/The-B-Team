@@ -141,6 +141,25 @@ public class CrosshairController : MonoBehaviour
             }
 
         }
+        if (BlenderPuree.mousing)
+        {
+            var obj = FindFirstObjectByType<BlenderPuree>();
+
+            if(obj != null && !obj.IsFilled)
+            {
+                if(EquipmentController.publicIndex == 2)
+                {
+                    EnablePopupUI("Blend", (int)cursor_img.tomato, (int)ui_img.mouse_left);
+                    return;
+                }
+                else
+                {
+                    EnablePopupUI("Blend", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
+                    return;
+                }
+                
+            }
+        }
         if (Pickup.carrying)
         {
             EnablePopupUI("Throw", (int)cursor_img.grab, (int)ui_img.mouse_right);
@@ -148,6 +167,11 @@ public class CrosshairController : MonoBehaviour
         }
         if (Pickup.mousing)
         {
+            if(EquipmentController.publicIndex < 4)
+            {
+                EnablePopupUI("Grab", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
+                return;
+            }
             EnablePopupUI("Grab", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
             return;
         }
@@ -156,12 +180,12 @@ public class CrosshairController : MonoBehaviour
             
             if (GameObject.Find("Room1ExitDoor").GetComponent<GeneralDoor>() == GeneralDoor.currentDoor && GeneralDoor.currentDoor.locked)
             {
-                EnablePopupUI("Jammed...", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("Jammed...", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             if (GeneralDoor.currentDoor.locked == true)
             {
-                EnablePopupUI("It's locked...", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("It's locked...", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             if (GeneralDoor.currentDoor.opened)
@@ -185,7 +209,7 @@ public class CrosshairController : MonoBehaviour
                 {
                     if (EquipmentController.publicIndex != 4)
                     {
-                        EnablePopupUI("Knead", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                        EnablePopupUI("Knead", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                         return;
                     }
                     EnablePopupUI("Knead", (int)cursor_img.open_hand, (int)ui_img.mouse_left);
@@ -193,13 +217,10 @@ public class CrosshairController : MonoBehaviour
                 }
                 if(EquipmentController.publicIndex != 3)
                 {
-                    EnablePopupUI("Add", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                    EnablePopupUI("Add", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                     return;
                 }
                 EnablePopupUI("Add", (int)cursor_img.flour, (int)ui_img.mouse_left);
-                return;
-
-                DisablePopupUI();
                 return;
             }
             if (obj.IsOn)
@@ -238,7 +259,7 @@ public class CrosshairController : MonoBehaviour
         {
             if (EquipmentController.publicIndex != 0)
             {
-                EnablePopupUI("Unscrew", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("Unscrew", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             EnablePopupUI("Unscrew", (int)cursor_img.knife, (int)ui_img.mouse_left);
@@ -248,7 +269,7 @@ public class CrosshairController : MonoBehaviour
         {
             if (EquipmentController.publicIndex != 3)
             {
-                EnablePopupUI("Splash", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("Splash", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             EnablePopupUI("Splash", (int)cursor_img.flour, (int)ui_img.mouse_left);
@@ -258,7 +279,7 @@ public class CrosshairController : MonoBehaviour
         {
             if (EquipmentController.publicIndex != 0)
             {
-                EnablePopupUI("<s>Slash</s>", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("<s>Slash</s>", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             EnablePopupUI("Slash", (int)cursor_img.knife, (int)ui_img.mouse_left);
@@ -273,7 +294,7 @@ public class CrosshairController : MonoBehaviour
         {
             if(EquipmentController.publicIndex != 1)
             {
-                EnablePopupUI("Pry Open", (int)cursor_img.disabled, (int)ui_img.none, 400f, 10f);
+                EnablePopupUI("Pry Open", (int)cursor_img.disabled, (int)ui_img.none, 390f, 10f);
                 return;
             }
             EnablePopupUI("Pry Open", (int)cursor_img.spatula, (int)ui_img.mouse_left);

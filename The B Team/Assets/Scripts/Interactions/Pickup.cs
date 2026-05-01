@@ -53,10 +53,6 @@ public class Pickup : MonoBehaviour
     public void OnMouseOver()
     {
         if (UIController.Paused) { mousing = false; outline.enabled = false; return; }
-        if (EquipmentController.publicIndex < 4)
-        {
-            return;
-        }
         if (propHolder != null)
         {
             distance = Vector3.Distance(this.transform.position, propHolder.transform.position);

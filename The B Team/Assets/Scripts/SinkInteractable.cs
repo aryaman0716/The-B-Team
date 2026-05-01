@@ -80,4 +80,10 @@ public class SinkInteractable : MonoBehaviour
         float distance = Vector3.Distance(Player.transform.position, transform.position);
         return distance;
     }
+
+    public void ButtonSink()
+    {
+        ToggleSink(!isOn);
+    }
+    
 }

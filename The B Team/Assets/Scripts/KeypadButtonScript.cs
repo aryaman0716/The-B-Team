@@ -57,6 +57,8 @@ public class KeypadButtonScript : MonoBehaviour
             buttonSource.clip = buttonSound;
             buttonSource.Play();
         }
+        Animator animator = GetComponent<Animator>();
+        if (animator != null) { animator.SetTrigger("Press"); }
     }
     public void OnMouseOver()
     {

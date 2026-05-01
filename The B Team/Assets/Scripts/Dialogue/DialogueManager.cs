@@ -168,6 +168,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!replayingDialogue) { lastDialogue = currentDialogue; }
         else { Debug.Log("Replay dialogue is playing. Current dialogue = null"); }
+        StopAllCoroutines();
         currentDialogue = null;
         replayingDialogue = false;
         talkSounds.volume = 0f;

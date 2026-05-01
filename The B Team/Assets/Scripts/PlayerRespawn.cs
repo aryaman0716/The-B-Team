@@ -69,9 +69,9 @@ public class PlayerRespawn : MonoBehaviour
     public void Respawn(string id)
     {
         if (respawning) { return; }
+        respawning = true;
         var storedVolume = GlobalSettings.SFXVolume;
         GlobalSettings.SFXVolume = 0f;
-        respawning = true;
         StartCoroutine(RespawnRoutine(id, storedVolume));
         Animator animator = GameObject.FindGameObjectWithTag("UIDeath").GetComponent<Animator>();
         deathText.text = "";
@@ -83,7 +83,8 @@ public class PlayerRespawn : MonoBehaviour
     private IEnumerator RespawnRoutine(string id, float storedVolume)
     {
         DialogueManager diabox = GameObject.Find("DialogueBox").GetComponent<DialogueManager>();
-        if (diabox != null && DialogueManager.dialoguePlaying) {diabox.EndDialogue(); }
+        if (diabox != null) { diabox.EndDialogue(); }
+        
         yield return screenFade.FadeOut();
         yield return new WaitForSeconds(0.1f);
         
@@ -106,9 +107,6 @@ public class PlayerRespawn : MonoBehaviour
         if (deathText.text != "") { deathText.gameObject.SetActive(false); }
 
         yield return screenFade.FadeIn();
-
-        if(DialogueManager.lastDialogue != null) { GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.lastDialogue); }
-        else {GameObject.Find("DialogueBox").GetComponent<DialogueManager>().StartDialogue(DialogueManager.currentDialogue); }
 
         characterController.enabled = true;
         controller.enabled = true;
