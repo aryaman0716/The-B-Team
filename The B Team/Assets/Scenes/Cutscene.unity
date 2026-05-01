@@ -357,6 +357,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fa3a2225f92c96c4d8df6c29eb0059e8, type: 3}
   - {fileID: 8300000, guid: 80ee1d77461fae14181efc66d7ec8f31, type: 3}
   baseVolume: 0.5
+  logoAnim: {fileID: 0}
+  director: {fileID: 0}
+  lastDirTime: 0
 --- !u!1 &509498602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,119 +1760,13 @@ MonoBehaviour:
       - speaker: Vick
         portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
         sentence: "Their place is under construction which means lighter security.
-          Gave us the perfect opportunity for the job before, well y\u2019know. Which
-          is why we need you to do it, not much time left on this opportunity."
-    - entries:
-      - speaker: Mobster 1
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "What do you mean you\u2019re sick? There ain\u2019t no sick in
-          this business, Tony!"
-      - speaker: Phone
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Mumble... Mumble >:(
-      - speaker: Mobster 1
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Hey. Look, alright. We\u2019ll figure this out, yeah? Surely the
-          other guys\u2019ll be around to-"
-      - speaker: Phone
-        portrait: {fileID: -269628872, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: MUMBLE! >:(
-      - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "YOU\u2019RE JOKING? YOU\u2019RE ALL SICK? HOW WE S\u2019POSED
-          TO ROB A BANK WITHOUT YOU MORONS? "
-      - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "HOW WE S\u2019POSED TO GET THE CHEDDAR WITH NO COWS? HOW WE S\u2019POSED
-          TO MAKE SOME GOD DAMN DOUGH WITHOUT THE FLOUR? YOU PEOPLE- "
+          Gave us the perfect opportunity for the job before, well y\u2019know. "
       - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Boss!
-      - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "WHAT? CAN\u2019T YOU SEE I\u2019M ON THE PHONE RIGHT NOW? COME
-          ONNNN!"
-      - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "God damnit, get that look off your face, Vick. I know you\u2019re
-          a stand-up guy. I didn\u2019t mean to go off at you. What is it?"
-      - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "They was at uh\u2026 Maurices\u2019 pizza place last night to
-          celebrate before the big day\u2026 surely if they\u2019re all sick\u2026"
-      - speaker: Mobster 1
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Course they was at Maurices\u2019\u2026 Come on, gotta go pay
-          \u2018im another visit. Not his first slip up, I reckon it's about time
-          we make him pay his dues. Get the van ready, Vick."
-      - speaker: Vick
-        portrait: {fileID: -1348697374, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Yes boss!
-      - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Hey Maurice, word on the street is our boys ate here last night.
-      - speaker: Maurice
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Yeah, a large group of \u2018em were in. Trying a new attempt
-          at the recipe. I\u2019ll need to ask what they thought."
-      - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Well, Maurice, they got sick. So, not only did you fail at recreating
-          the family recipe, again, but you also screwed up this job we had, again.
-      - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Oh-\u2026"
-      - speaker: Mobster 1
-        portrait: {fileID: -1234331770, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Save it, I\u2019m not interested in your half baked excuses. You\u2019re
-          going to do the job for us. Vick can give you the run down. I expect you
-          to be out in 10, if not I\u2019ll drag you out myself."
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Sorry about him Maurice\u2026 you uh, you know what he\u2019s
-          like with this stuff. \u2018specially after what uh, you know, what happened
-          with you losing Nonnas\u2019 recipe way back."
-      - speaker: Maurice
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Yeah\u2026 I know. Least you don\u2019t hold it against me, Vick."
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "It\u2019s in the past, anyways\u2026 for the more recent slip
-          up. I should give you the run down of the job. Planned this big heist on
-          the Russos\u2019 Dough Production Facility."
-      - speaker: Maurice
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "The Russos\u2026 the same scumbags that stole our recipe?"
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "That\u2019s right, their place is under construction which means
-          security details are light. Gave the perfect opportunity for our men before,
-          y\u2019know, you got them sick. "
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
+        portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
         sentence: Which is why we need you to do it, not much time left on this opportunity.
       - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: 'We will drop you off nearby, get you to sneak into the facility
-          and from the outside give you guidance to reach the secret vault room they
-          have. '
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Once you find it, you\u2019ll need to grab as much of the sweet
-          dough as you can and scram. Meeting us back outside so we can make off."
-      - speaker: Maurice
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: Just to be clear, by dough you mean-
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: "Yes, dough, cheddar, money. We just need you to grab as much as
-          you can. Now, just \u2018cause security is lighter doesn\u2019t mean there
-          won\u2019t be obstacles. So, you\u2019ll need to be well prepared."
-      - speaker: Vick
-        portrait: {fileID: -981673167, guid: c07f9d5398500174d84381c32d1724c5, type: 3}
-        sentence: ' Grab some tools that are good for different jobs, unscrewing,
-          breaking, and hitting things from afar. The whole shebang. Once you got
-          everything you think you need, come meet us outside in the van.'
+        portrait: {fileID: 21300000, guid: b5722480c7a3cc343ae5f4612db7032b, type: 3}
+        sentence: And Maurice.. Good Luck.
   done: 0
   triggerStart: 1
 --- !u!95 &5205855636595042290
