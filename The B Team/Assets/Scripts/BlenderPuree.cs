@@ -12,6 +12,7 @@ public class BlenderPuree : MonoBehaviour
     private float timer; 
     private Pickup pickup;
     public GameObject sauce;
+    public static bool mousing;
     private void Start()
     {
         pickup = GetComponent<Pickup>();
@@ -43,6 +44,22 @@ public class BlenderPuree : MonoBehaviour
             Vector3 spawnPosition = hit.point + Vector3.up * 0.05f; 
             Instantiate(pureePuddlePrefab, spawnPosition, Quaternion.identity);
         }
+    }
+
+    void OnMouseOver()
+    {
+        if (isFilled) { mousing = false; return; }
+        if(EquipmentController.DistanceToPlayer(transform) > 4f)
+        {
+            mousing = false;
+            return;
+        }
+        mousing = true;
+    }
+
+    void OnMouseExit()
+    {
+        mousing = false;
     }
     public void FillBlender()
     {

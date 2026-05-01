@@ -115,9 +115,14 @@ public class CrosshairController : MonoBehaviour
 
     void HandleUI()
     {
-        if((UIController.Paused || SceneManager.GetActiveScene().name != "Room1Blockout") && IsPointerOverUI())
+        if((UIController.Paused || SceneManager.GetActiveScene().name != "Room1Blockout"))
         {
-            EnablePopupUI("", (int)cursor_img.point, (int)ui_img.none);
+            if (IsPointerOverUI())
+            {
+                EnablePopupUI("", (int)cursor_img.point, (int)ui_img.none);
+                return;
+            }
+            DisablePopupUI();
             return;
         }
         if (Room4_Microwave.mousing)

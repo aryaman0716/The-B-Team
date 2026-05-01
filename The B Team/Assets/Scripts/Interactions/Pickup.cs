@@ -52,6 +52,7 @@ public class Pickup : MonoBehaviour
 
     public void OnMouseOver()
     {
+        if (UIController.Paused) { mousing = false; outline.enabled = false; return; }
         if (EquipmentController.publicIndex < 4)
         {
             return;
@@ -128,17 +129,17 @@ public class Pickup : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        if (!isHolding && CursorManager.Instance != null)
-        {
-            CursorManager.Instance.SetOpenHand();
-        }
+        //if (!isHolding && CursorManager.Instance != null)
+        //{
+        //    CursorManager.Instance.SetOpenHand();
+        //}
     }
     private void OnMouseExit()
     {
-        if (!isHolding && CursorManager.Instance != null)
-        {
-            CursorManager.Instance.SetNormal();
-        }
+        //if (!isHolding && CursorManager.Instance != null)
+        //{
+        //    CursorManager.Instance.SetNormal();
+        //}
         if (!isHolding && outline != null) { outline.enabled = false; }
     }
     private void Hold()
