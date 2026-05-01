@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class MusicManger : MonoBehaviour
@@ -10,7 +11,9 @@ public class MusicManger : MonoBehaviour
     public AudioClip[] Music;
     public float baseVolume = 0.5f;
     public static bool phase2 = false;
-
+    public Animator logoAnim;
+    public PlayableDirector director;
+    public float lastDirTime;
 
     void Awake()
     {
@@ -25,10 +28,10 @@ public class MusicManger : MonoBehaviour
     }
 
 
-    void Update()
+    void LateUpdate()
     {
         Source.volume = baseVolume * GlobalSettings.MasterVolume * GlobalSettings.MusicVolume;
-
+        if (director != null)lastDirTime = (float)director.time;
         switch (SceneManager.GetActiveScene().name)
         {
             case "Room1Blockout":
@@ -62,6 +65,7 @@ public class MusicManger : MonoBehaviour
                     if (Source.clip != Music[1])
                     {
                         Source.clip = Music[1];
+                        Source.time = lastDirTime + 0.05f ;
                         Source.Play();
                     }
                     break;
@@ -70,8 +74,7 @@ public class MusicManger : MonoBehaviour
                 {
                     if (Source.clip != Music[1])
                     {
-                        Source.clip = Music[1];
-                        Source.Play();
+                        if (director != null) {director.Play();}
                     }
                     break;
                 }

@@ -63,7 +63,6 @@ public class CutsceneController : MonoBehaviour
     {
         
         Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition(gameSceneName);
-
         yield return new WaitForSeconds(1.5f);
 
        
