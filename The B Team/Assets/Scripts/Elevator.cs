@@ -16,6 +16,7 @@ public class Elevator : MonoBehaviour
 
     private bool atEndPosition = false;
     private bool isMoving = false;
+    private Vector3 platformDelta;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class Elevator : MonoBehaviour
 
         while (Mathf.Abs(transform.position.y - targetY) > 0.01f)
         {
+            Vector3 previousPosition = transform.position;
             Vector3 pos = transform.position;
             pos.y = Mathf.MoveTowards(
                 pos.y,
@@ -47,7 +49,8 @@ public class Elevator : MonoBehaviour
                 moveSpeed * Time.deltaTime
             );
             transform.position = pos;
-
+            platformDelta = transform.position - previousPosition;
+            MovePlayerWithPlatform();
             yield return null;
         }
 
@@ -56,10 +59,28 @@ public class Elevator : MonoBehaviour
             targetY,
             transform.position.z
         );
-
+        platformDelta = Vector3.zero;
         isMoving = false;
     }
+    void MovePlayerWithPlatform()
+    {
+        Vector3 boxCenter = transform.position + Vector3.up * 1f;
+        Vector3 boxSize = new Vector3(0.7f, 0.35f, 0.2f);  
 
+        Collider[] hits = Physics.OverlapBox(boxCenter, boxSize);
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Player"))
+            {
+                CharacterController controller = hit.GetComponent<CharacterController>();
+
+                if (controller != null)
+                {
+                    controller.Move(platformDelta);
+                }
+            }
+        }
+    }
     public void Activate()
     {
         if (isMoving) return;
