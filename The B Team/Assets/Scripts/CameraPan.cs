@@ -28,7 +28,7 @@ public class CameraPan : MonoBehaviour
         float pitch = -mouseY * maxVertical;
 
         Quaternion targetRotation = startRotation * Quaternion.Euler(pitch, yaw, 0f);
-
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * smoothSpeed);
+        
     }
 }
