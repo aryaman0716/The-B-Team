@@ -14,6 +14,7 @@ public class ScrewInteractable : MonoBehaviour
     private Collider myCollider;
 
     public static bool mousing = false;
+    public static ScrewInteractable instance;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class ScrewInteractable : MonoBehaviour
 
         if (isRemoved) return;  // Prevent interaction if already removed
         //if (!ventSystem || !ventSystem.isActivated) return;
-
+        if (instance == this) { GetComponent<Outline>().enabled = mousing; }
         if (Input.GetMouseButtonDown(0))
         {
             if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) return;
@@ -86,11 +87,11 @@ public class ScrewInteractable : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(isRemoved) { return; }
+        if(isRemoved) { mousing = false; return; }
+        if (instance != this) { instance = this; }
         if (EquipmentController.DistanceToPlayer(transform) > 4f)
         {
             mousing = false;
-            GetComponent<Outline>().enabled = false;
             return;
         }
         else
@@ -102,16 +103,9 @@ public class ScrewInteractable : MonoBehaviour
 
     void OnMouseExit()
     {
-        if (isRemoved) { return; }
-        if (equipment == null || equipment.GetCurrentIndex() != knifeIndex) { mousing = false; return; }
-        if (EquipmentController.DistanceToPlayer(transform) > 4f)
-        {
-            GetComponent<Outline>().enabled = false;
-            mousing = false;
-            return;
-        }
-        GetComponent<Outline>().enabled = false;
         mousing = false;
+        GetComponent<Outline>().enabled = false;
+        instance = null;
     }
 
     void OnCollisionEnter(Collision other)
