@@ -8,6 +8,7 @@ public class BlenderPuree : MonoBehaviour
     public float dropInterval = 0.5f;
 
     private bool isFilled = false;
+    public bool IsFilled => isFilled;
     private bool isHeld = false;
     private float timer; 
     private Pickup pickup;
@@ -49,7 +50,7 @@ public class BlenderPuree : MonoBehaviour
     void OnMouseOver()
     {
         if (isFilled) { mousing = false; return; }
-        if(EquipmentController.DistanceToPlayer(transform) > 4f)
+        if(EquipmentController.DistanceToPlayer(transform) > 5f)
         {
             mousing = false;
             return;
