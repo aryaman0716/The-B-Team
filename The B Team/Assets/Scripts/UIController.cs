@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
     public Animator pauseAnimator;
     public GameObject scenetransition;
     public Animator animatorFade;
+    public bool menu = false;
+    public Button[] menuButtons;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,24 +27,20 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (Paused)
-            {
-                UnPauseGame();
-            }
-            else
-            {
-                PauseGame();
-            }
+            PauseButton();
         }
     }
 
     public void PauseGame()
     {
+        if (menu) foreach (Button butt in menuButtons) { butt.gameObject.GetComponent<Image>().raycastTarget = false; }
+
+
         //Cursor.visible = true;
         animatorFade.SetBool("Faded", true);
         Paused = true;
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0.0f;
+        if (!menu) Cursor.lockState = CursorLockMode.None;
+        if (!menu) Time.timeScale = 0.0f;
         pauseAnimator.SetTrigger("Open");
         foreach (GameObject thisObject in PauseHide)
         {
@@ -56,12 +54,13 @@ public class UIController : MonoBehaviour
     }
     public void UnPauseGame()
     {
+        if (menu) foreach (Button butt in menuButtons) { butt.gameObject.GetComponent<Image>().raycastTarget = true; }
         animatorFade.SetBool("Faded", false);
         Debug.Log("unpause");
         Cursor.visible=false;
         Paused = false;
-        Time.timeScale = 1.0f;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!menu) Time.timeScale = 1.0f;
+        if (!menu) Cursor.lockState = CursorLockMode.Locked;
         pauseAnimator.SetTrigger("Close");
         foreach (GameObject thisObject in PauseShow)
         {
@@ -81,4 +80,15 @@ public class UIController : MonoBehaviour
         Instantiate(scenetransition).GetComponent<sceneTransition>().BeginTransition("MainMenu");
     }
 
+    public void PauseButton()
+    {
+        if (Paused)
+        {
+            UnPauseGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
 }
