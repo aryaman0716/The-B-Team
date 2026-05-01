@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class keyCardReceptical : MonoBehaviour
 {
-    public KeypadButtonScript button;
+    public KeypadButtonScript button, button2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +19,7 @@ public class keyCardReceptical : MonoBehaviour
         if (collision.gameObject.CompareTag("KeyCard"))
         {
             button.needsKey = false;
+            button2.needsKey = false;
             collision.gameObject.SetActive(false);
         }
         ObjectiveManager.Instance.CompleteObjective("Find a keycard to unlock the staff elevator.", "Find a way to blast through the vault door.");
