@@ -45,8 +45,8 @@ MonoBehaviour:
   blendMode: 1
   extrusionMethod: 4
   scaling: 1
-  width: 7.9
-  minWidth: 7.8
+  width: 100
+  minWidth: 0
   scaleWithResolution: 1
   referenceResolution: 2
   customResolution: 0
