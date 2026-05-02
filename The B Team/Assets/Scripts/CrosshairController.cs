@@ -128,6 +128,7 @@ public class CrosshairController : MonoBehaviour
         if (Room4_Microwave.mousing)
         {
             var obj = GameObject.Find("Room4_Microwave").GetComponent<Room4_Microwave>();
+            if (obj == null) return;
             
             if (obj != null && obj.Openable && !obj.DoorOpened)
             {

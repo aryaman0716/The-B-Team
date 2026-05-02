@@ -23,10 +23,11 @@ public class Pickup : MonoBehaviour
     private Quaternion holdRotationOffset;
     [SerializeField] float followForce = 600f;
     [SerializeField] float damping = 20f;
+    public Vector3 startPos;
 
     void Start()
     {
-
+        startPos = transform.position;
         rb = GetComponent<Rigidbody>();
         propHolder = PropHolder.Instance;
         outline = GetComponent<Outline>();
@@ -47,6 +48,7 @@ public class Pickup : MonoBehaviour
 
             Hold();
         }
+
     }
     public bool IsHolding => isHolding;  // making this public so that other scripts can check if this object is currently being held
 
@@ -228,7 +230,14 @@ public class Pickup : MonoBehaviour
     private void OnDisable()
     {
         carrying = false;
-        mousing = false;
+        mousing = false;    
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            transform.position = startPos;
+        }
     }
 
 }
