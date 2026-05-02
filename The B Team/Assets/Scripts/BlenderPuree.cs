@@ -49,6 +49,7 @@ public class BlenderPuree : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (UIController.Paused) { GetComponent<Outline>().enabled = false; mousing = false; }
         if (isFilled) { mousing = false; return; }
         if(EquipmentController.DistanceToPlayer(transform) > 5f)
         {

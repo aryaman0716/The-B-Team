@@ -16,6 +16,7 @@ public class VentFlourTarget : MonoBehaviour
     }
     void OnMouseOver()
     {
+        if (UIController.Paused) { GetComponent<Outline>().enabled = false; mousing = false; }
         if (EquipmentController.DistanceToPlayer(transform) > 5f) 
         {
             GetComponent<Outline>().enabled = false;

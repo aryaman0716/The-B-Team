@@ -87,7 +87,8 @@ public class ScrewInteractable : MonoBehaviour
 
     void OnMouseOver()
     {
-        if(isRemoved) { mousing = false; return; }
+        if (UIController.Paused) { GetComponent<Outline>().enabled = false; mousing = false; }
+        if (isRemoved) { mousing = false; return; }
         if (instance != this) { instance = this; }
         if (EquipmentController.DistanceToPlayer(transform) > 4f)
         {

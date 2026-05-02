@@ -24,6 +24,7 @@ public class SinkInteractable : MonoBehaviour
     }
     void OnMouseOver()
     {
+        if (UIController.Paused) { outline.enabled = false; mousingS = false; }
         if (Player != null)
         {
             if (PlayerDistance() > 3f) return;
