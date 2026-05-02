@@ -11,7 +11,7 @@ public class PlacementTrigger : MonoBehaviour
         if(emitter == null) { Debug.Log("Emitter parent not found"); enabled = false; }
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
         emitter?.TriggerEnter(col);
     }

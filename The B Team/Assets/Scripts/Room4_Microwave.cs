@@ -51,8 +51,16 @@ public class Room4_Microwave : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (UIController.Paused) { GetComponent<Outline>().enabled = false; mousing = false; return; }
         if (!openable) {  return; }
-        if(mousing == false) mousing = true; 
+        if (EquipmentController.DistanceToPlayer(transform) > 4f)
+        {
+            GetComponent<Outline>().enabled = false;
+            mousing = false;
+            return;
+        }
+        mousing = true;
+        GetComponent<Outline>().enabled = true;
         if (Input.GetMouseButtonDown(0))
         {
             if (equipment != null && equipment.GetCurrentIndex() != equipment.TotalTools())
@@ -73,14 +81,10 @@ public class Room4_Microwave : MonoBehaviour
             }
         }
     }
-
-    void OnMouseEnter()
-    {
-        mousing = true;
-    }
     void OnMouseExit()
     {
         mousing = false;
+        GetComponent<Outline>().enabled = false;
     }
     public void ToggleDoor(bool val)
     {
