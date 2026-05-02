@@ -22,7 +22,8 @@ public class cameraWire : MonoBehaviour
     void OnMouseOver()
     {
         if (!gameObject.activeSelf) { return; }
-        if (EquipmentController.DistanceToPlayer(transform) > 3f)
+        Debug.Log(EquipmentController.DistanceToPlayer(transform));
+        if (EquipmentController.DistanceToPlayer(transform) > 4.5f)
         {
             GetComponent<Outline>().enabled = false;
             mousing = false;
