@@ -34,7 +34,7 @@ public class MusicManger : MonoBehaviour
     void LateUpdate()
     {
         Source.volume = baseVolume * GlobalSettings.MasterVolume * GlobalSettings.MusicVolume * volMod;
-        dirSource.volume = baseVolume * GlobalSettings.MasterVolume * GlobalSettings.MusicVolume;
+        if (dirSource != null) dirSource.volume = baseVolume * GlobalSettings.MasterVolume * GlobalSettings.MusicVolume;
         if (director != null)lastDirTime = (float)director.time;
         switch (SceneManager.GetActiveScene().name)
         {
