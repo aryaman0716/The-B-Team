@@ -13,6 +13,8 @@ public class ConveyorBeltController : MonoBehaviour
     [SerializeField] private UnityEvent correctEvent;
     private static ConveyorBeltController instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public AudioSource keypadSource;
+    public AudioClip correctClip;
     void Start()
     {
         instance = this;
@@ -44,6 +46,12 @@ public class ConveyorBeltController : MonoBehaviour
             currentCode += correctCode[codeStep].ToString();
             correctCodeEntered = true;
             correctEvent.Invoke();
+            if (keypadSource != null && correctClip != null)
+            {
+                keypadSource.clip = correctClip;
+                keypadSource.volume = 0.25f * GlobalSettings.MasterVolume * GlobalSettings.SFXVolume;
+                keypadSource.Play();
+            }
             enabled = false;
         }
     }
