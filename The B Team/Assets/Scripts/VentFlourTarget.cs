@@ -68,7 +68,7 @@ public class VentFlourTarget : MonoBehaviour
 
             }
 
-            alpha += 0.005f;
+            alpha = (alpha*1.2f) + 0.01f;
             
             if (alpha >= 1f)
             {
