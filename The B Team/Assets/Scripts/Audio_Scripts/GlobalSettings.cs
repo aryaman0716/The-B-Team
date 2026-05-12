@@ -8,6 +8,7 @@ public class GlobalSettings : MonoBehaviour
     public static float MasterVolume = 1f;
     public static float MusicVolume = 0.5f;
     public static float SFXVolume = 1f;
+    public static float textSpeed = 1f;
 
     public static bool HeadBob = true;
 
@@ -16,12 +17,15 @@ public class GlobalSettings : MonoBehaviour
     public Slider SFXSlider;
 
     public bool fullScreen = true;
-    public bool debugObjectLabels = true;
     public int selectedRes = 0;
+    public int selectedTxtSpd = 0;
 
     public List<ResolutionItem> resolutions = new List<ResolutionItem>();
+    public List<float> textSpeeds = new List<float>();
+    public List<string> textSpeedLabels = new List<string>();
 
     public TMP_Text resolutionLabel;
+    public TMP_Text textSpeedLabel;
 
     void Awake()
     {
@@ -36,11 +40,12 @@ public class GlobalSettings : MonoBehaviour
 
         ApplyResolution();
         UpdateResLabel();
+        UpdateTextSpeed();
     }
 
     void Start()
     {
-        updateObjectLabels(debugObjectLabels);
+
     }
 
     public void MasterVolumeSlider(float sliderValue)
@@ -89,6 +94,36 @@ public class GlobalSettings : MonoBehaviour
             resolutions[selectedRes].vertical;
 
         ApplyResolution();
+    }
+
+    public void textSpeedRight()
+    {
+        selectedTxtSpd++;
+
+        if (selectedTxtSpd > textSpeeds.Count - 1)
+        {
+            selectedTxtSpd = textSpeeds.Count - 1;
+        }
+
+        UpdateTextSpeed();
+        
+    }
+    public void textSpeedLeft()
+    {
+        selectedTxtSpd--;
+
+        if (selectedTxtSpd < 0)
+        {
+            selectedTxtSpd = 0;
+        }
+
+        UpdateTextSpeed();
+    }
+    public void UpdateTextSpeed()
+    {
+        textSpeed = textSpeeds[selectedTxtSpd];
+        textSpeedLabel.text = textSpeedLabels[selectedTxtSpd];
+        
     }
 
     public void updateFullscreen(bool fullscreenValue)

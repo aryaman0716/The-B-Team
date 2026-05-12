@@ -43,11 +43,11 @@ public class DialogueManager : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            dialogueSpeedMod = 8f;
+            dialogueSpeedMod = GlobalSettings.textSpeed * 2f;
         }
         else
         {
-            dialogueSpeedMod = 2f;
+            dialogueSpeedMod = GlobalSettings.textSpeed;
         }
     }
 
